@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:600');
+
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: #FFCC10;
+            text-align: center;
+        }
+
+        #nbr {
+            font-size: 62px;
+            margin: 44px 0 0 0;
+        }
+
+        button {
+            outline: none;
+            background: none;
+            border: 2px solid #000;
+            padding: 11px;
+            cursor: pointer;
+        }
+
+        button:active {
+            background: #000;
+            color: #FFCC10;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="nbr">50</p>
+    <script>
+        var speed = 10;
+
+        /* Call this function with a string containing the ID name to
+         * the element containing the number you want to do a count animation on.*/
+        function incEltNbr(id) {
+            elt = document.getElementById(id);
+            endNbr = Number(document.getElementById(id).innerHTML);
+            incNbrRec(0, endNbr, elt);
+        }
+
+        /*A recursive function to increase the number.*/
+        function incNbrRec(i, endNbr, elt) {
+            if (i <= endNbr) {
+                elt.innerHTML = i;
+                setTimeout(function () {//Delay a bit before calling the function again.
+                    incNbrRec(i + 1, endNbr, elt);
+                }, speed);
+            }
+        }
+
+        /*Function called on button click*/
+        function incNbr() {
+            incEltNbr("nbr");
+        }
+
+        incEltNbr("nbr"); /*Call this funtion with the ID-name for that element to increase the number within*/
+
+    </script>
+</body>
+
+</html>

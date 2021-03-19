@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>US Map Demo</title>
+
+    <style>
+        #alert {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            background-color: #ddd;
+            color: #333;
+            padding: 5px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script src="/us-map-1.0.1/lib/raphael.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+    <script src="/us-map-1.0.1/example/color.jquery.js"></script>
+    <script src="/us-map-1.0.1/jquery.usmap.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#map2').usmap({
+                'stateStyles': {
+                    fill: '#88A4BC',
+                    "stroke-width": 0.6,
+                    'stroke': '#ffffff',
+                    'stroke-linejoin': 'round',
+                    showLabels: true,
+                },
+
+                'stateHoverStyles': {
+                    fill: '#3B729F'
+                },
+                'stateSpecificStyles': {
+                    'WA': { fill: '#85c7ac' },
+                    'OR': { fill: '#85c7ac' },
+                    'CA': { fill: '#85c7ac' },
+                    'ID': { fill: '#85c7ac' },
+                    'NV': { fill: '#85c7ac' },
+                    'MT': { fill: '#85c7ac' },
+                    'WY': { fill: '#85c7ac' },
+                    'UT': { fill: '#85c7ac' },
+                    'AZ': { fill: '#85c7ac' },
+                    'NM': { fill: '#85c7ac' },
+                    'CO': { fill: '#85c7ac' },
+                    'TX': { fill: '#f3d331' },
+                    'AK': { fill: 'transparent' },
+                    'HI': { fill: 'transparent' },
+
+                },
+                'stateSpecificHoverStyles': {
+                    'WA': { fill: '#47a780' },
+                    'OR': { fill: '#47a780' },
+                    'CA': { fill: '#47a780' },
+                    'ID': { fill: '#47a780' },
+                    'NV': { fill: '#47a780' },
+                    'MT': { fill: '#47a780' },
+                    'WY': { fill: '#47a780' },
+                    'UT': { fill: '#47a780' },
+                    'AZ': { fill: '#47a780' },
+                    'NM': { fill: '#47a780' },
+                    'CO': { fill: '#47a780' },
+                    'TX': { fill: '#f3b731' },
+                },
+                'stateHoverAnimation': {
+                    stateHoverAnimation: 300
+                },
+
+                'click': function (event, data) {
+                    $('#alert')
+                        .text('Click ' + data.name + ' on map 2')
+                        .stop()
+                        .css('backgroundColor', '#af0')
+                        .animate({ backgroundColor: '#ddd' }, 1000);
+                }
+
+            });
+            $('#map2').usmap({ showLabels: true });
+        });
+    </script>
+</head>
+
+<body>
+
+    <div id="map2" style="width: 500px; height: 500px;"></div>
+</body>
+
+</html>

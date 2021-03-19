@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pie {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background-image: conic-gradient(#3D8B9C 30deg,
+                    #4FCEE8 0 90deg,
+                    #E8D543 0 190deg,
+                    #9C1E6B 0 280deg,
+                    #EB43AB 0);
+        }
+
+        .year {
+            width: 400px;
+        }
+
+        .year ul {
+            display: flex;
+            justify-content: space-evenly;
+            list-style-type: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pie"></div>
+    <div class="year">
+        <ul>
+            <li class="2012">2012</li>
+            <li class="2014">2014</li>
+            <li class="2016">2016</li>
+            <li class="2018">2018</li>
+            <li class="2020">2020</li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $('.2012').hover(function () {
+            $('.pie').css('background-image', 'conic-gradient(#3D8B9C 40deg,#4FCEE8 0 120deg,#E8D543 0 190deg,#9C1E6B 0 320deg,#EB43AB 0)');
+        })
+
+    </script>
+</body>
+
+</html>

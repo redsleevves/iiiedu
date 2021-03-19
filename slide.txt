@@ -1,0 +1,21 @@
+<a id='XZhiIZWsQjxzjnE4YTiL9Q' class='gie-slideshow' href='http://www.gettyimages.hk/detail/1231222415' target='_blank' style='color:#a7a7a7;text-decoration:none;font-weight:normal !important;border:none;display:inline-block;'>Embed from Getty Images</a><script>window.gie=window.gie||function(c){(gie.q=gie.q||[]).push(c)};gie(function(){gie.widgets.load({id:'XZhiIZWsQjxzjnE4YTiL9Q',sig:'XHidZeegLdCkZeZd-IS6O3g3umk-Kmz6gFnzamtLUkQ=',w:'594px',h:'396px',items:'1231222415,1303013652,1303056779,1303397476',caption: true ,tld:'hk',is360: false })});</script><script src='//embed-cdn.gettyimages.com/widgets.js' charset='utf-8' async></script>
+
+
+滑動nasa
+https://levelup.gitconnected.com/how-to-create-a-before-after-image-slider-with-css-and-js-a609d9ba77bf
+https://codemyui.com/multi-layer-image-slider/
+
+<div id="slider-window" class="twentytwenty-container" style="height: 356px;">
+            <img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/147000/147941/houston_bmhd_2021038.jpg" style="width: 100%; clip: rect(0px, 0px, 356px, 0px);" class="twentytwenty-before">
+            <img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/147000/147941/houston_bmhd_2021047.jpg" style="width: 100%;" class="twentytwenty-after">
+        <div class="twentytwenty-overlay"><div class="twentytwenty-before-label"></div><div class="twentytwenty-after-label"></div></div><div class="twentytwenty-handle" style="left: 0px;"><span class="twentytwenty-left-arrow"></span><span class="twentytwenty-right-arrow"></span></div></div>
+
+twitter
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">In case your wondering how it’s going here in Austin. This is my water supply for the foreseeable future. <a href="https://twitter.com/hashtag/TexasFreeze?src=hash&amp;ref_src=twsrc%5Etfw">#TexasFreeze</a> <a href="https://twitter.com/hashtag/AustinWater?src=hash&amp;ref_src=twsrc%5Etfw">#AustinWater</a> <a href="https://twitter.com/hashtag/TexasWinterStorm2021?src=hash&amp;ref_src=twsrc%5Etfw">#TexasWinterStorm2021</a> <a href="https://t.co/nk06EA2cYR">pic.twitter.com/nk06EA2cYR</a></p>&mdash; sav (@savrmc) <a href="https://twitter.com/savrmc/status/1362819266593095682?ref_src=twsrc%5Etfw">February 19, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Snow and ice are melting during our <a href="https://twitter.com/hashtag/TexasFreeze?src=hash&amp;ref_src=twsrc%5Etfw">#TexasFreeze</a> but the grocery stores look bleak. <a href="https://t.co/3fLjF94Pvi">pic.twitter.com/3fLjF94Pvi</a></p>&mdash; Liz Haney (@drlizhaney) <a href="https://twitter.com/drlizhaney/status/1363133212344676353?ref_src=twsrc%5Etfw">February 20, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">This is <a href="https://twitter.com/hashtag/Texas?src=hash&amp;ref_src=twsrc%5Etfw">#Texas</a>. Texans are bleeding, Texans are stranded, Texans are without power, now at the verge of food shortage. <a href="https://twitter.com/hashtag/prayfortexas?src=hash&amp;ref_src=twsrc%5Etfw">#prayfortexas</a> <a href="https://twitter.com/hashtag/TexasFreeze?src=hash&amp;ref_src=twsrc%5Etfw">#TexasFreeze</a> <a href="https://twitter.com/hashtag/TexasPowerOutages?src=hash&amp;ref_src=twsrc%5Etfw">#TexasPowerOutages</a> <a href="https://twitter.com/hashtag/TexasBlackout?src=hash&amp;ref_src=twsrc%5Etfw">#TexasBlackout</a> <a href="https://twitter.com/hashtag/TexasWinterStorm2021?src=hash&amp;ref_src=twsrc%5Etfw">#TexasWinterStorm2021</a> <a href="https://twitter.com/hashtag/TexasStrong?src=hash&amp;ref_src=twsrc%5Etfw">#TexasStrong</a> <a href="https://t.co/t9KnIksoBe">pic.twitter.com/t9KnIksoBe</a></p>&mdash; Deiv (@Deiv101) <a href="https://twitter.com/Deiv101/status/1362618733869600769?ref_src=twsrc%5Etfw">February 19, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+color
+#f3d331

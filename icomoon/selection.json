@@ -1,0 +1,64 @@
+{
+  "IcoMoonType": "selection",
+  "icons": [
+    {
+      "icon": {
+        "paths": [
+          "M543.563 741.309c37.514 13.055 64.437 48.729 64.437 90.691 0 53.019-42.981 96-96 96s-96-42.981-96-96c0-41.966 26.928-77.643 64.447-90.694-0.294-1.755-0.447-3.559-0.447-5.399v-159.813c0-18.082 14.327-32.094 32-32.094 17.796 0 32 14.369 32 32.094v159.813c0 1.847-0.149 3.652-0.437 5.403v0zM576 721.124v-593.009c0-35.41-28.407-64.115-64-64.115-35.346 0-64 28.472-64 64.115v593.009c-38.259 22.132-64 63.498-64 110.876 0 70.692 57.308 128 128 128s128-57.308 128-128c0-47.378-25.741-88.744-64-110.876zM608 703.988c38.862 29.191 64 75.666 64 128.012 0 88.366-71.634 160-160 160s-160-71.634-160-160c0-52.346 25.138-98.821 64-128.012v-576.284c0-52.693 42.981-95.704 96-95.704 52.911 0 96 42.848 96 95.704v576.284z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "thermometer-quarter"
+        ],
+        "grid": 32
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 1,
+        "id": 0,
+        "prevSize": 32,
+        "name": "thermometer-quarter"
+      },
+      "setIdx": 0,
+      "setId": 3,
+      "iconIdx": 0
+    }
+  ],
+  "height": 1024,
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "icon-",
+      "metadata": {
+        "fontFamily": "icomoon"
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "classSelector": ".icon",
+      "name": "icomoon"
+    },
+    "historySize": 50,
+    "showCodes": true,
+    "gridSize": 16
+  }
+}

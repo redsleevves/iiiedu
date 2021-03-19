@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texas Blackout</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- 字型 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <!-- reset -->
+    <link rel="stylesheet" type="text/css" href="/reset.css" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- 動畫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+
+
+    <style>
+        * {
+            font-family: 'Noto Sans TC', sans-serif;
+            line-height: 1.5 !important;
+        }
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: 15px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background-color: #393939;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.377); */
+            background: gray;
+            border-radius: 6px;
+            margin: 3px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFE11B;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        body {
+            background-color: #393939;
+            color: #FCFCFC;
+        }
+
+        .lightmode {
+            background-color: antiquewhite;
+            color: #393939;
+        }
+
+        .darktext {
+            color: #FFE11B;
+        }
+
+        .lighttext {
+            color: #E07418
+        }
+
+
+        h1 {
+            font-size: 72px;
+            font-weight: bold;
+            color: #FFE11B;
+
+        }
+
+        h2 {
+            font-size: 64px;
+            font-weight: normal;
+        }
+
+        h3 {
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        h4 {
+            font-size: 28px;
+            font-weight: bold;
+
+        }
+
+        h5 {
+            font-size: 22px;
+            font-weight: normal;
+            text-align: justify;
+        }
+
+        /* h6 {
+            font-size: 18px;
+            font-weight: normal;
+        } */
+        .bar {
+            width: 100%;
+            height: 40px;
+            background-color: gray;
+            position: fixed;
+            z-index: 9;
+        }
+
+        .progress {
+            height: 40px;
+            background-color: #FFE11B;
+            opacity: 0;
+        }
+
+        .bar ul {
+            position: relative;
+        }
+
+        .bar li {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+            color: #393939;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: #FCFCFC;
+        }
+
+        .tag {
+            top: -40px;
+            color: #393939;
+            font-weight: bold;
+        }
+
+        .tag::before {
+            content: "";
+            display: block;
+            width: 2px;
+            height: 10px;
+            border: 2px solid #393939;
+            border-radius: 0 0 3px 3px;
+            position: relative;
+            z-index: 100;
+            left: 50%;
+        }
+
+        .tag1 {
+            left: 7%;
+        }
+
+        .tag2 {
+            left: 29%;
+        }
+
+        .tag3 {
+            left: 36%;
+        }
+
+        .tag4 {
+            left: 47%;
+        }
+
+        .tag5 {
+            left: 94%;
+        }
+
+        .head {
+            height: 100vh;
+            position: relative;
+            /* background-image: url(/images/chang01.jpg); */
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        video {
+            object-fit: cover;
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .head .text {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+        }
+
+        .event {
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .event .text,
+        .event .pic {
+            margin-top: 40px;
+
+        }
+
+        .event img {
+            transform: scale(0.85);
+        }
+
+        .timeline .circle {
+            width: 20px;
+            height: 20px;
+            border: 3px solid #FFE11B;
+            border-radius: 50%;
+        }
+
+        .timeline .line {
+            width: 3px;
+            height: 500px;
+            background-color: #FFE11B;
+        }
+
+        .timeline .line2 {
+            height: 500px;
+        }
+
+        .deco {
+            align-items: center;
+        }
+
+        .statis {
+            opacity: 0;
+        }
+
+        #nbr1::after {
+            content: "0萬";
+        }
+
+        #nbr3::before {
+            content: "x";
+        }
+
+        #nbr3::after {
+            content: "0";
+        }
+
+        .statis .pic {
+            width: 80px;
+            height: 80px;
+            margin-top: 20px;
+        }
+
+
+        .statis .pic1 {
+            width: 120px;
+        }
+
+        .statis .pic2 {
+            width: 60px;
+            height: 55px;
+            margin-bottom: 25px;
+        }
+
+        .gallary .pic {
+            padding: 0;
+        }
+
+        .gallary {
+            width: 90%;
+            object-fit: cover;
+            overflow: hidden;
+        }
+
+        .gallary .album {
+            width: 440%;
+            background-color: darkgray;
+            position: relative;
+            padding: 0;
+            transition: 0.6s;
+
+        }
+
+        .gallary img {
+            width: 100%;
+            object-fit: contain;
+
+        }
+
+        .why {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background-image: url(/images/chang01.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 100px 0 100px 0;
+
+        }
+
+        .why .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+
+        .why .cover {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background-color: black;
+            opacity: 0.3;
+        }
+
+        .left,
+        .right {
+            opacity: 0;
+        }
+
+        .left1 .images,
+        .left4 .images {
+            align-items: flex-end;
+        }
+
+        .conclusion {
+            overflow: visible
+        }
+
+        @media screen and (min-width: 1000px) {
+
+            .rightside {
+                position: relative;
+            }
+
+            .rightside .switch {
+                position: absolute;
+                right: 0;
+            }
+
+            .rightside h5 {
+                position: absolute;
+                bottom: 5%;
+            }
+
+            .gallary .cover {
+                width: 100%;
+                height: 100%;
+                background-color: black;
+                opacity: 0;
+                transition: 0.3s;
+                position: absolute;
+            }
+
+            .gallary p {
+                padding: 80px;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                color: whitesmoke;
+                text-align: center;
+                visibility: hidden;
+            }
+
+            .gallary .pic:hover p {
+                visibility: visible;
+            }
+
+            .gallary .pic:hover .cover {
+                opacity: 0.3;
+            }
+
+            .clickme {
+                position: absolute;
+                right: 15%;
+                bottom: 40%;
+            }
+        }
+
+        @media screen and (max-width: 1000px) {
+            .event {
+                position: relative;
+            }
+
+            .deco {
+                position: absolute;
+                align-items: start;
+            }
+
+            .timeline .line {
+                height: 640px;
+                transform: translateX(8px)
+            }
+
+            .timeline .line1 {
+                height: 890px;
+                transform: translateX(8px)
+            }
+
+            .rightside .switch {
+                position: absolute;
+                right: 0;
+            }
+
+            .clickme {
+                transform: translate(70%, 400%) rotate(-30deg);
+                position: absolute;
+                right: 25%;
+                bottom: 50%;
+
+            }
+
+            .gallary p {
+                text-align: center;
+                padding: 2% 5%;
+                margin: 0;
+            }
+
+            .bar li {
+                font-size: 14px;
+            }
+
+            #map2 {
+                display: none;
+            }
+        }
+
+
+
+        .switch {
+            position: relative;
+            cursor: pointer;
+
+        }
+
+        @keyframes swing {
+            0% {
+                transform: rotate(-0.01turn);
+            }
+
+
+            50% {
+                transform: rotate(0.01turn);
+            }
+
+            100% {
+                transform: rotate(-0.01turn);
+            }
+        }
+
+        .lighton,
+        .lightoff {
+            position: absolute;
+            animation: swing 3.5s infinite;
+            /* border: 3px solid hotpink; */
+            transform-origin: top center;
+        }
+
+        .lighton {
+            transform: translateY(2%);
+            visibility: hidden;
+        }
+
+        .lightswitch {
+            visibility: visible;
+
+        }
+
+        .wrapper {
+            overflow: hidden;
+        }
+
+        /* Our image information */
+        .bottom,
+        .middle,
+        .top {
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            /* background-color: white; */
+            background-size: contain;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+
+
+        }
+
+        .wrapper img {
+            width: auto;
+            height: 100%;
+        }
+
+        /* .bottom {
+            background: #2196f3;
+        }
+
+        .middle {
+            background: #bbdefb;
+        }
+
+        .top {
+            background: #ffffff;
+        } */
+
+        /* .top {
+            width: 125px;
+        } */
+
+        .scroller {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            background-color: #FFE11B;
+            opacity: 0.9;
+            transition: opacity 0.12s ease-in-out;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        /* .scroller-middle {
+            margin-top: 25px;
+        } */
+
+        .scroller:hover {
+            opacity: 1;
+        }
+
+        .scrolling {
+            pointer-events: none;
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .scroller__thumb {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            padding: 7px;
+        }
+
+        .scroller:before,
+        .scroller:after {
+            content: " ";
+            display: block;
+            width: 4px;
+            height: 196px;
+            position: absolute;
+            left: 50%;
+            margin-left: -2.5px;
+            z-index: 30;
+            transition: 0.1s;
+            box-shadow: 3.5px 0px 7px rgba(100, 100, 100, 0.2);
+        }
+
+        .scroller:before {
+            top: 49px;
+        }
+
+        .scroller:after {
+            bottom: 49px;
+        }
+
+        /* If you want to cahnge the colors, make sure you change the fill in the svgs to match */
+        .scroller-middle>.scroller__thumb {
+            border: 4px solid #FFE11B;
+        }
+
+        .scroller-middle:before,
+        .scroller-middle:after {
+            background: #FCFCFC;
+        }
+
+        .map2 {
+            object-fit: contain;
+            -webkit-filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.7));
+            filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.7));
+        }
+
+        #map2 {
+            width: 80%;
+            height: 80%;
+        }
+
+        .tts {
+            position: relative;
+            border-bottom: 1px dotted #fcfcfc;
+            cursor: pointer;
+
+        }
+
+        .tts span {
+            /* visibility: hidden; */
+            width: 15rem;
+            background-color: gray;
+            color: #fcfcfc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 8px;
+            position: absolute;
+            z-index: 9;
+            bottom: 100%;
+            left: -130%;
+            /* margin-left: 1em; */
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 20px;
+            box-shadow: 12px 12px 7px rgba(0, 0, 0, 0.55);
+        }
+
+        .tts span::after {
+            content: "";
+            position: absolute;
+            /* top: 1.5em; */
+            top: 100%;
+            right: 40%;
+            transform: rotate(270deg);
+            /* margin-top: -5px; */
+            border-width: 8px;
+            border-style: solid;
+            border-color: transparent gray transparent transparent;
+        }
+
+        .tts input {
+            display: none;
+        }
+
+        .tts input:checked+span {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+
+</head>
+
+<body>
+    <section class="front">
+        <div class="bar">
+
+            <div class="progress"></div>
+            <ul class="row col-12">
+                <li class="tag tag1">事件</li>
+                <li class="tag tag2">數據</li>
+                <li class="tag tag3">影像</li>
+                <li class="tag tag4">分析</li>
+                <li class="tag tag5">結論</li>
+            </ul>
+        </div>
+        <div class="head row col-12">
+            <video playsinline autoplay muted loop poster="polina.jpg" id="bgvid">
+                <source src="polina.webm" type="video/webm">
+                <source src="/images/gettyimages-469359574-640_adpp.mp4" type="video/mp4">
+            </video>
+            <div class="text col-lg-5 col-10 ">
+                <h1>暴雪中的孤星之州</h1>
+                <h2 style="color: #FCFCFC;">2021年德州大停電事件</h2>
+                <h4 style="color: #CBCBCB;">當罕見的冬季風暴襲擊德州，這個美國第二大州一夕間顯露了其孤立的本質</h4>
+            </div>
+        </div>
+    </section>
+    <section id="event" class="container timeline mt-5 col-lg-10">
+        <h3 style="text-align: center;">事件始末</h3>
+        <h5 style="text-align: center; margin-top: 50px;">2020年末</h5>
+        <div class="row event">
+            <div class="pic col-lg-5 col-12 left left5 animate__animated"><img src="/images/nyc03.jpg"></div>
+            <div class="deco row flex-column col-lg-1">
+                <div class="circle"></div>
+                <div class="line line1"></div>
+            </div>
+            <div class="text col-lg-5 col-10 right right5 animate__animated">
+                <h4>被忽略的預警</h4>
+                <h5>11月，當運行德州主要電網的主管盤點了該系統是否可以應對即將來臨的冬天時，他們感到充滿信心。認為即使是在「極端條件」下，他們也將有足夠的電力應付。早在美國2011年
+                    <label class="tts">
+                        土撥鼠日
+                        <input type="checkbox">
+                        <span>每年2月2日，美國和加拿大許多城市和村莊都會慶祝。自從1887年以來，一代又一代的土撥鼠一直擔負著預報時令的任務。根據傳說，如果土撥鼠能看到它自己的影子，那麼北美的冬天還有6個星期才會結束。如果它看不到影子，春天不久就會來臨。</span>
+                    </label>
+                    暴風雪（1月31-2月3日），寒冷天氣下德州已經出現設備和裝置無法運行的情況，當時德克薩斯州電力可靠性委員會（ERCOT）以各地輪流停電形式度過暴風雪，有300萬戶家庭和企業受影響。聯邦能源監管委員會和ERCOT事後呼籲當地發電廠進行冬季改造，以適應極端氣候，不過當地發電厰並沒有動力進行改造。
+                </h5>
+            </div>
+        </div>
+        <h5 style="text-align: center;margin-top: 50px;">2021年2月15日</h5>
+        <div class="row event">
+            <div class="wrapper col-lg-5 col-12 left left6 animate__animated">
+                <div class="bottom col-lg-11 col-12">
+                    <img src="/images/after.jpg" draggable="false" />
+                </div>
+                <div class="middle col-lg-11 col-12">
+                    <img src="/images/before.jpg" draggable="false" />
+                </div>
+                <div class="scroller scroller-middle">
+                    <svg class="scroller__thumb" xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                        viewBox="0 0 100 100">
+                        <polygon points="0 50 37 68 37 32 0 50" style="fill:#FCFCFC" />
+                        <polygon points="100 50 64 32 64 68 100 50" style="fill:#FCFCFC" />
+                    </svg>
+                </div>
+            </div>
+            <div class="deco row flex-column col-lg-1">
+                <div class="circle"></div>
+                <div class="line line2"></div>
+            </div>
+            <div class="text col-lg-5 col-10 right right6 animate__animated">
+                <h4>暴風雪抵達</h4>
+                <h5>來自極地漩渦的寒流自加拿大進入美國，美國中部多地氣溫創下歷史同期新低。美國國家氣象局表示歷史低溫會持續數日，全美超過71%領土被冰雪覆蓋。德州東部的阿肯色州的地面積雪將達38公分，更北的阿帕拉契山區將被厚厚的
+                    <label class="tts">
+                        冰雪覆蓋
+                        <input type="checkbox">
+                        <span
+                            style="height: 260px; background:center/cover no-repeat url(/images/northamerica_geos5_2021046_lrg.png);"></span>
+                    </label>
+                    ，紐約大都會地區的降雪量在2月18和19日預計最多將達20公分。<br><br>2月14日晚上6-7之間，德州電網創下69150兆瓦的冬季用電高峰記錄，比2018年的記錄高3200兆瓦，晚上7:06，創下69222兆瓦新記錄。2月15日凌晨1:25，德克薩斯州電力可靠性委員會（ERCOT）宣布進入緊急狀態。德州的石油業和煉油厰關閉
+                </h5>
+            </div>
+        </div>
+        <h5 style="text-align: center;margin-top: 50px;">2021年2月16日</h5>
+        <div class="row event">
+            <div class="pic col-lg-5 col-12 left left7 animate__animated"><img src="/images/nyc02.jpg"></div>
+            <div class="deco row flex-column col-lg-1">
+                <div class="circle"></div>
+                <div class="line line3"></div>
+            </div>
+            <div class="text col-lg-5 col-10 right right7 animate__animated">
+                <h4>進入緊急狀態</h4>
+                <h5>南德克薩斯核能發電站的一條輸水管凍結，導致一座核子反應爐無法運作，並損失1300兆瓦的電力，430萬戶家庭和企業。各地的供水系統出現問題。德州州長獲得總統拜登批准，宣布進入緊急狀態。</h5>
+            </div>
+        </div>
+        <h5 style="text-align: center;margin-top: 50px;">2021年2月18日</h5>
+        <div class="row event">
+            <div class="pic col-lg-5 col-10 left left8 animate__animated"><img src="/images/nyc01.jpg"></div>
+            <div class="deco row flex-column col-lg-1">
+                <div class="circle"></div>
+                <div class="line line4"></div>
+            </div>
+            <div class="text col-lg-5 col-10 right right8 animate__animated">
+                <h4>漫漫修復路</h4>
+                <h5>ERCOT宣布電力供應已經恢復正常。德州州長和副州長及德克薩斯州立法機構成員召開緊急會議，討論德州大停電後，部分用戶電費大幅度增加的情況[59]。同日廢除部分法規，允許酒精行業的車隊運輸非酒精貨物，以加快全州物資供應的恢復。
+                </h5>
+            </div>
+        </div>
+    </section>
+    <section id="statis" class="statis mt-5 container col-lg-10 animate__animated">
+        <h3 style="text-align: center;">統計數據</h3>
+        <div class="row justify-content-center mt-5">
+            <div class="box row col-lg-3 col-12 flex-column align-items-center">
+                <div class="pic pic1 animate__animated"><img src="/images/spooky-monster-eyes-in-dark-halloween.png">
+                </div>
+                <h3 id="nbr1" class="darktext">43</h3>
+                <h4>失去電力供應的人數</h4>
+                <h5>最高峰期，至少持續超過48小時。</h5>
+            </div>
+            <div class="box row col-lg-3 col-12 flex-column align-items-center ml-5 mr-5">
+                <div class="pic pic2 animate__animated"><img src="/images/coffin.png"></div>
+                <h3 id="nbr2" class="darktext">58</h3>
+                <h4>已知死亡人數</h4>
+                <h5>死因包含一氧化碳中毒、車禍、溺水、房屋火災和低溫。</h5>
+            </div>
+            <div class="box row col-lg-3 col-12 flex-column align-items-center">
+                <div class="pic pic3 animate__animated"><img src="/images/coin-dollar.svg"></div>
+                <h3 id="nbr3" class="darktext">45</h3>
+                <h4>暴風雪期間電力漲幅</h4>
+                <h5>冰風暴來襲使取暖用電激增，批發電價飆至每度電9美元，過去為每度電0.02美元。</h5>
+            </div>
+        </div>
+    </section>
+    <section id="gallary" class="gallary container col-lg-9">
+        <div class="album row justify-content-center mt-5 col-lg-12">
+            <div class="pic col-lg-6 col-3">
+                <div class="cover"></div><img src="/images/gettyimages-1231222415-594x594.jpg" alt="">
+                <p>AUSTIN, TX - FEBRUARY 17, 2021: A sign states that a Fiesta Mart is closed because of a power outage
+                    in Austin, Texas on February 17, 2021. Millions of Texans are still without water and electric as
+                    winter storms continue. (Photo by Montinique Monroe/Getty Images)</p>
+            </div>
+            <div class="pic col-lg-6 col-3">
+                <div class="cover"></div><img
+                    src="/images/merlin_183952452_17e0e49e-df85-4d90-bfac-3468a4ee3513-jumbo.jpg" alt="">
+                <p>Destruction in Austin, Texas, from the deadly winter storms that knocked out power and water this
+                    week.Credit...Tamir Kalifa for The New York Times
+                </p>
+            </div>
+            <div class="pic col-lg-6 col-3">
+                <div class="cover"></div><img
+                    src="/images/merlin_183952554_d3f636ff-eaae-4fa6-a639-a9cb3f8f1357-superJumbo.jpg" alt="">
+                <p>Ben Lozano cleaning up his garage on Thursday after a pipe burst behind his washing machine in
+                    Austin, Texas.Credit...Tamir Kalifa for The New York Times</p>
+            </div>
+            <div class="pic col-lg-6 col-3">
+                <div class="cover"></div><img src="/images/gettyimages-1303057363-594x594.jpg" alt="">
+                <p>AUSTIN, TEXAS - FEBRUARY 19: Marie Maybou melts snow on the kitchen stove on February 19, 2021 in
+                    Austin, Texas. Ms. Maybou was using the water to flush the toilets in her home after the city water
+                    stopped running. (Photo by Joe Raedle/Getty Images)</p>
+            </div>
+        </div>
+    </section>
+    <section id="why" class="why container col-12">
+        <div class="cover col-12"></div>
+        <div class="text row justify-content-center col-lg-6 col-11">
+            <h3 class="darktext">WHY THINGS HAPPEN?</h3>
+            <h5 class="mt-4" style="color: #FCFCFC;">
+                過去一週，強烈暴風雪連日襲擊美國，已有至少30多人因酷寒相關因素喪生，美國中南部多個地區的低溫，已經打破了數十年甚至百年的紀錄。其中，德克薩斯州的災情最為嚴重，暴風雪導致用電量暴增、電網癱瘓，有數百萬人沒水沒電，在嚴寒中苦熬，有電的家庭則要忍受飆升百倍的電價帳單，同時，德州的能源業和晶片製造業也都受到重創。
+            </h5>
+        </div>
+    </section>
+    <section class="analysis container col-lg-12">
+        <h4 style="text-align: center;" class="darktext">極端氣候</h4>
+        <div class="artical row justify-content-center mt-5">
+            <h5 class="col-lg-6">
+                這一次的德州大停電，也引發了是否應該大力發展可再生能源的大討論。<br>
+
+                德州的共和黨人一直主張保護化石燃料。斷電發生後，共和黨人指責說，大力發展可再生能源，摒棄煤炭等傳統能源，就是斷電的根本原因。<br>
+                <br>
+                而德州公共政策基金會，在發布的新聞稿中也指出，「本週，由於德州被冰雪覆蓋，可以預計大部分風力渦輪機將靜止，而太陽能電池板將產生很少的電力」，並說，「是什麼讓德克薩斯人感到溫暖，並讓他們在這個致命的冬季風暴中活著？是化石燃料，特別是天然氣。」<br>
+                <br>
+                一些主流媒體也表達了類似的觀點，《華盛頓郵報》說，德州各地遭遇停電，部分原因是風力渦輪機出現問題。渦輪機會在嚴寒的天氣裡結冰，葉片最終會停止轉動。德州電網運營商說，德州近一半的風力渦輪機被凍結。<br>
+                <br>
+            </h5>
+            <div class="left left1 col-lg-12 animate__animated row justify-content-center align-items-center">
+                <div class="images row col-lg-8 mb-5">
+                    <img class="col-lg-6" src="/images/wind-turbine-snowy-conditions.jpg">
+                    <p class="col-lg-6">圖為位於芬蘭的風力發電機。事實上，風力發電機結凍的狀況相當罕見，許多氣候比德州寒冷的國家，由於有在建設時便安裝了防寒系統，從未發生停電狀況。</p>
+                </div>
+            </div>
+            <h5 class="col-lg-6">
+                《華爾街日報》也說，過去10年裡，足以為6,000萬美國家庭供電的煤炭設施停止運營，還有許多核電站計劃關閉。民主黨和共和黨的政客都在推動對可再生能源的補貼，然而德州正在發生的一切暴露出可再生能源的局限性。<br>
+                <br>
+                但也有觀點認為，這些說法可能偏頗。德州電力可靠度委員會（ERCOT）的資料顯示，在過去幾年中，德州一直在努力削減煤炭電力，發展脫碳的風能發電。但是，德州第一大供電主力仍然是天然氣，占2020年全州供電量達45%；第二名才是風力發電，占比約為23%；煤炭（18%）和核能（11%）緊隨其後；太陽能占比約2%。<br>
+                <br>
+                在這次致命寒潮中，全州範圍內有4.6萬兆瓦的電力供應停止運行，其中大約六成的損失來自天然氣、煤炭和核能發電，另外四成來自風能和太陽能發電。<br>
+                <br>
+                也就是說，不管是天然氣、煤炭、核能發電，還是風能和太陽能發電，德州各種類型的發電機組都受到寒冷天氣衝擊，無一例外。<br>
+            </h5>
+            <div class="left left1 images col-lg-8 animate__animated" style="margin:50px 0 100px 0;">
+                <div class="pic"><canvas id="myChart"></canvas></div>
+            </div>
+        </div>
+        <h4 style="text-align: center;" class="darktext">孤星之州</h4>
+        <div class="artical row justify-content-center mt-5">
+            <h5 class="col-lg-6">
+                德州是美國本土唯一一個電網獨立的州。<br>
+                <br>
+                美國本土48州大致分為三大電網系統：美國東部聯合電網、西部聯合電網，以及獨立的德州電網，這個德州電網覆蓋了德州絕大部分區域。<br>
+                <br>
+                在歷史上，德州這片土地曾屬於墨西哥，之後成立了德克薩斯共和國，直到1845年，加入美國成為一個州。時至今日，德州內依然存在脫離美國獨立的呼聲。<br>
+                <br>
+                為了不讓聯邦政府的監管過度干預德州，因此德州擁有獨立的電網運營商，就是電力可靠性委員會（ERCOT），這個委員會只受德州公用事業委員會和州立法機構監督。<br>
+                <br>
+                但這也意味著，德州電網有如一座孤島，它無法在最需要幫助的時候直接從東部或西部電網借電。同樣地，它也無法送電給其它地方。這也是是造成德州大面積持續斷電而不能儘快恢復的一大原因。
+            </h5>
+            <div class="left left2 images map2 mt-5 col-lg-8 animate__animated">
+                <img src="/images/usmap.png">
+                <!-- <div id="map2" class="col-10"> -->
+            </div>
+        </div>
+        </div>
+        <h4 style="text-align: center; margin-top: 100px;" class="darktext">高度自由化市場</h4>
+        <div class="artical row justify-content-center mt-5">
+            <div class="m-4"></div>
+            <h5 class="col-lg-6">
+                低溫酷寒之下大停電，已讓民眾苦不堪言，而天價般昂貴的電費，更讓民眾雪上加霜。 <br>
+                <br>
+                據媒體報導，有多位德州民眾接到電力公司的簡訊，通知他們的帳單「快要破表」，建議更換別家電力公司。一位40多歲的女性居民說，這2月份剛剛半個月的電費帳單已經有2,500美元，而去年整個2月份的帳單只有大約33美元。
+                <br>
+                <br>
+            </h5>
+            <div class="left left4 col-lg-12 animate__animated row justify-content-center align-items-center">
+                <div class="images row col-lg-8 mb-5">
+                    <img class="col-lg-6" src="/images/gettyimages-506079276-594x594.jpg">
+                    <p class="col-lg-6">擁有豐富石油天然氣資源的德州，是美國電力自由化、私營介入程度最高的地方。</p>
+                </div>
+            </div>
+            <h5 class="col-lg-6" style="margin-bottom: 100px;">
+                長期以來，「電力自由競爭」的經濟效率，讓德州政府深感自豪。管制鬆散的市場也帶來了顯而易見的好處，那就是便宜，德州的平均電價為每千瓦時8.6美分，比全美的平均水平低大約五分之一，更是加利福尼亞州的一半。
+                <br>
+                <br>
+                而且，因為極端嚴寒天氣在德州很少見，所以德州也不要求電力供應商，為可能的需求激增預留出額外的電力，而電力公司更不會花大筆投資，讓設備能夠抗寒「越冬」。 <br>
+                <br>
+                但在這一次的寒災急凍中，巨幅的電力價格波動，也讓輿論對德州電力供應商這種「效益至上」的做法開始產生疑問。<br>
+                <br>
+            </h5>
+        </div>
+    </section>
+    <section id="conclusion" class="conclusion container col-lg-12">
+        <h4 style="text-align: center;" class="darktext">小結</h4>
+        <div class="row justify-content-center mt-5 col-lg-12">
+            <div class="left left4 images col-lg-4 col-12 animate__animated">
+                <div class="pic mb-5"><img src="/images/chang05.jpg"></div>
+            </div>
+            <div class="m-4"></div>
+            <div class="rightside col-lg-4 col-12">
+                <img class="clickme col-lg-8 col-6" src="/images/SVG/clickme2.svg">
+                <div class="switch col-lg-3 col-3">
+                    <img class="col-lg-12 lightoff" src="/images/lightoff.svg">
+                    <img class="col-lg-12 lighton" src="/images/lightyellow.svg">
+                </div>
+                <h5 class="col-lg-12 col-9">
+                    最近幾個月，日本、巴基斯坦和法國的一系列極端天氣事件也曾導致國家電網癱瘓，並破壞了全球能源市場，美國這一次的寒流事件只是其中最新的一起。從這些事件中，我們也可以關注到一個問題，那就是世界似乎已經變得非常脆弱，在難以預測的自然面前，我們人類需要持續的懷有敬畏之心。
+                </h5>
+            </div>
+        </div>
+    </section>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <!-- 地圖 -->
+    <script src="/us-map-1.0.1/lib/raphael.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/us-map-1.0.1/example/color.jquery.js"></script>
+    <script src="/us-map-1.0.1/jquery.usmap.js"></script>
+
+    <!-- waypoints -->
+    <script src="/imakewebthings-waypoints-34d9f6d/lib/jquery.waypoints.min.js"></script>
+    <!-- 對照圖 -->
+    <script src="/slider.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <!-- 直方圖 -->
+    <script src="/energy.js"></script>
+    <!-- popper -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#map2').usmap({
+                'stateStyles': {
+                    fill: '#88A4BC',
+                    "stroke-width": 0.6,
+                    'stroke': '#ffffff',
+                    'stroke-linejoin': 'round',
+                    showLabels: true,
+                },
+
+                'stateHoverStyles': {
+                    fill: '#3B729F'
+                },
+                'stateSpecificStyles': {
+                    'WA': { fill: '#85c7ac' },
+                    'OR': { fill: '#85c7ac' },
+                    'CA': { fill: '#85c7ac' },
+                    'ID': { fill: '#85c7ac' },
+                    'NV': { fill: '#85c7ac' },
+                    'MT': { fill: '#85c7ac' },
+                    'WY': { fill: '#85c7ac' },
+                    'UT': { fill: '#85c7ac' },
+                    'AZ': { fill: '#85c7ac' },
+                    'NM': { fill: '#85c7ac' },
+                    'CO': { fill: '#85c7ac' },
+                    'TX': { fill: '#f3d331' },
+                    'AK': { fill: 'transparent' },
+                    'HI': { fill: 'transparent' },
+
+                },
+                'stateSpecificHoverStyles': {
+                    'WA': { fill: '#47a780' },
+                    'OR': { fill: '#47a780' },
+                    'CA': { fill: '#47a780' },
+                    'ID': { fill: '#47a780' },
+                    'NV': { fill: '#47a780' },
+                    'MT': { fill: '#47a780' },
+                    'WY': { fill: '#47a780' },
+                    'UT': { fill: '#47a780' },
+                    'AZ': { fill: '#47a780' },
+                    'NM': { fill: '#47a780' },
+                    'CO': { fill: '#47a780' },
+                    'TX': { fill: '#f3b731' },
+                },
+                'stateHoverAnimation': {
+                    stateHoverAnimation: 300
+                },
+
+                'click': function (event, data) {
+                    $('#alert')
+                        .text('Click ' + data.name + ' on map 2')
+                        .stop()
+                        .css('backgroundColor', '#af0')
+                        .animate({ backgroundColor: '#ddd' }, 1000);
+                }
+
+            });
+            $('#map2').usmap({ showLabels: true });
+        });
+    </script>
+    <script>
+        // 模式切換
+        $('.switch').click(function () {
+            $('body').toggleClass('lightmode');
+            $('.lighton').toggleClass('lightswitch');
+            $('.statis h3,.analysis h4, .conclusion h4').toggleClass('lighttext');
+
+        })
+
+        // 輪播牆
+        let page = 0;
+        $(window).resize(function () {
+            if ($(window).width() > 500) {
+                $(".album").css("left", '0');
+            }
+        })
+        setInterval(() => {
+            if ($(window).width() < 500) {
+                page = page + 1;
+                if (page > 3) {
+                    page = 0
+                }
+                // console.log("page=", page)
+                $(".album").css("left", page * -110 + '%');
+                // $(".dots li").eq(page).css("background-color", "rgba(255, 255, 255, 0.425)").siblings().css("background-color", "transparent");
+            }
+            else {
+                $(".album").css("left", '0');
+            }
+
+        }, 4000);
+
+        // 進度條
+        $(window).scroll(function () {
+            console.log("from top", $(this).scrollTop());
+            console.log("body", $("body").height());
+            console.log("window", $(window).height())
+
+        })
+
+        $(window).scroll(function () {
+            let totalh = $("body").height()
+            let seeingh = $(window).height()
+            let progwidth = Math.round($(this).scrollTop() / (totalh - seeingh) * 100) + "%";
+
+            $(".progress").css("width", progwidth).css("opacity", "1");
+
+            // if (progwidth > 400) {
+            //     $("body").css("background-color", "#99d");
+            //     $(".add").css("opacity", "1");
+
+            // let windowScrollTop = $(this).scrollTop();
+
+            // if (windowScrollTop > 400) {
+            //     $("body").css("background-color", "#99d");
+            //     $(".add").css("opacity", "1");
+            // }
+            // else {
+            //     $("body").css("background-color", "#9dd");
+            //     $(".add").css("opacity", "0");
+
+            // }
+        })
+
+
+        // 小動畫
+        $('.statis').waypoint(function () {
+            console.log('Waypoint!')
+            $('.statis').addClass('animate__fadeInUp')
+        }, { offset: '70%' });
+
+        $('.left1').waypoint(function () {
+            $('.left1').addClass('animate__fadeInUp')
+        }, { offset: '70%' });
+        $('.left2').waypoint(function () {
+            $('.left2').addClass('animate__fadeInUp')
+        }, { offset: '70%' });
+        $('.left3').waypoint(function () {
+            $('.left3').addClass('animate__fadeInUp')
+        }, { offset: '70%' });
+        $('.left4').waypoint(function () {
+            $('.left4').addClass('animate__fadeInUp')
+        }, { offset: '70%' });
+        $('.left5').waypoint(function () {
+            $('.left5').addClass('animate__fadeInLeft');
+            $('.right5').addClass('animate__fadeInRight')
+        }, { offset: '50%' });
+        $('.left6').waypoint(function () {
+            $('.left6').addClass('animate__fadeInLeft');
+            $('.right6').addClass('animate__fadeInRight')
+        }, { offset: '50%' });
+        $('.left7').waypoint(function () {
+            $('.left7').addClass('animate__fadeInLeft');
+            $('.right7').addClass('animate__fadeInRight')
+        }, { offset: '50%' });
+        $('.left8').waypoint(function () {
+            $('.left8').addClass('animate__fadeInLeft');
+            $('.right8').addClass('animate__fadeInRight')
+        }, { offset: '50%' });
+
+        $('.statis .pic1').hover(function () {
+            $('.statis .pic1').toggleClass('animate__flash')
+        });
+        $('.statis .pic2').hover(function () {
+            $('.statis .pic2').toggleClass('animate__heartBeat')
+        });
+        // 頁內滾動
+        var section1X = document.getElementById("event").offsetTop;
+        var section2X = document.getElementById("statis").offsetTop;
+        var section3X = document.getElementById("gallary").offsetTop;
+        var section4X = document.getElementById("why").offsetTop;
+        var section5X = document.getElementById("conclusion").offsetTop;
+
+        console.log("offsetTop:", section1X);
+        console.log("offsetTop:", section2X);
+        console.log("offsetTop:", section3X);
+        console.log("offsetTop:", section4X);
+        console.log("offsetTop:", section5X);
+
+
+        $('.tag1').click(function () {
+            window.scrollTo({
+                top: (section1X) - 50,
+                behavior: "smooth"
+            });
+        })
+        $('.tag2').click(function () {
+            window.scrollTo({
+                top: (section2X) - 200,
+                behavior: "smooth"
+            });
+        })
+        $('.tag3').click(function () {
+            window.scrollTo({
+                top: (section3X),
+                behavior: "smooth",
+            });
+        })
+        $('.tag4').click(function () {
+            window.scrollTo({
+                top: (section4X),
+                behavior: "smooth",
+            });
+        })
+        $('.tag5').click(function () {
+            window.scrollTo({
+                top: (section5X) - 400,
+                behavior: "smooth"
+            });
+        })
+
+        // 數字動畫
+        $('.statis').waypoint(function () {
+            console.log('Waypoint!')
+            var speed = 20;
+
+            /* Call this function with a string containing the ID name to
+             * the element containing the number you want to do a count animation on.*/
+            function incEltNbr(id) {
+                elt = document.getElementById(id);
+                endNbr = Number(document.getElementById(id).innerHTML);
+                incNbrRec(0, endNbr, elt);
+            }
+
+            /*A recursive function to increase the number.*/
+            function incNbrRec(i, endNbr, elt) {
+                if (i <= endNbr) {
+                    elt.innerHTML = i;
+                    setTimeout(function () {//Delay a bit before calling the function again.
+                        incNbrRec(i + 1, endNbr, elt);
+                    }, speed);
+                }
+            }
+            incEltNbr("nbr1");
+            incEltNbr("nbr2"); /*Call this funtion with the ID-name for that element to increase the number within*/
+            incEltNbr("nbr3");
+        }, { offset: '70%' });
+    </script>
+
+</body>
+
+</html>

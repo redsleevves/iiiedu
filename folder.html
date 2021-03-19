@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+        :root {
+            --color-1: orange;
+            --color-2: #105fef;
+            --grey-1: #1F1F1F;
+            --grey-2: #bbb;
+            --grey-3: #ccc;
+            --font-1: "Roboto", sans-serif;
+        }
+
+        body {
+            background: var(--grey-3);
+            overflow: hidden;
+        }
+
+        .header {
+            font-family: var(--font-1);
+            text-align: center;
+            color: var(--grey-1);
+            margin-bottom: 10px;
+        }
+
+        .container {
+            display: flex;
+            margin: 0px auto;
+            background-color: transparent;
+            width: 100%;
+            max-width: 750px;
+            height: 475px;
+            perspective: 1000px;
+            font-family: var(--font-1);
+        }
+
+        .center {
+            background: white;
+            width: 50%;
+            height: 100%;
+            box-shadow: 0px 0px 20px #bbb;
+            overflow: hidden;
+        }
+
+        .left-side,
+        .right-side {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            display: inline-block;
+            background: white;
+            height: 100%;
+        }
+
+        .front,
+        .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            overflow: hidden;
+        }
+
+        .front {
+            color: black;
+        }
+
+        .back {
+            color: white;
+            background: white;
+            transform: rotateY(180deg);
+        }
+
+        .left-side {
+            transform-origin: right;
+            transform: rotateY(180deg);
+        }
+
+        .right-side {
+            transform-origin: left;
+            transform: rotateY(-180deg);
+        }
+
+        .right-side .back {
+            background: var(--color-1);
+            overflow: hidden;
+        }
+
+        .right-side .content {
+            position: relative;
+        }
+
+        .right-side .right-image {
+            width: 100%;
+            height: auto;
+            clip-path: polygon(0 0, 100% 0%, 100% 60%, 30% 90%, 0 50%);
+        }
+
+        .right-side .back .bottom {
+            height: 100%;
+            width: 100%;
+            background: white;
+            position: absolute;
+            top: 50%;
+            left: 0px;
+            clip-path: polygon(0 0, 100% 45%, 100% 100%, 0 100%);
+            padding-left: 8px;
+            padding-top: 40%;
+            text-align: left;
+            font-weight: 900;
+        }
+
+        .right-side .back .text {
+            color: var(--grey-1);
+            font-size: 25px;
+        }
+
+        .right-side .back .highlight {
+            color: var(--color-1);
+            font-size: 30px;
+            font-style: italic;
+        }
+
+        .right-side .back .text:nth-child(3) {
+            width: 25%;
+            padding-bottom: 4px;
+            border-bottom: 5px solid var(--color-1);
+        }
+
+        .right-side .back .blurb {
+            color: var(--grey-1);
+            font-weight: 100;
+            font-size: 13px;
+            padding: 8px 0px;
+        }
+
+
+        .left-side .back .content {
+            background: white;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .left-side .back .left-image {
+            width: 100%;
+            height: auto;
+            clip-path: polygon(0 0, 100% 0%, 100% 75%, 0 50%);
+        }
+
+        .left-side .back .stuff {
+            height: 48%;
+            width: 70%;
+            border: 15px solid orange;
+            margin: 5%;
+            padding: 10px;
+            position: absolute;
+            top: 0px;
+            text-align: left;
+            padding-top: 75%;
+        }
+
+        .left-side .back .stuff div:nth-child(1) {
+            font-size: 22px;
+            color: var(--grey-1);
+        }
+
+        .left-side .back .stuff div:nth-child(2) {
+            font-size: 25px;
+            color: var(--color-1);
+            font-weight: 900;
+            border-bottom: 5px solid var(--grey-1);
+        }
+
+        .left-side .back .stuff p {
+            margin-top: 10%;
+            color: var(--grey-1);
+            font-size: 14px;
+        }
+
+        .left-side .front .content {
+            height: 100%;
+        }
+
+        .left-side .front .part-one {
+            height: 25%;
+            padding: 15px;
+        }
+
+        .left-side .front .part-two {
+            background: var(--grey-1);
+            padding: 22% 15px;
+            height: 100%;
+            clip-path: polygon(0 10%, 50% 0, 100% 10%, 100% 100%, 0% 100%)
+        }
+
+        .left-side .front .part-two p {
+            color: white;
+        }
+
+        .left-side .front h1,
+        .center h1 {
+            color: var(--color-1);
+            margin: 0px;
+            font-size: 15px
+        }
+
+        .left-side .front p,
+        .center p {
+            margin: 0px;
+            font-size: 13px;
+        }
+
+        .center .center-content {
+            height: 100%;
+            opacity: 0;
+        }
+
+        .center .part-one {
+            padding: 10px;
+            height: 39.5%;
+        }
+
+        .center .part-two {
+            padding: 20px;
+            height: 60%;
+            background: var(--grey-1);
+            clip-path: polygon(0 0, 100% 36%, 100% 100%, 0% 100%);
+        }
+
+        .right-side .front {
+            background: white;
+            height: 100%;
+            width: 100%;
+        }
+
+        .right-side .front .right-image {
+            clip-path: polygon(0 0, 0 90%, 100% 58%, 100% 0);
+        }
+
+        .right-side .front .part-two {
+            height: 100%;
+            width: 100%;
+        }
+
+        .right-side .front .part-two .stuff {
+            width: 250px;
+            margin-top: -60%;
+            height: 300px;
+            background: var(--grey-1);
+            clip-path: polygon(0% 46%, 0 100%, 100% 100%, 100% 10%);
+        }
+
+        .right-side .front .part-two h1 {
+            padding-top: 60%;
+            margin: 0px;
+            font-size: 20px;
+            color: var(--color-1);
+        }
+
+        .right-side .front .part-two p {
+            color: white;
+            margin: 0px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        click on the brochure to unfold it.
+    </div>
+    <div class="container" id="one">
+        <div class="left-side">
+            <div class="front">
+                <div class="content">
+                    <div class="part-one">
+                        <h1>ABOUT US</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. A, eos! Culpa natus rerum
+                            accusantium! Tempora amet,
+                        </p>
+                    </div>
+                    <div class="part-two">
+                        <h1>OUR BEST SERVICES</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est modi omnis assumenda placeat
+                            reprehenderit aspernatur, nulla,
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div class="content">
+                    <img class="left-image"
+                        src="https://image.freepik.com/free-photo/grayscale-shot-empire-state-building-new-usa_181624-12153.jpg"
+                        alt="empire state building">
+                    <div class="stuff">
+                        <div>CREATOR</div>
+                        <div>MESSAGE</div>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At, dignissimos quibusdam delectus
+                            cum eum eius molestias dolor minima, recusandae assumenda deleniti quam sapiente officiis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center">
+            <div class="center-content content">
+                <div class="part-one">
+                    <h1>WHY CHOOSE US?</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam laudantium neque, accusantium
+                        harum cupiditate distinctio quaerat fugiat? Aliquam error consectetur ducimus, illum magnam,
+                        tenetur repellendus corrupti dignissimos pariatur, tempora minus.
+                    </p>
+                </div>
+                <div class="part-two"></div>
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="front">
+                <div class="content">
+                    <div class="part-one">
+                        <img class="right-image"
+                            src="https://image.freepik.com/free-photo/grayscale-shot-empire-state-building-new-usa_181624-12153.jpg"
+                            alt="empire state building">
+                    </div>
+                    <div class="part-two">
+                        <div class="stuff">
+                            <h1>OUR MISSON</h1>
+                            <p>
+                                To make a great folding pen. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                Harum qui sequi tempora quis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div class="content">
+                    <img class="right-image"
+                        src="https://image.freepik.com/free-photo/grayscale-shot-empire-state-building-new-usa_181624-12153.jpg"
+                        alt="empire state building">
+                    <div class="bottom">
+                        <div class="text">
+                            A NICE
+                        </div>
+                        <div class="highlight">
+                            FOLDABLE
+                        </div>
+                        <div class="text">
+                            BROCHURE
+                        </div>
+                        <div class="blurb">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima amet facere sed pariatur
+                            cupiditate saepe at molestiae tempore iure veritatis.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 掛這支JS -->
+    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+    <script>
+        let container = document.querySelector(".container");
+        let left = document.querySelector(".left-side");
+        let right = document.querySelector(".right-side");
+        let center = document.querySelector(".center");
+        let state = "closed";
+
+        container.onclick = function () {
+            let tl = gsap.timeline();
+            if (state == "closed") {
+                right.style.transform = "rotateY(-20deg)";
+                state = "half";
+                tl.set(".center-content", { opacity: 0 });
+                return state;
+            } else if (state == "half") {
+                left.style.transform = "rotateY(20deg)";
+                state = "open";
+                tl.to(".center-content", 1, { opacity: 1 });
+                return state;
+            } else {
+                right.style.transform = "rotateY(-180deg)";
+                left.style.transform = "rotateY(180deg)";
+                tl.set(".center-content", { opacity: 0 });
+                state = "closed";
+                return state;
+            }
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Fuel', 'Hours per Day'],
+                ['Natural Gas', 46],
+                ['Wind', 23],
+                ['Nuclear', 18],
+                ['Coal', 11],
+                ['Solar', 2]
+            ]);
+
+            var options = {
+                title: '德州能源來源',
+                pieHole: 0.5,
+                colors: ['#F59942', '#F5DF56', '#F558A2', '#6CD8F5', '#6853F5'],
+                legend: { position: 'right', textStyle: { color: 'grey', fontSize: 16 }, alignment: 'center' },
+
+
+            };
+
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+    <style>
+        .piechart {
+            width: 900px;
+            height: 500px;
+            /* border-radius: 50%;
+            background-image: conic-gradient(pink 70deg,
+                    lightblue 0 235deg,
+                    orange 0); */
+            ;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+
+</body>
+
+</html>
