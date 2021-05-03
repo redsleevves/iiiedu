@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- reset -->
+    <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- 小圖示 -->
+    <script src="https://kit.fontawesome.com/271f30e909.js" crossorigin="anonymous"></script>
+    <!-- 動畫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <style>
+        body {
+            font-family: 'Sitka Display', NSimSun, 'sans-serif';
+            background-image: url(/img/bcc.png);
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 150px;
+            padding-top: 150px;
+        }
+
+        h2 {
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        h3 {
+            font-size: 32px;
+            font-weight: normal;
+            margin: 0
+        }
+
+        h4 {
+            font-size: 24px;
+            font-weight: normal;
+        }
+
+        p {
+            /* 字級可自訂 */
+            font-size: 20px;
+            font-weight: normal;
+        }
+
+        button {
+            padding: 12px 18px;
+            background-color: #cc543a;
+            color: white;
+            border-radius: 30px;
+            border: none;
+            font-family: 'Sitka Display', NSimSun, 'sans-serif';
+
+        }
+
+        button:focus {
+            outline: 0;
+            box-shadow: 0 0 0 1pt rgb(77, 77, 77);
+        }
+
+        i {
+            padding: 0 8px;
+        }
+
+        nav {
+            width: 90%;
+            background-image: url(/img/bcc.png);
+            display: flex;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            right: 5%;
+            border-bottom: 1px solid rgb(165, 165, 165);
+            z-index: 99;
+        }
+
+        nav img {
+            height: 80%;
+        }
+
+        @media screen and (min-width: 1400px) {
+
+            nav {
+                height: 100px;
+                display: flex;
+                align-items: center;
+
+            }
+
+            nav ul {
+                width: 75%;
+                height: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                font-size: 20px;
+            }
+
+            nav li {
+                letter-spacing: 3px;
+            }
+
+            nav .ham {
+                display: none;
+            }
+        }
+
+        .btns {
+            margin: 300px;
+        }
+
+        footer {
+            width: 100%;
+            height: 100px;
+            background-color: #cc543a;
+            color: white;
+            letter-spacing: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 0;
+        }
+
+        @media screen and (max-width: 1400px) {
+            nav {
+                height: 100px;
+                padding: 10px;
+                align-items: center;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            nav .fa-bars {
+                color: #4b4b4b;
+                font-size: 30px;
+            }
+        }
+
+
+
+        .cart {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-evenly;
+            position: relative;
+        }
+
+        .bill {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: fit-content;
+            padding: 40px 15px;
+            border: 1px solid rgb(168, 168, 168);
+        }
+
+        .bill hr {
+            height: 1px;
+            width: 90%;
+            background-color: rgb(196, 196, 196);
+            margin: 10px;
+        }
+
+        .summary {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+        }
+
+        .summary li {
+            line-height: 2.5
+        }
+
+        .sale {
+            width: 50%;
+        }
+
+        .sale li {
+            text-align: end;
+        }
+
+        .bill input {
+            width: 100%;
+            height: 90%;
+        }
+
+
+
+        .subsum p::before {
+            content: "小計";
+            margin-right: 20px;
+        }
+
+
+        .thumbnail {
+            width: 150px;
+            margin: 0 auto;
+        }
+
+        .thumbnail img {
+            width: 100%;
+        }
+
+        .input-group {
+            width: 120px;
+            background-color: white;
+            border: 1px solid gray;
+            border-radius: 5px;
+            margin: 0 auto;
+        }
+
+        .input-group button,
+        .input-group input {
+            padding: 0;
+            border: none;
+            text-align: center;
+        }
+
+        @media screen and (min-width: 1000px) {
+
+            .cartName {
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .carttable {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .each_table table {
+                text-align: center;
+                /* border: 11px solid #C0C0C0; */
+            }
+
+            .each_table thead {
+                height: fit-content;
+                border: 20px solid #D1D2D5;
+            }
+
+            .each_table tbody {
+                border: 20px solid #ffffff;
+                border-bottom: 0;
+            }
+
+
+            .carttable thead {
+                background-color: #D1D2D5;
+            }
+
+            .carttable th {
+                font-weight: bold;
+                height: 80px;
+                vertical-align: middle !important;
+            }
+
+            .carttable td {
+                vertical-align: middle !important;
+            }
+
+            .subsum {
+                text-align: right;
+            }
+
+            .cart_mobile,
+            .mobile_bill {
+                display: none;
+            }
+
+            .cart_backdeco {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                z-index: -1;
+                opacity: 0.7;
+                transform: scale(0.7);
+                transform-origin: right bottom;
+            }
+        }
+
+        @media screen and (max-width: 1000px) {
+
+            .carttable,
+            .bill {
+                display: none;
+            }
+
+            .cart_card .data {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: inherit;
+                padding-left: 10px;
+            }
+
+            .cart_card .detail {
+                display: flex;
+                flex-direction: column;
+            }
+
+            td {
+                vertical-align: top;
+                height: 150px;
+            }
+
+            th {
+                vertical-align: middle;
+            }
+
+            .input-group {
+                margin: 0;
+            }
+
+            .cart_card {
+                background-color: white;
+                border: 3px solid rgb(192, 192, 192);
+                margin-right: 0;
+                border-collapse: separate;
+                border-spacing: 0 12px;
+                padding: 0 5px;
+            }
+
+            thead {
+                position: relative;
+            }
+
+            thead::after {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 300px;
+                height: 2px;
+                background-color: rgb(182, 182, 182);
+            }
+
+            .input-number {
+                height: 30px;
+            }
+
+            .mobile_bill {
+                width: 100%;
+                position: fixed;
+                bottom: 0;
+                z-index: 2;
+                background-color: white;
+                box-shadow: 0 -3px 3px 3px rgba(102, 102, 102, 0.562);
+            }
+
+            .mobile_bill p {
+                margin: 0;
+            }
+
+            .mobile_discount,
+            .mobile_bill div {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .mobile_sum {
+                width: 100%;
+                justify-content: end;
+            }
+
+            .mobile_sum p::before {
+                content: "總計：NTD ";
+            }
+
+            .mobile_discount {
+                border-bottom: 1px solid black;
+                padding: 10px 0;
+            }
+
+            .mobile_bill button {
+                border-radius: 0;
+            }
+
+            .cart_backdeco {
+                display: none;
+            }
+
+            .mobile_thumbnail {
+                height: 150px;
+                padding: 0 10px;
+            }
+
+            .mobile_thumbnail img {
+                height: 100%;
+            }
+
+            .cart_card p {
+                font-size: 16px;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <img src='/img/logo-color.svg'>
+        <ul>
+            <li>Explore / 探索</li>
+            <li>TRIP / 行旅</li>
+            <li>SERVICE / 線上服務</li>
+            <li>SHOP / 商店</li>
+            <li>CART / 購物車</li>
+            <li>MEMBER / 會員中心</li>
+        </ul>
+        <div class="ham"><i class="fas fa-bars"></i></div>
+    </nav>
+    <div class="container cart col-lg-10 col-12">
+        <section class="bill container-fluid col-2">
+            <h3>訂單明細</h3>
+            <hr>
+            <div class="summary">
+                <ul>
+                    <li>媽祖胸針</li>
+                    <li>媽祖胸針</li>
+                    <li>龍山寺-安太歲</li>
+                    <li>蒐集離島媽祖</li>
+                </ul>
+                <ul>
+                    <li>600</li>
+                    <li>600</li>
+                    <li>600</li>
+                    <li>600</li>
+                </ul>
+            </div>
+            <hr>
+            <div class="summary">
+                <ul>
+                    <li>運費</li>
+                    <li>折扣碼</li>
+                </ul>
+                <ul class="sale">
+                    <li>35</li>
+                    <li><input type="text"></li>
+                </ul>
+            </div>
+            <hr>
+            <div class="summary">
+                <ul>
+                    <li>
+                        <h4>總計</h4>
+                    </li>
+                </ul>
+                <ul>
+                    <li>1235</li>
+                </ul>
+            </div>
+            <button>確認結帳</button>
+        </section>
+        <section class="carttable container-fluid col-8">
+            <h4>購物車</h4>
+            <div class="each_table mt-5">
+                <h4 class="cartName">商品</h4>
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <!-- <th><input class="checkbox" type="checkbox"></th> -->
+                            <th scope="col">商品圖</th>
+                            <th scope="col">商品名稱</th>
+                            <th scope="col">內容</th>
+                            <th scope="col">數量</th>
+                            <th scope="col">金額</th>
+                            <th scope="col">備註</th>
+                            <th scope="col">刪除</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- <td><input class="checkbox" type="checkbox"></td> -->
+                            <td>
+                                <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                            </td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>
+                                <div class="input-group">
+                                    <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
+                                    <input type="text" class="form-control input-number" value="1" />
+                                    <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </td>
+                            <td>Mark</td>
+                            <td>Mark</td>
+                            <td><i class="far fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <!-- <td><input class="checkbox" type="checkbox"></td> -->
+                            <td>
+                                <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                            </td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>
+                                <div class="input-group">
+                                    <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
+                                    <input type="text" class="form-control input-number" value="1" />
+                                    <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td><i class="far fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <!-- <td><input class="checkbox" type="checkbox"></td> -->
+                            <td>
+                                <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                            </td>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>
+                                <div class="input-group">
+                                    <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
+                                    <input type="text" class="form-control input-number" value="1" />
+                                    <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td><i class="far fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                <hr>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="5" class="subsum">
+                                <p>1,200</p>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="each_table mt-5">
+                <h4 class="cartName">行旅</h4>
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <!-- <th><input class="checkbox" type="checkbox"></th> -->
+                            <th scope="col">商品圖</th>
+                            <th scope="col">商品名稱</th>
+                            <th scope="col">內容</th>
+                            <th scope="col">數量</th>
+                            <th scope="col">金額</th>
+                            <th scope="col">備註</th>
+                            <th scope="col">刪除</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- <td><input class="checkbox" type="checkbox"></td> -->
+                            <td>
+                                <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                            </td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>3</td>
+                            <td>Mark</td>
+                            <td>Mark</td>
+                            <td><i class="far fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                <hr>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="5" class="subsum">
+                                <p>1,200</p>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="each_table mt-5">
+                <h4 class="cartName">點燈</h4>
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <!-- <th><input class="checkbox" type="checkbox"></th> -->
+                            <th scope="col">商品圖</th>
+                            <th scope="col">商品名稱</th>
+                            <th scope="col">內容</th>
+                            <th scope="col">數量</th>
+                            <th scope="col">金額</th>
+                            <th scope="col">備註</th>
+                            <th scope="col">刪除</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- <td><input class="checkbox" type="checkbox"></td> -->
+                            <td>
+                                <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                            </td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>3</td>
+                            <td>Mark</td>
+                            <td>Mark</td>
+                            <td><i class="far fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                <hr>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="5" class="subsum">
+                                <p>1,200</p>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="cart_mobile container-fluid">
+            <h4>購物車</h4>
+            <table class="cart_card col-12 mb-5">
+                <thead>
+                    <tr>
+                        <th>商品</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="mobile_thumbnail"><img src="/img/sh_2701.jpg"></div>
+                        </td>
+                        <td>
+                            <div class="data">
+                                <div class="detail">
+                                    <p>媽祖胸針</p>
+                                    <p>紅色</p>
+                                    <p>NTD 600</p>
+                                </div>
+                                <div class="input-group">
+                                    <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
+                                    <input type="text" class="form-control input-number" value="1" />
+                                    <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </td>
+                        <td><i class="far fa-trash-alt"></i></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="mobile_thumbnail"><img src="/img/sh_2701.jpg"></div>
+                        </td>
+                        <td>
+                            <div class="data">
+                                <div class="detail">
+                                    <p>媽祖胸針</p>
+                                    <p>紅色</p>
+                                    <p>NTD 600</p>
+                                </div>
+                                <div class="input-group">
+                                    <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
+                                    <input type="text" class="form-control input-number" value="1" />
+                                    <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </td>
+                        <td><i class="far fa-trash-alt"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="cart_card col-12 mb-5">
+                <thead>
+                    <tr>
+                        <th>行旅</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="mobile_thumbnail"><img src="/img/sh_2701.jpg"></div>
+                        </td>
+                        <td>
+                            <div class="data">
+                                <div class="detail">
+                                    <p>媽祖胸針</p>
+                                    <p>紅色</p>
+                                    <p>NTD 600</p>
+                                </div>
+                                <div class="input-group">
+                                    <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
+                                    <input type="text" class="form-control input-number" value="1" />
+                                    <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </td>
+                        <td><i class="far fa-trash-alt"></i></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="mobile_thumbnail"><img src="/img/sh_2701.jpg"></div>
+                        </td>
+                        <td>
+                            <div class="data">
+                                <div class="detail">
+                                    <p>媽祖胸針</p>
+                                    <p>紅色</p>
+                                    <p>NTD 600</p>
+                                </div>
+                                <div class="input-group">
+                                    <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
+                                    <input type="text" class="form-control input-number" value="1" />
+                                    <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </td>
+                        <td><i class="far fa-trash-alt"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <div class="mobile_bill">
+        <div class="mobile_discount">
+            <div class="d-flex">
+                <i class="fas fa-tags"></i>
+                <p>折扣碼</p>
+            </div>
+            <input type="text" placeholder="輸入折價券或折扣碼">
+        </div>
+        <div class="mobile_sum">
+            <p>XXX</p>
+            <button type="submit">去買單</button>
+        </div>
+    </div>
+    <div class="cart_backdeco">
+        <img src="/img/cart_Incense.png">
+    </div>
+
+    <footer>
+        <p>Copyright© TempleTrip.tw</p>
+    </footer>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $('.up').click(function () { $(this).prev().val(+$(this).prev().val() + 1); });
+        $('.down').click(function () {
+            if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
+        });
+    </script>
+</body>
+
+</html>

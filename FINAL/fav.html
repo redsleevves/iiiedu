@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- reset -->
+    <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- 小圖示 -->
+    <script src="https://kit.fontawesome.com/271f30e909.js" crossorigin="anonymous"></script>
+    <!-- 動畫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Faustina:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Faustina', serif;
+            background-image: url(/img/bcc.png);
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 150px;
+            width: 100vw;
+            overflow-x: hidden;
+        }
+
+        h2 {
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        h3 {
+            font-size: 28px;
+            font-weight: normal;
+        }
+
+        h4 {
+            font-size: 24px;
+            font-weight: normal;
+        }
+
+        p {
+            /* 字級可自訂 */
+            font-size: 20px;
+            font-weight: normal;
+        }
+
+        button {
+            padding: 12px 18px;
+            background-color: #cc543a;
+            color: white;
+            border-radius: 30px;
+            border: none;
+            font-family: 'Sitka Display', NSimSun, 'sans-serif';
+
+        }
+
+        button:focus {
+            outline: 0;
+            box-shadow: 0 0 0 1pt rgb(77, 77, 77);
+        }
+
+        i {
+            padding: 0 8px;
+        }
+
+        nav {
+            width: 90%;
+            background-image: url(/img/bcc.png);
+            display: flex;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            right: 5%;
+            border-bottom: 1px solid rgb(165, 165, 165);
+            z-index: 99;
+        }
+
+        nav img {
+            height: 80%;
+        }
+
+        .head {
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .root {
+            align-self: flex-start;
+        }
+
+        .tab {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .tab div {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .tab h4 {
+            letter-spacing: 2px;
+        }
+
+        #pointer {
+            height: 1px;
+            width: 100%;
+            background-color: #4D4B4B;
+            position: relative;
+            --myVar: 75%;
+        }
+
+        #pointer::before {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 15px 15px 15px;
+            border-color: transparent transparent #4D4B4B transparent;
+            position: absolute;
+            top: -15px;
+            left: var(--myVar);
+            transition: 0.5s;
+
+        }
+
+        .btns {
+            margin: 300px;
+        }
+
+        footer {
+            width: 100%;
+            height: 100px;
+            background-color: #cc543a;
+            color: white;
+            letter-spacing: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            z-index: 3;
+        }
+
+        .head {
+            margin-top: 100px;
+            padding: 2% 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .fav_product img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .fav_plan img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            padding: 0;
+        }
+
+        .fav {
+            width: 100%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .fav_product_container {
+            display: flex;
+            justify-content: start;
+            transition: 1s;
+        }
+
+        .prow {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .control i {
+            font-size: 36px;
+        }
+
+        .fav_product_card,
+        .fav_plan_card,
+        .fav_lucky_box {
+            text-align: center;
+            position: relative;
+        }
+
+        .fav_product_card p {
+            margin-top: 20px;
+        }
+
+        .fav_product_card .delete {
+            position: absolute;
+            color: #cc543a;
+        }
+
+        .fav_plan_card .delete {
+            position: absolute;
+            color: #cc543a;
+            z-index: 2;
+        }
+
+        .fav_lucky_box .delete {
+            position: absolute;
+            color: #cc543a;
+        }
+
+        .fav_lucky_box p {
+            text-align: left;
+        }
+
+        .fav_plan_container {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .fav_plan_card {
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+            border: 1px solid gray;
+            padding: 0;
+            margin: 0 15px;
+        }
+
+        .fav_plan_card_text {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: flex-start;
+            padding: 10px 20px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .fav_lucky_card {
+            display: grid;
+            grid-template-rows: 12% 12% auto 25%;
+            grid-template-columns: 15% auto 15%;
+            grid-template-areas:
+                "header header header"
+                "number number number"
+                "rside  main lside"
+                "btn btn btn";
+            height: 440px;
+            width: 260px;
+            border: 1px solid gray;
+            background-color: white;
+            margin-right: 30px;
+        }
+
+        .fav_lucky_container {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            margin: 40px 0;
+            overflow: hidden;
+        }
+
+        .fav_lucky_card div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .templename {
+            grid-area: header;
+            border: 1px solid gray;
+        }
+
+        .number {
+            grid-area: number;
+            border: 1px solid gray;
+        }
+
+        .rside {
+            grid-area: rside;
+            border: 1px solid gray;
+        }
+
+        .lside {
+            grid-area: lside;
+            border: 1px solid gray;
+        }
+
+        .content {
+            width: 100%;
+            grid-area: main;
+            border: 1px solid gray;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            writing-mode: vertical-lr;
+            letter-spacing: 3px;
+        }
+
+        .detail {
+            grid-area: btn;
+            border: 1px solid gray;
+        }
+
+        .control {
+            height: 100%;
+            background-image: url(/img/bcc.png);
+            /* box-shadow: 0px 0px 40px 50px rgb(243, 243, 243); */
+            display: flex;
+            align-items: center;
+            padding: 220px 0;
+            z-index: 1;
+        }
+
+        .control:hover {
+            background-image: url(/img/bcc2.png);
+        }
+
+        .abstract {
+            background-color: #D1D2D5;
+            border: 2px solid #C0C0C0;
+            margin-bottom: 0;
+        }
+
+        .ordertable {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: absolute;
+        }
+
+        .fixrow tr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .fixrow {
+            border: 2px solid #C0C0C0;
+        }
+
+        .info {
+            background-color: white;
+            margin-bottom: 0;
+            margin-top: 1rem;
+        }
+
+        .fixrow thead th {
+            min-width: 15%;
+            text-align: center;
+        }
+
+        .less {
+            position: absolute;
+            left: 50%;
+        }
+
+        @media screen and (min-width: 1000px) {
+
+            nav {
+                height: 100px;
+                display: flex;
+                align-items: center;
+
+            }
+
+            nav ul {
+                width: 75%;
+                height: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                font-size: 20px;
+            }
+
+            nav li {
+                letter-spacing: 3px;
+            }
+
+            nav .ham {
+                display: none;
+            }
+
+            .tab img,
+            .tab svg {
+                margin-right: 15px;
+            }
+
+            .prow {
+                margin: 30px 0;
+            }
+
+            .fav_product_card .delete {
+                top: 3%;
+                right: 8%;
+                font-size: 30px;
+            }
+
+            .fav_plan_card .delete {
+                top: 3%;
+                right: 0;
+                font-size: 30px;
+            }
+
+            .fav_lucky_box .delete {
+                top: 2%;
+                right: 12%;
+                font-size: 30px;
+            }
+
+            .detail {
+                text-align: center;
+                border: 2px solid #C0C0C0;
+                border-top: none;
+            }
+
+            .detail th {
+                height: 50px;
+                vertical-align: middle;
+                text-align: center;
+            }
+
+            .detail td {
+                vertical-align: middle;
+                text-align: center;
+            }
+
+            .detail thead {
+                position: relative;
+            }
+
+            .detail thead::before {
+                content: "";
+                display: block;
+                height: 2px;
+                width: 65%;
+                top: 50px;
+                left: 32%;
+                position: absolute;
+                background-color: #C0C0C0;
+            }
+
+            .subsum {
+                text-align: right;
+            }
+
+            .subsum p::before {
+                content: "小計";
+                margin-right: 20px;
+            }
+
+            .thumbnail {
+                width: 100px;
+                margin: 0 auto;
+            }
+
+            .thumbnail img {
+                width: 180%;
+            }
+
+            .order_backdeco {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                z-index: -1;
+                opacity: 0.7;
+                transform: scale(0.7);
+                transform-origin: right bottom;
+            }
+
+            .order_mobile {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 1000px) {
+            nav {
+                height: 100px;
+                padding: 10px;
+                align-items: center;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            nav .fa-bars {
+                color: #4b4b4b;
+                font-size: 30px;
+            }
+
+            #pointer {
+                margin-top: 5px;
+            }
+
+            #pointer::before {
+                border-width: 0 10px 10px 10px;
+                top: -10px;
+            }
+
+            h4 {
+                font-size: 16px;
+            }
+
+            .tab {
+                justify-content: space-between;
+                margin: 0 0 15px 0;
+            }
+
+            .tab svg {
+                width: 70%;
+                margin: 0;
+            }
+
+            .tab div {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tab h4 {
+                margin: 0;
+            }
+
+            .prow {
+                margin: 30px 0;
+                overflow: scroll;
+            }
+
+            .control {
+                display: none;
+            }
+
+            .fav_product_card {
+                min-height: 265px;
+            }
+
+            .fav_plan_container {
+                margin: 0;
+                overflow: scroll;
+            }
+
+            .fav_plan_container h3 {
+                font-size: 16px;
+            }
+
+            .fav_plan_container p {
+                display: none;
+            }
+
+            .fav_plan_container span {
+                font-size: 18px;
+            }
+
+            .fav_plan_container button {
+                font-size: 16px;
+            }
+
+            .fav_lucky_card {
+                height: 360px;
+                width: 200px;
+                border: none;
+                background-color: white;
+                margin-right: 50px;
+            }
+
+            .fav_lucky_container {
+                padding: 0;
+                margin: 20px 0;
+                overflow: scroll;
+            }
+
+            .fav_product_card .delete {
+                top: 3%;
+                right: 8%;
+            }
+
+            .fav_plan_card .delete {
+                top: 3%;
+                right: -1%;
+            }
+
+            .fav_lucky_box .delete {
+                top: 3%;
+                right: 20%;
+            }
+
+            .fav_plan_card img {
+                height: 100%;
+                object-fit: cover;
+            }
+
+
+            .fav_plan_card_text {
+                padding: 10px;
+                align-items: unset;
+            }
+
+            .ordertable {
+                display: none;
+            }
+
+            .order_mobile_thumbnail {
+                height: 160px;
+                padding: 0 10px;
+                width: 40%;
+            }
+
+            .order_mobile_thumbnail img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .order_card .data {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: inherit;
+                padding-left: 10px;
+            }
+
+            .order_card p {
+                font-size: 16px;
+                margin: 0;
+            }
+
+            .order_card .detail {
+                display: flex;
+                flex-direction: column;
+                border: none;
+            }
+
+            td {
+                vertical-align: top;
+                height: 150px;
+            }
+
+            th {
+                vertical-align: middle;
+            }
+
+            .order_card {
+                background-color: white;
+                border: 3px solid rgb(192, 192, 192);
+                border-collapse: separate;
+                border-spacing: 0 12px;
+                padding: 0 5px;
+                margin-bottom: 18px;
+            }
+
+            thead {
+                position: relative;
+            }
+
+            tbody::after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 9%;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background-color: rgb(182, 182, 182);
+            }
+
+            .order_mobile button {
+                font-size: 14px;
+                padding: 5px 10px;
+                margin-right: 10px;
+            }
+
+            .order_mobile .detail_total {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .order_mobile_abstract {
+                display: flex;
+                justify-content: space-between;
+                padding: 0 10px;
+            }
+
+            .order_mobile_abstract i {
+                color: #cc543a;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <img src='/img/logo-color.svg'>
+        <ul>
+            <li>Explore / 探索</li>
+            <li>TRIP / 行旅</li>
+            <li>SERVICE / 線上服務</li>
+            <li>SHOP / 商店</li>
+            <li>CART / 購物車</li>
+            <li>MEMBER / 會員中心</li>
+        </ul>
+        <div class="ham"><i class="fas fa-bars"></i></div>
+    </nav>
+    <section class="head container-fluid">
+        <h4 class="root">會員中心>收藏清單</h4>
+        <div class="tab col-lg-9  col-12">
+            <div class="profile">
+                <svg xmlns="http://www.w3.org/2000/svg" width="89" height="89" viewBox="0 0 89 89">
+                    <g id="account" transform="translate(0.173)">
+                        <circle id="Ellipse_5" data-name="Ellipse 5" cx="44.5" cy="44.5" r="44.5"
+                            transform="translate(-0.173)" fill="silver" />
+                        <g id="Group_92" data-name="Group 92" transform="translate(24.07 22.25)">
+                            <path id="Path_23" data-name="Path 23"
+                                d="M51.65,30.071s0-5.721-6.357-6.039a9.457,9.457,0,0,1-6.357-3.179l-.318-.318h0a3.587,3.587,0,0,0-3.5-.954,11.427,11.427,0,0,1-3.5.636,13.518,13.518,0,0,1-3.5-.636,3.587,3.587,0,0,0-3.5.954h0l-.318.318a10.189,10.189,0,0,1-6.357,3.179c-6.357.636-6.357,6.039-6.357,6.039V32.3c0,1.589-.318,5.086,18.436,5.086H32.9c18.436,0,18.754-3.212,18.754-5.12V30.071Z"
+                                transform="translate(-11.6 7.436)" fill="none" stroke="#f7f8f7" stroke-miterlimit="10"
+                                stroke-width="1.5" />
+                            <ellipse id="Ellipse_6" data-name="Ellipse 6" cx="13.032" cy="13.668" rx="13.032"
+                                ry="13.668" transform="translate(7.311)" fill="none" stroke="#f7f8f7"
+                                stroke-miterlimit="10" stroke-width="1.5" />
+                        </g>
+                    </g>
+                </svg>
+
+                <h4>會員資料</h4>
+            </div>
+            <div class="favorite">
+                <svg xmlns="http://www.w3.org/2000/svg" width="89" height="89" viewBox="0 0 89 89">
+                    <path id="gratipay-brands"
+                        d="M44.5,8A44.5,44.5,0,1,0,89,52.5,44.515,44.515,0,0,0,44.5,8ZM65.063,48.624l-20.276,27.4-20.222-27.4C23,46.489,21.138,39.581,27.005,35.7c5.042-3.248,9.8-.754,12.291,2.135a7.713,7.713,0,0,0,11.071,0c2.494-2.889,7.249-5.383,12.22-2.135,5.9,3.876,4.055,10.766,2.476,12.919Z"
+                        transform="translate(0 -8)" fill="silver" />
+                </svg>
+                <h4>收藏清單</h4>
+            </div>
+            <div class="order">
+                <svg id="orderlist" xmlns="http://www.w3.org/2000/svg" width="89" height="89" viewBox="0 0 89 89">
+                    <path id="Path_18" data-name="Path 18"
+                        d="M47.5,92h0A44.631,44.631,0,0,1,3,47.5H3A44.631,44.631,0,0,1,47.5,3h0A44.631,44.631,0,0,1,92,47.5h0A44.631,44.631,0,0,1,47.5,92Z"
+                        transform="translate(-3 -3)" fill="#cc543a" />
+                    <g id="Group_90" data-name="Group 90" transform="translate(14.741 24.614)">
+                        <g id="Group_89" data-name="Group 89" transform="translate(7.37 7.787)">
+                            <line id="Line_53" data-name="Line 53" x2="13.35" transform="translate(30.594 12.098)"
+                                fill="none" stroke="#efeeee" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-miterlimit="10" stroke-width="1.778" />
+                            <line id="Line_54" data-name="Line 54" x2="13.35" transform="translate(30.594)" fill="none"
+                                stroke="#efeeee" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                stroke-width="1.778" />
+                            <line id="Line_55" data-name="Line 55" x2="13.35" transform="translate(30.594 5.841)"
+                                fill="none" stroke="#efeeee" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-miterlimit="10" stroke-width="1.778" />
+                            <line id="Line_56" data-name="Line 56" x2="13.35" transform="translate(30.594 24.753)"
+                                fill="none" stroke="#efeeee" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-miterlimit="10" stroke-width="1.778" />
+                            <line id="Line_57" data-name="Line 57" x2="13.35" transform="translate(30.594 17.8)"
+                                fill="none" stroke="#efeeee" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-miterlimit="10" stroke-width="1.778" />
+                            <g id="Group_88" data-name="Group 88" transform="translate(0 0)">
+                                <path id="Path_19" data-name="Path 19"
+                                    d="M43.792,30.9V44.528a4.985,4.985,0,0,1-5.006,5.006H23.906A4.985,4.985,0,0,1,18.9,44.528V30.9Z"
+                                    transform="translate(-18.9 -24.503)" fill="none" stroke="#efeeee"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                    stroke-width="1.778" />
+                                <path id="Path_20" data-name="Path 20"
+                                    d="M23.1,37.7V29.5a3.332,3.332,0,0,1,3.2-3.2h6.953a3.332,3.332,0,0,1,3.2,3.2v8.2"
+                                    transform="translate(-17.259 -26.3)" fill="none" stroke="#efeeee"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                    stroke-width="1.778" />
+                            </g>
+                        </g>
+                        <path id="Path_21" data-name="Path 21"
+                            d="M67.139,60.333H19.58a6.118,6.118,0,0,1-5.98-5.98V26.68a6.118,6.118,0,0,1,5.98-5.98H66.861a6.118,6.118,0,0,1,5.98,5.98v27.4A5.788,5.788,0,0,1,67.139,60.333Z"
+                            transform="translate(-13.6 -20.7)" fill="none" stroke="#efeeee" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.778" />
+                    </g>
+                </svg>
+
+                <h4>訂單列表</h4>
+            </div>
+        </div>
+        <hr id=pointer>
+    </section>
+    <section class="fav container-fluid animate__animated animate__slideInLeft">
+        <div class="fav_product col-lg-8">
+            <div class="d-flex justify-content-between">
+                <p>produc / 商品</p>
+                <p class="fav_edit">編輯</p>
+            </div>
+            <div class="prow fav_prod_row col-lg-12">
+                <div class="control control_prod"><i class="fas fa-chevron-left"></i></div>
+                <div id="fav_product_container" class="fav_product_container col-xs-12">
+                    <div class="fav_product_card col-lg-3 col-5">
+                        <i class="fas fa-times-circle delete d-none"></i>
+                        <img src="/img/sh_2701.jpg">
+                        <p>媽祖胸針 by XXXX OOOO</p>
+                    </div>
+                    <div class="fav_product_card col-lg-3 col-5">
+                        <i class="fas fa-times-circle delete d-none"></i>
+                        <img src="/img/sh_2701.jpg">
+                        <p>媽祖胸針 by XXXX OOOO</p>
+                    </div>
+                    <div class="fav_product_card col-lg-3 col-5">
+                        <i class="fas fa-times-circle delete d-none"></i>
+                        <img src="/img/sh_2701.jpg">
+                        <p>媽祖胸針 by XXXX OOOO</p>
+                    </div>
+                    <div class="fav_product_card col-lg-3 col-5">
+                        <i class="fas fa-times-circle delete d-none"></i>
+                        <img src="/img/sh_2701.jpg">
+                        <p>媽祖胸針 by XXXX OOOO</p>
+                    </div>
+                    <div class="fav_product_card col-lg-3 col-5">
+                        <i class="fas fa-times-circle delete d-none"></i>
+                        <img src="/img/sh_2701.jpg">
+                        <p>媽祖胸針 by XXXX OOOO</p>
+                    </div>
+                </div>
+                <div class="control control_prod"><i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+        <div class="fav_plan col-lg-8">
+            <div class="d-flex justify-content-between">
+                <p>plan / 行程</p>
+                <p class="fav_edit">編輯</p>
+            </div>
+            <div class="prow col-lg-12">
+                <div class="control control_plan"><i class="fas fa-chevron-left"></i></div>
+                <div id="fav_plan_container" class="fav_plan_container col-xs-12">
+                    <div class="fav_plan_card col-lg-5 col-10">
+                        <i class="fas fa-times-circle delete d-none"></i>
+                        <img src="/img/sh_2701.jpg" class="col-6">
+                        <div class="fav_plan_card_text col-6">
+                            <h3>蒐集離島媽祖</h3>
+                            <p><i class="fas fa-map-marker-alt"></i>澎湖-蘭嶼-綠島</p>
+                            <p><i class="far fa-clock"></i>4天3夜</p>
+                            <P><i class="fas fa-quote-left"></i>是媽祖叫我去的!</P>
+                            <span>NT.3250 元起</span>
+                            <button>查看詳情</button>
+                        </div>
+                    </div>
+                    <div class="fav_plan_card col-lg-5 col-10">
+                        <i class="fas fa-times-circle delete d-none"></i>
+                        <img src="/img/sh_2701.jpg" class="col-6">
+                        <div class="fav_plan_card_text col-6">
+                            <h3>蒐集離島媽祖</h3>
+                            <p><i class="fas fa-map-marker-alt"></i>澎湖-蘭嶼-綠島</p>
+                            <p><i class="far fa-clock"></i>4天3夜</p>
+                            <P><i class="fas fa-quote-left"></i>是媽祖叫我去的!</P>
+                            <span>NT.3250 元起</span>
+                            <button>查看詳情</button>
+                        </div>
+                    </div>
+                    <div class="fav_plan_card col-lg-5 col-10">
+                        <i class="fas fa-times-circle delete d-none"></i>
+                        <img src="/img/sh_2701.jpg" class="col-6">
+                        <div class="fav_plan_card_text col-6">
+                            <h3>蒐集離島媽祖</h3>
+                            <p><i class="fas fa-map-marker-alt"></i>澎湖-蘭嶼-綠島</p>
+                            <p><i class="far fa-clock"></i>4天3夜</p>
+                            <P><i class="fas fa-quote-left"></i>是媽祖叫我去的!</P>
+                            <span>NT.3250 元起</span>
+                            <button>查看詳情</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="control control_plan"><i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+        <div class="fav_lucky col-lg-8">
+            <div class="d-flex justify-content-between">
+                <p>lucky / 籤詩</p>
+                <p class="fav_edit">編輯</p>
+            </div>
+            <div class="prow col-lg-12">
+                <div class="control control_luck"><i class="fas fa-chevron-left"></i></div>
+                <div id="fav_lucky_container" class="fav_lucky_container col-xs-12">
+                    <div class="fav_lucky_box">
+                        <i class="fas fa-times-circle delete d-none"></i>
+                        <div class="fav_lucky_card">
+                            <div class="templename">南裩身代天府
+                            </div>
+                            <div class="number">丙子</div>
+                            <div class="lside"></div>
+                            <div class="content">
+                                <p>運逢得意身顯變</p>
+                                <p>運逢得意身顯變</p>
+                                <p>運逢得意身顯變</p>
+                                <p>運逢得意身顯變</p>
+                            </div>
+                            <div class="rside"></div>
+                            <div class="detail"><button>點擊查看</button></div>
+                        </div>
+                        <p>求籤日期：2020/01/01</p>
+                    </div>
+                    <div class="fav_lucky_box">
+                        <i class="fas fa-times-circle delete d-none"></i>
+                        <div class="fav_lucky_card">
+                            <div class="templename">南裩身代天府
+                            </div>
+                            <div class="number">丙子</div>
+                            <div class="lside"></div>
+                            <div class="content">
+                                <p>運逢得意身顯變</p>
+                                <p>運逢得意身顯變</p>
+                                <p>運逢得意身顯變</p>
+                                <p>運逢得意身顯變</p>
+                            </div>
+                            <div class="rside"></div>
+                            <div class="detail"><button>點擊查看</button></div>
+                        </div>
+                        <p>求籤日期：2020/01/02</p>
+                    </div>
+                    <div class="fav_lucky_box">
+                        <i class="fas fa-times-circle delete d-none"></i>
+                        <div class="fav_lucky_card">
+                            <div class="templename">南裩身代天府
+                            </div>
+                            <div class="number">丙子</div>
+                            <div class="lside"></div>
+                            <div class="content">
+                                <p>運逢得意身顯變</p>
+                                <p>運逢得意身顯變</p>
+                                <p>運逢得意身顯變</p>
+                                <p>運逢得意身顯變</p>
+                            </div>
+                            <div class="rside"></div>
+                            <div class="detail"><button>點擊查看</button></div>
+                        </div>
+                        <p>求籤日期：2020/01/03</p>
+                    </div>
+                </div>
+                <div class="control control_luck"><i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <section class="ordertable container-fluid animate__animated animate__slideInLeft">
+        <table class="table table-borderless fixrow abstract col-lg-7">
+            <thead>
+                <tr>
+                    <th>訂購日期</th>
+                    <th>訂購編號</th>
+                    <th>付款方式</th>
+                    <th>處理進度</th>
+                    <th>應付金額</th>
+                    <th>訂單狀態</th>
+                </tr>
+            </thead>
+        </table>
+        <table class="table table-borderless fixrow info col-lg-7">
+            <thead>
+                <tr>
+                    <th>2020/01/01</th>
+                    <th>000154</th>
+                    <th>線上刷卡</th>
+                    <th>已出貨</th>
+                    <th>4,115</th>
+                    <th>已完成</th>
+                </tr>
+            </thead>
+        </table>
+        <table class="table detail table-light col-lg-7">
+            <thead>
+                <tr>
+                    <th scope="col" style="color: white;">商品圖</th>
+                    <th scope="col">商品名稱</th>
+                    <th scope="col">內容</th>
+                    <th scope="col">數量</th>
+                    <th scope="col">金額</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                    </td>
+                    <td>蒐集離島媽祖</td>
+                    <td>Otto</td>
+                    <td>1</td>
+                    <td>Mark</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                    </td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>1</td>
+                    <td>Mark</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                    </td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>1</td>
+                    <td>Mark</td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <i class="fas fa-chevron-up"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-borderless fixrow info col-lg-7">
+            <thead>
+                <tr>
+                    <th>2020/01/01</th>
+                    <th>000154</th>
+                    <th>線上刷卡</th>
+                    <th>已出貨</th>
+                    <th>4,115</th>
+                    <th>已完成</th>
+                </tr>
+            </thead>
+        </table>
+        <table class="table detail table-light col-lg-7">
+            <thead>
+                <tr>
+                    <th scope="col" style="color: white;">商品圖</th>
+                    <th scope="col">商品名稱</th>
+                    <th scope="col">內容</th>
+                    <th scope="col">數量</th>
+                    <th scope="col">金額</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                    </td>
+                    <td>蒐集離島媽祖</td>
+                    <td>Otto</td>
+                    <td>1</td>
+                    <td>Mark</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                    </td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>1</td>
+                    <td>Mark</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                    </td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>1</td>
+                    <td>Mark</td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <i class="fas fa-chevron-up"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section class="order_mobile container-fluid animate__animated animate__slideInLeft">
+        <table class="order_card col-12">
+            <thead class="order_mobile_info">
+                <tr>
+                    <th colspan="3">
+                        <div class="order_mobile_abstract">
+                            <p>2020/01/01</p>
+                            <p>已完成<i class="fas fa-check"></i></p>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="3">
+                        <div class="order_mobile_abstract">
+                            <p>訂單編號 040345</p>
+                            <p>總金額 4,345</p>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="order_mobile_thumbnail">
+                        <div><img src="/img/sh_2701.jpg"></div>
+                    </td>
+                    <td colspan="2">
+                        <div class="data">
+                            <div class="detail">
+                                <p>媽祖胸針</p>
+                                <p>紅色</p>
+                                <p>NTD 600</p>
+                                <p>數量 3</p>
+                                <p>小計 1,988</p>
+                            </div>
+                            <div class="detail_total">
+                                <button>寫下評論</button>
+                                <button>再買一次</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="order_mobile_thumbnail">
+                        <div><img src="/img/sh_2701.jpg"></div>
+                    </td>
+                    <td colspan="2">
+                        <div class="data">
+                            <div class="detail">
+                                <p>媽祖胸針</p>
+                                <p>紅色</p>
+                                <p>NTD 600</p>
+                                <p>數量 3</p>
+                                <p>小計 1,988</p>
+                            </div>
+                            <div class="detail_total">
+                                <button>寫下評論</button>
+                                <button>再買一次</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="order_card col-12">
+            <thead class="order_mobile_info">
+                <tr>
+                    <th colspan="3">
+                        <div class="order_mobile_abstract">
+                            <p>2020/01/01</p>
+                            <p>已完成<i class="fas fa-check"></i></p>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="3">
+                        <div class="order_mobile_abstract">
+                            <p>訂單編號 040345</p>
+                            <p>總金額 4,345</p>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="order_mobile_thumbnail">
+                        <div><img src="/img/sh_2701.jpg"></div>
+                    </td>
+                    <td colspan="2">
+                        <div class="data">
+                            <div class="detail">
+                                <p>媽祖胸針</p>
+                                <p>紅色</p>
+                                <p>NTD 600</p>
+                                <p>數量 3</p>
+                                <p>小計 1,988</p>
+                            </div>
+                            <div class="detail_total">
+                                <button>寫下評論</button>
+                                <button>再買一次</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="order_mobile_thumbnail">
+                        <div><img src="/img/sh_2701.jpg"></div>
+                    </td>
+                    <td colspan="2">
+                        <div class="data">
+                            <div class="detail">
+                                <p>媽祖胸針</p>
+                                <p>紅色</p>
+                                <p>NTD 600</p>
+                                <p>數量 3</p>
+                                <p>小計 1,988</p>
+                            </div>
+                            <div class="detail_total">
+                                <button>寫下評論</button>
+                                <button>再買一次</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <footer>
+        <p>Copyright© TempleTrip.tw</p>
+    </footer>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+
+    <script>
+        var detail = document.getElementsByClassName(".detail");
+
+        $(".info").click(function () {
+            $(this).next(detail).slideToggle();
+        });
+        $(".less").click(function () {
+            $(".detail").slideUp();
+        });
+        $(".order_mobile_info").click(function () {
+            $(this).siblings().slideToggle();
+        });
+
+        $('.profile').click(function () {
+            $('#pointer').css('--myVar', '25%');
+            $('#Ellipse_5').attr('fill', '#cc543a')
+            $('#Path_18').attr('fill', 'silver')
+            $('#gratipay-brands').attr('fill', 'silver')
+
+        })
+
+        $('.favorite').click(function () {
+            $('#pointer').css('--myVar', '50%');
+            $('#gratipay-brands').attr('fill', '#cc543a')
+            $('#Path_18').attr('fill', 'silver')
+            $('#Ellipse_5').attr('fill', 'silver')
+            $('.fav').removeClass('animate__slideOutRight')
+            $('.ordertable').addClass('animate__slideOutRight')
+            $('.order_mobile').addClass('animate__slideOutRight')
+
+        })
+
+        $('.order').click(function () {
+            $('#pointer').css('--myVar', '75%');
+            $('#gratipay-brands').attr('fill', 'silver')
+            $('#Ellipse_5').attr('fill', 'silver')
+            $('#Path_18').attr('fill', '#cc543a')
+            $('.fav').addClass('animate__slideOutRight')
+            $('.ordertable').removeClass('animate__slideOutRight')
+            $('.order_mobile').removeClass('animate__slideOutRight')
+        })
+
+        var goleft = document.getElementsByClassName(".fa-chevron-left");
+        $(goleft).css('color', 'red')
+
+        let move = $('.fav_product_card').width();
+        console.log($('.fav_product_card').position().left - move)
+        console.log('move', move)
+
+        let containerLucky = document.querySelector('#fav_lucky_container')
+        let containerPlan = document.querySelector('#fav_plan_container')
+        let containerProduct = document.querySelector('#fav_product_container')
+        let productCardW = document.querySelector('.fav_product_card').offsetWidth
+        let planCardW = document.querySelector('.fav_plan_card').offsetWidth
+        let luckyCardW = document.querySelector('.fav_lucky_card').offsetWidth
+
+
+        $('.control').click(function () {
+            let current = $(containerProduct).position().left
+            if ($(this).children().hasClass("fa-chevron-left")) {
+                current -= move * 2
+                $(this).siblings('.fav_product_container').css('transform', 'translateX(' + current + 'px)')
+                // $(this).siblings('.fav_product_container').css('transform', 'translateX(' + -move + 'px)')
+                // move += $('.fav_product_card').width()
+            }
+            else {
+                current += move * 2
+                $(this).siblings('.fav_product_container').css('transform', 'translateX(' + current + 'px)')
+                // move += $('.fav_product_card').width()
+            }
+
+        })
+
+        console.log('witch', document.body.clientWidth, 1000)
+        function control1() {
+            if ((productCardW * $('.fav_product_card').length > containerProduct.offsetWidth) && (document.body.clientWidth > 1000)) {
+                $('.control_prod').css('display', 'block')
+            }
+            else {
+                $('.control_prod').css('display', 'none')
+            }
+        }
+        function control2() {
+            if ((planCardW * $('.fav_plan_card').length > containerPlan.offsetWidth) && (document.body.clientWidth > 1000)) {
+                $('.control_plan').css('display', 'block')
+            }
+            else {
+                $('.control_plan').css('display', 'none')
+            }
+        }
+        function control3() {
+            if ((luckyCardW * $('.fav_lucky_card').length > containerLucky.offsetWidth) && (document.body.clientWidth > 1000)) {
+                $('#fav_lucky_container .control').css('display', 'block')
+            }
+            else {
+                $('#fav_lucky_container .control').css('display', 'none')
+            }
+        }
+
+        control1()
+        control2()
+        control3()
+
+        $(document).on('click', '.fav_edit', (function () {
+            $(this).parent().siblings().find('.delete').toggleClass('d-block');
+            ($(this).html() == '完成') ? $(this).html('編輯') : $(this).html('完成');
+        }))
+        $(document).on('click', '.delete', (function () {
+            $(this).parent().remove()
+            control1()
+            control2()
+            control3()
+            setTimeout(() => {
+                if ($(containerLucky).children().hasClass('fav_lucky_box') == false) {
+                    $(containerLucky).html('無收藏資料')
+                }
+                if ($(containerPlan).children().hasClass('fav_plan_card') == false) {
+                    $(containerPlan).html('無收藏資料')
+                }
+                if ($(containerProduct).children().hasClass('fav_product_card') == false) {
+                    $(containerProduct).html('無收藏資料')
+                }
+            }, 100);
+        }))
+
+        console.log($('#fav_lucky_container').children().hasClass('fav_lucky_box'))
+
+        console.log($('#leftt').children().hasClass("fa-chevron-left"))
+
+        $(window).resize(function () {
+        });
+        let absoluteBut = document.body.scrollHeight
+        $('footer').css('top', absoluteBut + 100 + 'px')
+
+    </script>
+</body>
+
+</html>
