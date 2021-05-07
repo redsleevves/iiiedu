@@ -80,7 +80,7 @@
             top: 0;
             right: 5%;
             border-bottom: 1px solid rgb(165, 165, 165);
-            z-index: 99;
+            z-index: 5;
         }
 
         nav img {
@@ -189,13 +189,14 @@
             display: flex;
             justify-content: start;
             transition: 1s;
+            width: 100%;
         }
 
         .prow {
             display: flex;
             align-items: center;
-            overflow: hidden;
             padding: 0;
+            overflow: hidden;
         }
 
         .control i {
@@ -207,6 +208,13 @@
         .fav_lucky_box {
             text-align: center;
             position: relative;
+        }
+
+        .fav_product_card {
+            background-color: white;
+            padding: 0;
+            padding-bottom: 15px;
+            margin: 0 15px;
         }
 
         .fav_product_card p {
@@ -234,10 +242,12 @@
         }
 
         .fav_plan_container {
+            width: 100%;
             display: flex;
             justify-content: start;
             align-items: center;
             margin: 40px 0;
+            overflow: hidden;
         }
 
         .fav_plan_card {
@@ -440,6 +450,7 @@
                 text-align: center;
                 border: 2px solid #C0C0C0;
                 border-top: none;
+                display: none;
             }
 
             .detail th {
@@ -498,6 +509,59 @@
 
             .order_mobile {
                 display: none;
+            }
+
+            .lucky_p6 {
+                display: flex;
+                flex-direction: row;
+                text-align: justify;
+                justify-content: center;
+            }
+
+            .lucky_content06 {
+                display: flex;
+                flex-direction: column;
+                width: 320px;
+                margin-left: 60px;
+                margin-right: 0px;
+            }
+
+            .lucky_result06 {
+                display: flex;
+                width: 325px;
+                justify-content: space-between;
+            }
+
+            .lucky_title06_1 {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .lucky_title06_2 {
+                background-color: #cc543a;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+            }
+
+            .lucky_title06_1 h4 {
+                font-weight: 600;
+            }
+
+            .lucky_title06_2 h5 {
+                color: #fff;
+                line-height: 65px;
+                font-size: 15px;
+                text-align: center;
+            }
+
+            .lucky_Commentary06 p {
+                font-size: 18px;
+            }
+
+            .modal-content {
+                background-image: url(/img/bcc2.png);
             }
         }
 
@@ -559,7 +623,18 @@
             }
 
             .fav_product_card {
-                min-height: 265px;
+                width: 160px;
+            }
+
+            .prod_pic {
+                height: 60%;
+                width: 140px;
+            }
+
+            .prod_pic img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
             }
 
             .fav_plan_container {
@@ -805,39 +880,39 @@
         </div>
         <hr id=pointer>
     </section>
-    <section class="fav container-fluid animate__animated animate__slideInLeft">
+    <section class="fav container-fluid animate__animated animate__slideInLeft d-none">
         <div class="fav_product col-lg-8">
             <div class="d-flex justify-content-between">
                 <p>produc / 商品</p>
                 <p class="fav_edit">編輯</p>
             </div>
-            <div class="prow fav_prod_row col-lg-12">
+            <div class="prow col-lg-12">
                 <div class="control control_prod"><i class="fas fa-chevron-left"></i></div>
                 <div id="fav_product_container" class="fav_product_container col-xs-12">
-                    <div class="fav_product_card col-lg-3 col-5">
+                    <div class="fav_product_card col-lg-3">
                         <i class="fas fa-times-circle delete d-none"></i>
-                        <img src="/img/sh_2701.jpg">
-                        <p>媽祖胸針 by XXXX OOOO</p>
+                        <div class="prod_pic"><img src="/img/sh_2701.jpg"></div>
+                        <p>AAAAA by XXXX OOOO</p>
                     </div>
-                    <div class="fav_product_card col-lg-3 col-5">
+                    <div class="fav_product_card col-lg-3">
                         <i class="fas fa-times-circle delete d-none"></i>
-                        <img src="/img/sh_2701.jpg">
-                        <p>媽祖胸針 by XXXX OOOO</p>
+                        <div class="prod_pic"><img src="/img/sh_2701.jpg"></div>
+                        <p>BBBBBBBBB by XXXX OOOO</p>
                     </div>
-                    <div class="fav_product_card col-lg-3 col-5">
+                    <div class="fav_product_card col-lg-3">
                         <i class="fas fa-times-circle delete d-none"></i>
-                        <img src="/img/sh_2701.jpg">
-                        <p>媽祖胸針 by XXXX OOOO</p>
+                        <div class="prod_pic"><img src="/img/sh_2701.jpg"></div>
+                        <p>CCCC by XXXX OOOO</p>
                     </div>
-                    <div class="fav_product_card col-lg-3 col-5">
+                    <div class="fav_product_card col-lg-3">
                         <i class="fas fa-times-circle delete d-none"></i>
-                        <img src="/img/sh_2701.jpg">
-                        <p>媽祖胸針 by XXXX OOOO</p>
+                        <div class="prod_pic"><img src="/img/sh_2701.jpg"></div>
+                        <p>DDDDDDDD by XXXX OOOO</p>
                     </div>
-                    <div class="fav_product_card col-lg-3 col-5">
+                    <div class="fav_product_card col-lg-3">
                         <i class="fas fa-times-circle delete d-none"></i>
-                        <img src="/img/sh_2701.jpg">
-                        <p>媽祖胸針 by XXXX OOOO</p>
+                        <div class="prod_pic"><img src="/img/sh_2701.jpg"></div>
+                        <p>EEE by XXXX OOOO</p>
                     </div>
                 </div>
                 <div class="control control_prod"><i class="fas fa-chevron-right"></i></div>
@@ -949,7 +1024,8 @@
                                 <p>運逢得意身顯變</p>
                             </div>
                             <div class="rside"></div>
-                            <div class="detail"><button>點擊查看</button></div>
+                            <div class="detail"><button data-toggle="modal" data-target="#lucky_Modal">點擊查看</button>
+                            </div>
                         </div>
                         <p>求籤日期：2020/01/03</p>
                     </div>
@@ -957,6 +1033,8 @@
                 <div class="control control_luck"><i class="fas fa-chevron-right"></i></div>
             </div>
         </div>
+        </div>
+        <div id="cover">
         </div>
     </section>
     <section class="ordertable container-fluid animate__animated animate__slideInLeft">
@@ -984,51 +1062,53 @@
                 </tr>
             </thead>
         </table>
-        <table class="table detail table-light col-lg-7">
-            <thead>
-                <tr>
-                    <th scope="col" style="color: white;">商品圖</th>
-                    <th scope="col">商品名稱</th>
-                    <th scope="col">內容</th>
-                    <th scope="col">數量</th>
-                    <th scope="col">金額</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
-                    </td>
-                    <td>蒐集離島媽祖</td>
-                    <td>Otto</td>
-                    <td>1</td>
-                    <td>Mark</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
-                    </td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>1</td>
-                    <td>Mark</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
-                    </td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>1</td>
-                    <td>Mark</td>
-                </tr>
-                <tr>
-                    <td colspan="5">
-                        <i class="fas fa-chevron-up"></i>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table detail table-light col-lg-7">
+            <table class="table table-light">
+                <thead>
+                    <tr>
+                        <th scope="col" style="color: white;">商品圖</th>
+                        <th scope="col">商品名稱</th>
+                        <th scope="col">內容</th>
+                        <th scope="col">數量</th>
+                        <th scope="col">金額</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                        </td>
+                        <td>蒐集離島媽祖</td>
+                        <td>Otto</td>
+                        <td>1</td>
+                        <td>Mark</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                        </td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>1</td>
+                        <td>Mark</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                        </td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>1</td>
+                        <td>Mark</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <i class="fas fa-chevron-up"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <table class="table table-borderless fixrow info col-lg-7">
             <thead>
                 <tr>
@@ -1041,51 +1121,53 @@
                 </tr>
             </thead>
         </table>
-        <table class="table detail table-light col-lg-7">
-            <thead>
-                <tr>
-                    <th scope="col" style="color: white;">商品圖</th>
-                    <th scope="col">商品名稱</th>
-                    <th scope="col">內容</th>
-                    <th scope="col">數量</th>
-                    <th scope="col">金額</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
-                    </td>
-                    <td>蒐集離島媽祖</td>
-                    <td>Otto</td>
-                    <td>1</td>
-                    <td>Mark</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
-                    </td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>1</td>
-                    <td>Mark</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
-                    </td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>1</td>
-                    <td>Mark</td>
-                </tr>
-                <tr>
-                    <td colspan="5">
-                        <i class="fas fa-chevron-up"></i>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table detail table-light col-lg-7">
+            <table class="table table-light">
+                <thead>
+                    <tr>
+                        <th scope="col" style="color: white;">商品圖</th>
+                        <th scope="col">商品名稱</th>
+                        <th scope="col">內容</th>
+                        <th scope="col">數量</th>
+                        <th scope="col">金額</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                        </td>
+                        <td>蒐集離島媽祖</td>
+                        <td>Otto</td>
+                        <td>1</td>
+                        <td>Mark</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                        </td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>1</td>
+                        <td>Mark</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                        </td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>1</td>
+                        <td>Mark</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <i class="fas fa-chevron-up"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
     <section class="order_mobile container-fluid animate__animated animate__slideInLeft">
         <table class="order_card col-12">
@@ -1213,6 +1295,53 @@
             </tbody>
         </table>
     </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="lucky_Modal" tabindex="-1" aria-labelledby="lucky_ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <section class="lucky_p6 nextstep">
+                        <div class="lucky_Poetry06">
+                            <img src="./img/Sign poems-15.png" alt="">
+                        </div>
+                        <div class="lucky_content06">
+                            <div class="lucky_result06">
+                                <div class="lucky_title06_1">
+                                    <h4>第 15 籤&emsp;丙辰籤</h4>
+                                </div>
+                                <div class="lucky_title06_2">
+                                    <h5>上上籤</h5>
+                                </div>
+                            </div>
+                            <div class="lucky_Commentary06">
+                                <p>跟太公的遭遇一樣，請不
+                                    必多問，還是勸你學學姜太公的作法，且等待
+                                    那運氣亨通時。
+                                    <br> <br>
+                                    抽到此籤，表示目前做事，總不如意，但別灰
+                                    心，這不是因你不努力，而是時機未到。目
+                                    前，最重要的是充實你自己，只要真才實幹，
+                                    必有重用你的時候，決不會被埋沒的！
+                                    <br><br>
+                                    問功名，不必急尋，你是屬於大器晚成型。問
+                                    移居或職位變動，還不是時機，一動不如一
+                                    靜。出外旅行，無利可圖。問訴訟，以和為
+                                    貴。問婚姻，多屬晚婚，應下定決心，婚談可
+                                    成。
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer>
         <p>Copyright© TempleTrip.tw</p>
     </footer>
@@ -1227,7 +1356,16 @@
     <script>
         var detail = document.getElementsByClassName(".detail");
 
+        function dynamicFooter(absoluteBut) {
+            $('footer').css('top', absoluteBut + 'px')
+            absoluteBut = 0
+        }
+        let absoluteBut = document.body.scrollHeight
+        dynamicFooter(absoluteBut)
+
         $(".info").click(function () {
+            let absoluteBut = document.body.scrollHeight
+            dynamicFooter(absoluteBut)
             $(this).next(detail).slideToggle();
         });
         $(".less").click(function () {
@@ -1250,10 +1388,11 @@
             $('#gratipay-brands').attr('fill', '#cc543a')
             $('#Path_18').attr('fill', 'silver')
             $('#Ellipse_5').attr('fill', 'silver')
-            $('.fav').removeClass('animate__slideOutRight')
+            $('.fav').removeClass('animate__slideOutRight d-none')
             $('.ordertable').addClass('animate__slideOutRight')
             $('.order_mobile').addClass('animate__slideOutRight')
-
+            let absoluteBut = document.body.scrollHeight
+            dynamicFooter(absoluteBut)
         })
 
         $('.order').click(function () {
@@ -1264,6 +1403,9 @@
             $('.fav').addClass('animate__slideOutRight')
             $('.ordertable').removeClass('animate__slideOutRight')
             $('.order_mobile').removeClass('animate__slideOutRight')
+            let absoluteBut = document.body.scrollHeight
+            dynamicFooter(absoluteBut)
+            console.log(absoluteBut)
         })
 
         var goleft = document.getElementsByClassName(".fa-chevron-left");
@@ -1291,6 +1433,7 @@
             }
             else {
                 current += move * 2
+                current = (current > 0) ? 0 : current;
                 $(this).siblings('.fav_product_container').css('transform', 'translateX(' + current + 'px)')
                 // move += $('.fav_product_card').width()
             }
@@ -1355,8 +1498,6 @@
 
         $(window).resize(function () {
         });
-        let absoluteBut = document.body.scrollHeight
-        $('footer').css('top', absoluteBut + 100 + 'px')
 
     </script>
 </body>

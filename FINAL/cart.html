@@ -48,13 +48,11 @@
         }
 
         button {
-            padding: 12px 18px;
+            padding: 8px 18px;
             background-color: #cc543a;
             color: white;
             border-radius: 30px;
             border: none;
-            font-family: 'Sitka Display', NSimSun, 'sans-serif';
-
         }
 
         button:focus {
@@ -172,13 +170,13 @@
 
         .summary {
             width: 80%;
+        }
+
+        .summary ul {
+            line-height: 2;
             display: flex;
             justify-content: space-between;
             align-content: center;
-        }
-
-        .summary li {
-            line-height: 2.5
         }
 
         .sale {
@@ -189,18 +187,24 @@
             text-align: end;
         }
 
-        .bill input {
-            width: 100%;
-            height: 90%;
+        .summary input {
+            width: 100px;
+            height: 30px;
+            vertical-align: middle;
         }
 
-
+        .summary button {
+            width: 70px;
+            height: 30px;
+            padding: 0;
+            margin: 0;
+            vertical-align: middle;
+        }
 
         .subsum p::before {
             content: "小計";
             margin-right: 20px;
         }
-
 
         .thumbnail {
             width: 150px;
@@ -427,14 +431,14 @@
             <div class="summary">
                 <ul>
                     <li>媽祖胸針</li>
-                    <li>媽祖胸針</li>
-                    <li>龍山寺-安太歲</li>
-                    <li>蒐集離島媽祖</li>
+                    <li>600</li>
                 </ul>
                 <ul>
+                    <li>龍山寺-安太歲</li>
                     <li>600</li>
-                    <li>600</li>
-                    <li>600</li>
+                </ul>
+                <ul>
+                    <li>蒐集離島媽祖</li>
                     <li>600</li>
                 </ul>
             </div>
@@ -442,12 +446,20 @@
             <div class="summary">
                 <ul>
                     <li>運費</li>
-                    <li>折扣碼</li>
-                </ul>
-                <ul class="sale">
                     <li>35</li>
-                    <li><input type="text"></li>
                 </ul>
+                <ul>
+                    <li>折扣碼</li>
+                    <li id="entered">&nbsp</li>
+                </ul>
+                <form>
+                    <ul>
+                        <li><input name="discount" type="text"></li>
+                        <li>
+                            <button type="submit">提交</button>
+                        </li>
+                    </ul>
+                </form>
             </div>
             <hr>
             <div class="summary">
@@ -455,16 +467,14 @@
                     <li>
                         <h4>總計</h4>
                     </li>
-                </ul>
-                <ul>
-                    <li>1235</li>
+                    <li class="totalSum">1235</li>
                 </ul>
             </div>
             <button>確認結帳</button>
         </section>
         <section class="carttable container-fluid col-8">
             <h4>購物車</h4>
-            <div class="each_table mt-5">
+            <div class="each_table cart_product mt-5">
                 <h4 class="cartName">商品</h4>
                 <table class="table table-light">
                     <thead>
@@ -494,7 +504,7 @@
                                     <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
                                 </div>
                             </td>
-                            <td>Mark</td>
+                            <td class="price">789</td>
                             <td>Mark</td>
                             <td><i class="far fa-trash-alt"></i></td>
                         </tr>
@@ -512,7 +522,7 @@
                                     <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
                                 </div>
                             </td>
-                            <td>Mark</td>
+                            <td class="price">543</td>
                             <td>Otto</td>
                             <td><i class="far fa-trash-alt"></i></td>
                         </tr>
@@ -530,7 +540,7 @@
                                     <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
                                 </div>
                             </td>
-                            <td>Mark</td>
+                            <td class="price">453</td>
                             <td>Otto</td>
                             <td><i class="far fa-trash-alt"></i></td>
                         </tr>
@@ -550,7 +560,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="each_table mt-5">
+            <div class="each_table cart_plan mt-5">
                 <h4 class="cartName">行旅</h4>
                 <table class="table table-light">
                     <thead>
@@ -594,7 +604,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="each_table mt-5">
+            <div class="each_table cart_light mt-5">
                 <h4 class="cartName">點燈</h4>
                 <table class="table table-light">
                     <thead>
@@ -778,7 +788,42 @@
         $('.down').click(function () {
             if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
         });
+        // let discountV = document.getElementsByName('discount')
+        // console.log(discountV)
+        // $('#entered').html(discountV.val())
+
+        function getSubSum(element) {
+            var sum = 0;
+            $(element).each(function () {
+                sum += parseFloat(this.innerHTML);  // Or this.innerHTML, this.innerText
+            });
+            return sum
+        }
+
+        $('.cart_product .subsum').html('<p>' + sum + '</p>')
+
+        $(document).on('click', '.fa-trash-alt', function () {
+            var sum = 0;
+            $(this).parentsUntil('tbody').remove()
+            $('.cart_product .price').each(function () {
+                sum += parseFloat(this.innerHTML);  // Or this.innerHTML, this.innerText
+            });
+            $('.cart_product .subsum').html('<p>' + sum + '</p>')
+        })
+
+        $(document).on('click', '.fa-trash-alt', function () {
+            var elem = $('.cart_product .price')
+            $(this).parentsUntil('tbody').remove()
+            $('.cart_product .price').each(function () {
+                sum += parseFloat(this.innerHTML);  // Or this.innerHTML, this.innerText
+            });
+            $('.cart_product .subsum').html('<p>' + sum + '</p>')
+        })
+
+
+        totalSum
     </script>
+
 </body>
 
 </html>
