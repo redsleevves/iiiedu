@@ -19,6 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="./css/member_data.css">
 
     <style>
         body {
@@ -29,6 +30,243 @@
             padding-bottom: 150px;
             width: 100vw;
             overflow-x: hidden;
+        }
+
+        /* burgurBar */
+        .nav_burgurBar {
+            background-image: url(./img/nav_bcc.png);
+            position: sticky;
+            top: 0;
+            display: none;
+            z-index: 9;
+            padding: 20px 0;
+
+            border-bottom: 1px solid rgba(203, 203, 203, .5);
+        }
+
+        .nav_burgurBar_img {
+            margin: 0 20px;
+        }
+
+        .nav_logo_mobile {
+            margin: 0 10px;
+        }
+
+
+        /* overlayNav */
+        .nav_overlayNav {
+            background-color: rgba(0, 0, 0, 0.9);
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99;
+            /* display: none; */
+            transition: .7s;
+
+            transform: translateY(-2500px);
+        }
+
+        .nav_overlayNavBox {
+            text-align: center;
+        }
+
+        .nav_overlayNavBox li {
+            font-family: 'Noto Serif TC', serif;
+            color: #fff;
+            letter-spacing: 0.2rem;
+            padding: 25px 0;
+        }
+
+
+
+
+        /* navbar */
+        .nav_navbar_com {
+            width: 100%;
+            background-image: url(./img/nav_barBcc.jpg);
+
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        .nav_navbar_com_container {
+            width: 90%;
+            display: flex;
+            margin: 0px auto;
+            padding: 10px 0;
+        }
+
+        .nav_navbar {
+            width: 94%;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav_navbarBox {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .nav_nav_left {
+            width: 70%;
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            margin: 0px;
+        }
+
+        .nav_nav_right {
+            display: flex;
+            justify-content: flex-end;
+            list-style-type: none;
+            margin: 0;
+        }
+
+        .nav_navbarBox li {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 16px;
+            color: #000;
+            letter-spacing: 0.2rem;
+            position: relative;
+            bottom: 0;
+            transition: .5s;
+        }
+
+        .nav_navbarBox li:hover {
+            color: #cc543a;
+            bottom: 10px;
+        }
+
+        .nav_nav_left li {
+            width: 77px;
+        }
+
+        .nav_navbarBox span {
+            padding: 0 10px;
+        }
+
+        .nav_navbarBox a,
+        .nav_overlayNavBox a {
+            text-decoration: none;
+        }
+
+        .nav_navline {
+            width: 80%;
+            height: 1px;
+            background-color: rgba(203, 203, 203, .7);
+            border: 0;
+            margin: 0 auto;
+        }
+
+        nav img {
+            width: 85px;
+        }
+
+        .nav_hide_en {
+            display: none;
+        }
+
+        .nav_navbar_item:hover .nav_hide_ch {
+            display: none;
+        }
+
+        .nav_navbar_item:hover .nav_hide_en {
+            display: block;
+        }
+
+
+
+
+        /* login */
+        .modal-content-re {
+            background-image: url(./img/nav_bcc2.png);
+            border: 0;
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .modal-header-re {
+            border-bottom: 0px;
+            display: block;
+            text-align: center;
+        }
+
+        .modal-footer-re {
+            border-top: 0px;
+            margin: 0 auto;
+        }
+
+        .modal-footer2-re {
+            margin: 0 auto;
+            font-size: 14px;
+            color: #000;
+        }
+
+        .modal-footer2-re a {
+            color: #000;
+        }
+
+        .form-control-re {
+            background-image: url(./img/nav_bcc.png);
+            border-radius: 0%;
+            border: 1px solid #cdcdcd;
+        }
+
+        .form-control-re:focus {
+            border-color: #cdcdcd;
+            box-shadow: none;
+            background-color: #f5f4f1;
+        }
+
+        .close:focus {
+            outline: none;
+        }
+
+        .btn-primary-re {
+            background-color: #cc543a;
+            border: 0;
+            border-radius: 33px;
+            padding: 5px 35px;
+        }
+
+        .btn-primary-re:hover {
+            background-color: #dd745e;
+        }
+
+        .btn-primary-re:active {
+            background-color: #dd745e;
+        }
+
+        .btn-primary-re:focus {
+            background-color: #dd745e;
+        }
+
+
+        @media (max-width: 770px) {
+
+            /* nav */
+            .nav_burgurBar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .nav_navbar_com {
+                display: none;
+            }
+
+            .nav_overlayNav {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
         }
 
         h2 {
@@ -120,7 +358,7 @@
             width: 100%;
             background-color: #4D4B4B;
             position: relative;
-            --myVar: 75%;
+            --myVar: 25%;
         }
 
         #pointer::before {
@@ -155,8 +393,7 @@
             z-index: 3;
         }
 
-        .head {
-            margin-top: 100px;
+        .member_head {
             padding: 2% 8%;
             display: flex;
             flex-direction: column;
@@ -371,6 +608,7 @@
             position: absolute;
         }
 
+
         .fixrow tr {
             display: flex;
             justify-content: space-between;
@@ -426,6 +664,13 @@
             .tab img,
             .tab svg {
                 margin-right: 15px;
+            }
+
+            .member_upimg {
+                width: 30px;
+                margin: auto;
+                padding-top: 15px;
+                cursor: pointer;
             }
 
             .prow {
@@ -795,26 +1040,218 @@
 </head>
 
 <body>
-    <nav>
-        <img src='/img/logo-color.svg'>
-        <ul>
-            <li>Explore / 探索</li>
-            <li>TRIP / 行旅</li>
-            <li>SERVICE / 線上服務</li>
-            <li>SHOP / 商店</li>
-            <li>CART / 購物車</li>
-            <li>MEMBER / 會員中心</li>
-        </ul>
-        <div class="ham"><i class="fas fa-bars"></i></div>
+    <div class="nav_burgurBar">
+        <div class="nav_burgurBar_img">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 25 20">
+                <g id="Group_135" data-name="Group 135" transform="translate(-341.5 -1313.5)">
+                    <line id="Line_50" data-name="Line 50" x2="23" transform="translate(342.5 1314.5)" fill="none"
+                        stroke="#707070" stroke-linecap="round" stroke-width="2" />
+                    <line id="Line_51" data-name="Line 51" x2="23" transform="translate(342.5 1323.5)" fill="none"
+                        stroke="#707070" stroke-linecap="round" stroke-width="2" />
+                    <line id="Line_52" data-name="Line 52" x2="23" transform="translate(342.5 1332.5)" fill="none"
+                        stroke="#707070" stroke-linecap="round" stroke-width="2" />
+                </g>
+            </svg>
+        </div>
+
+        <div class="nav_logo_mobile">
+            <img src="./img/nav_logo_mobile.svg" alt="">
+        </div>
+
+    </div>
+
+    <div class="nav_overlayNav">
+        <div class="nav_closeBtn mb-4">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20 20">
+                <title>close</title>
+                <path fill='#fff'
+                    d="M10 8.586l-7.071-7.071-1.414 1.414 7.071 7.071-7.071 7.071 1.414 1.414 7.071-7.071 7.071 7.071 1.414-1.414-7.071-7.071 7.071-7.071-1.414-1.414-7.071 7.071z">
+                </path>
+            </svg>
+        </div>
+        <div class="nav_overlayNavBox">
+            <ul>
+                <a href="">
+                    <li>最新消息</li>
+                </a>
+                <a href="">
+                    <li>探索灣廟</li>
+                </a>
+                <a href="">
+                    <li>線上服務</li>
+                </a>
+                <a href="">
+                    <li>聖地行旅</li>
+                </a>
+                <a href="">
+                    <li>祈福商店</li>
+                </a>
+                <a href="">
+                    <li>購物車</li>
+                </a>
+                <a href="" data-toggle="modal" data-target="#loginCenter">
+                    <li>登入 | 註冊</li>
+                </a>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 電腦螢幕大小的navbar -->
+    <nav class="nav_navbar_com">
+        <div class="nav_navbar_com_container">
+            <!-- 請依檔案位置修改logo路徑 -->
+            <img src='./img/nav_logo.svg'>
+
+            <div class="nav_navbar">
+                <div class="nav_navbarBox">
+                    <ul class="nav_nav_left">
+                        <a href="" class="nav_navbar_item">
+                            <li class="nav_hide_ch">最新消息</li>
+                            <li class="nav_hide_en">NEWS</li>
+                        </a>
+                        <a href="" class="nav_navbar_item">
+                            <li class="nav_hide_ch">探索灣廟</li>
+                            <li class="nav_hide_en">EXPLORE</li>
+                        </a>
+                        <a href="" class="nav_navbar_item">
+                            <li class="nav_hide_ch">線上服務</li>
+                            <li class="nav_hide_en">SERVICE</li>
+                        </a>
+                        <a href="" class="nav_navbar_item">
+                            <li class="nav_hide_ch">聖地行旅</li>
+                            <li class="nav_hide_en">TRIP</li>
+                        </a>
+                        <a href="" class="nav_navbar_item">
+                            <li class="nav_hide_ch">祈福商店</li>
+                            <li class="nav_hide_en">SHOP</li>
+                        </a>
+                        <a href="" class="nav_navbar_item">
+                            <li class="nav_hide_ch">購物車</li>
+                            <li class="nav_hide_en">CART</li>
+                        </a>
+                    </ul>
+                    <ul class="nav_nav_right">
+                        <a href="" data-toggle="modal" data-target="#loginCenter">
+                            <li>登入</li>
+                        </a>
+                        <span>|</span>
+                        <a href="" data-toggle="modal" data-target="#registerCenter">
+                            <li>註冊</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- <hr class="nav_navline"> -->
     </nav>
-    <section class="head container-fluid">
+
+    <!-- login -->
+    <div class="modal fade" id="loginCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content-re">
+                <div class="modal-header modal-header-re">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">登入 | LOGIN</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="mt-3">
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control form-control-re" id="account-name"
+                                placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control form-control-re" id="password-text" placeholder="Password">
+                        </div>
+                        <input type="checkbox"> 記住帳號
+                    </form>
+                </div>
+                <div class="modal-footer modal-footer-re">
+                    <button type="button" class="btn btn-primary btn-primary-re">登入</button>
+                </div>
+                <div class="modal-footer2-re mt-3">
+                    <a class="mr-5" data-toggle="modal" data-target="#lostPassword" id="passwordbtn">忘記密碼</a>
+                    <a data-toggle="modal" data-target="#registerCenter" id="registerbtn">註冊帳號</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- lost password -->
+    <div class="modal fade" id="lostPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content-re">
+                <div class="modal-header modal-header-re">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">找回密碼</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="mt-3">
+                        <div class="form-group mb-3">
+                            <p>請輸入您註冊的電子郵件，您將會在電子郵件信箱中收到重設密碼的連結。</p>
+                            <input type="text" class="form-control form-control-re" id="account-name"
+                                placeholder="Email">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer modal-footer-re">
+                    <button type="button" class="btn btn-primary btn-primary-re">送出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- register -->
+    <div class="modal fade" id="registerCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content-re">
+                <div class="modal-header modal-header-re">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">註冊 | REGISTER</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="mt-3">
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control form-control-re" id="account-name"
+                                placeholder="User Name">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control form-control-re" id="account-name"
+                                placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control form-control-re" id="password-text" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control form-control-re" id="password-text"
+                                placeholder="Repeat Password">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer modal-footer-re">
+                    <button type="button" class="btn btn-primary btn-primary-re">註冊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="member_head container-fluid">
         <h4 class="root">會員中心>收藏清單</h4>
         <div class="tab col-lg-9  col-12">
             <div class="profile">
                 <svg xmlns="http://www.w3.org/2000/svg" width="89" height="89" viewBox="0 0 89 89">
                     <g id="account" transform="translate(0.173)">
                         <circle id="Ellipse_5" data-name="Ellipse 5" cx="44.5" cy="44.5" r="44.5"
-                            transform="translate(-0.173)" fill="silver" />
+                            transform="translate(-0.173)" fill="#cc543a" />
                         <g id="Group_92" data-name="Group 92" transform="translate(24.07 22.25)">
                             <path id="Path_23" data-name="Path 23"
                                 d="M51.65,30.071s0-5.721-6.357-6.039a9.457,9.457,0,0,1-6.357-3.179l-.318-.318h0a3.587,3.587,0,0,0-3.5-.954,11.427,11.427,0,0,1-3.5.636,13.518,13.518,0,0,1-3.5-.636,3.587,3.587,0,0,0-3.5.954h0l-.318.318a10.189,10.189,0,0,1-6.357,3.179c-6.357.636-6.357,6.039-6.357,6.039V32.3c0,1.589-.318,5.086,18.436,5.086H32.9c18.436,0,18.754-3.212,18.754-5.12V30.071Z"
@@ -841,7 +1278,7 @@
                 <svg id="orderlist" xmlns="http://www.w3.org/2000/svg" width="89" height="89" viewBox="0 0 89 89">
                     <path id="Path_18" data-name="Path 18"
                         d="M47.5,92h0A44.631,44.631,0,0,1,3,47.5H3A44.631,44.631,0,0,1,47.5,3h0A44.631,44.631,0,0,1,92,47.5h0A44.631,44.631,0,0,1,47.5,92Z"
-                        transform="translate(-3 -3)" fill="#cc543a" />
+                        transform="translate(-3 -3)" fill="silver" />
                     <g id="Group_90" data-name="Group 90" transform="translate(14.741 24.614)">
                         <g id="Group_89" data-name="Group 89" transform="translate(7.37 7.787)">
                             <line id="Line_53" data-name="Line 53" x2="13.35" transform="translate(30.594 12.098)"
@@ -884,6 +1321,817 @@
         </div>
         <hr id=pointer>
     </section>
+    <div class="member_profile padtp50 container-fluid animate__animated animate__slideInLeft">
+        <!-- 底部照片+個人資料 -->
+        <div class=" displayflex jucse aic maxwidth displayno_md">
+            <!-- 底部照片頭像 -->
+            <div class=" col-lg-5 col-10 marginauto">
+                <div class="member_img">
+                    <img src="./img/member_my.png">
+                </div>
+                <div class="member_upimg">
+                    <img src="/img/uplaod.png">
+                </div>
+            </div>
+
+
+            <div class="">
+
+                <!--  會員資料_標題 桌基板-->
+                <div class=" displayflex_md pad00150 displayflex aic">
+                    <h3>會員資料</h3>
+                    <div class="padleft15">
+
+
+                        <!-- 會員資料 彈跳修改 Button trigger modal -->
+                        <button type="button" class="butstyle  d-flex aic editbtn" data-toggle="modal"
+                            data-target="#exampleModalCenter_1">
+                            <div class="revise_icon ">
+                                <img src="./img/member_pen_solid.svg">
+                            </div>
+                            <p class="padleft5">修改</p>
+                        </button>
+
+
+
+
+                    </div>
+
+                </div>
+
+                <!--   會員資料_內文集合 -->
+                <div class="set col-11 marginauto p-0">
+                    <!--   會員資料_內文組 -->
+                    <div class=" displayflex_md pad00150 displayflex">
+                        <div class="text_p displayflex_md jcsb col-4 p-0 displayflex">
+                            <p class="">姓名</p>
+                            <p class="">|</p>
+                        </div>
+                        <P class="col">峰峰峰峰峰</P>
+                    </div>
+
+
+                    <div class=" displayflex_md pad00150 displayflex">
+                        <div class="text_p displayflex_md jcsb col-4 p-0 displayflex">
+                            <p class="">生日</p>
+                            <p class="">|</p>
+                        </div>
+                        <P class="col">1990/01/01</P>
+                    </div>
+                    <div class=" displayflex_md pad00150 displayflex">
+                        <div class="text_p displayflex_md jcsb col-4 p-0 displayflex">
+                            <p class="">性別</p>
+                            <p class="">|</p>
+                        </div>
+                        <P class="col">男</P>
+                    </div>
+                    <div class=" displayflex_md pad00150 displayflex">
+                        <div class="text_p displayflex_md jcsb col-4 p-0 displayflex">
+                            <p class="">密碼</p>
+                            <p class="">|</p>
+                        </div>
+                        <P class="col">********</P>
+                    </div>
+                    <div class=" displayflex_md pad00150 displayflex">
+                        <div class="text_p displayflex_md jcsb col-4 p-0 displayflex">
+                            <p class="">連絡電話</p>
+                            <p class="">|</p>
+                        </div>
+                        <P class="col">0987654321</P>
+                    </div>
+                    <div class=" displayflex_md pad00150 displayflex">
+                        <div class="text_p displayflex_md jcsb col-4 p-0 displayflex">
+                            <p class="">電子信箱</p>
+                            <p class="">|</p>
+                        </div>
+                        <P class="col">abc@gmail.com</P>
+                    </div>
+                    <div class=" displayflex_md pad00150 displayflex">
+                        <div class="text_p displayflex_md jcsb col-4 p-0 displayflex">
+                            <p class="">地址</p>
+                            <p class="">|</p>
+                        </div>
+                        <P class="col">100 台北市中正區中正路100號1樓1111</P>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+        <!-- 彈跳專區   ~~~~~~會員資料 彈跳修改 Modal -->
+        <div class="modal fade" id="exampleModalCenter_1" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered maxwidth40" style="position:relative" role="document">
+
+                <!-- 我是 彈跳會員密碼修改 -->
+                <div class="pop_edit_pw modal-content border-0 padding5 backgroundimg_2 radius20 d-none"
+                    style="position:absolute">
+                    <div class="modal-header border-0 d-block tac">
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">會員密碼修改</h5>
+                    </div>
+
+                    <!-- 會員資料 彈跳修改密碼 input -->
+                    <div class="modal-body">
+                        <!--  修改內容_input集合-->
+                        <div class="  ">
+                            <!--  修改內容_input_1 舊密碼-->
+                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                <!-- *舊密碼 -->
+                                <div class=" col d-flex">
+                                    <p class="redcolorh5">*</p>
+                                    <p>舊密碼</p>
+                                </div>
+                                <!-- boostarp input -->
+                                <input type="text" class="form-control col-8 backgroundimg_1 radius0"
+                                    placeholder="請輸入舊密碼" aria-label="請輸入舊密碼" aria-describedby="addon-wrapping">
+
+                            </div>
+
+
+                            <!--  修改內容_input_1 新密碼-->
+                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                <!-- *新密碼 -->
+                                <div class=" col d-flex">
+                                    <p class="redcolorh5">*</p>
+                                    <p>新密碼</p>
+                                </div>
+                                <!-- boostarp input -->
+                                <input type="text" class="form-control col-8 backgroundimg_1 radius0"
+                                    placeholder="請輸入新密碼" aria-label="請輸入新密碼" aria-describedby="addon-wrapping">
+                            </div>
+
+
+                            <!--  修改內容_input_1 輸入新密碼-->
+                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                <!-- *輸入新密碼 -->
+                                <div class=" col d-flex">
+                                    <p class="redcolorh5">*</p>
+                                    <p>輸入新密碼</p>
+                                </div>
+                                <!-- boostarp input -->
+                                <input type="text" class="form-control col-8 backgroundimg_1 radius0"
+                                    placeholder="請再次輸入新密碼" aria-label="請再次輸入新密碼" aria-describedby="addon-wrapping">
+                            </div>
+
+
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer border-0 marginauto col-9 jucse">
+                        <button type="button" class="butgray aic" data-dismiss="modal">返回</button>
+                        <button type="button" class="   aic">儲存</button>
+                    </div>
+                </div>
+
+                <!-- 我是彈跳背景 -->
+                <div class="pop_edit modal-content border-0 radius20 backgroundimg_2 padding5"
+                    style="position:absolute">
+                    <div class="modal-header border-0 d-block tac">
+
+                        <!-- 改bootstrap buttom套件 先button 後面排 h5  -->
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">會員資料修改</h5>
+                    </div>
+
+                    <!-- 會員資料 修改內容 input -->
+                    <div class="modal-body">
+                        <!--  修改內容_input集合-->
+                        <div class="  ">
+                            <!--  修改內容_input_1 姓名-->
+                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                <!-- *修改姓名 -->
+                                <div class=" col d-flex">
+                                    <p class="redcolorh5">*</p>
+                                    <p>姓名</p>
+                                </div>
+                                <!-- boostarp input -->
+                                <input type="text" class="form-control backgroundimg_1 col-8 radius0"
+                                    placeholder="需要匯入原資料" aria-label="需要匯入原資料" aria-describedby="addon-wrapping">
+
+                            </div>
+
+
+                            <!--  修改內容_input_1 連絡電話-->
+                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                <!-- *修改連絡電話 -->
+                                <div class=" col d-flex">
+                                    <p class="redcolorh5">*</p>
+                                    <p>連絡電話</p>
+                                </div>
+                                <!-- boostarp input -->
+                                <input type="text" class="form-control backgroundimg_1 col-8 radius0"
+                                    placeholder="需要匯入原資料" aria-label="需要匯入原資料" aria-describedby="addon-wrapping">
+                            </div>
+
+
+                            <!--  修改內容_input_1 地址-->
+                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                <!-- *修改地址 -->
+                                <div class=" col d-flex">
+                                    <p class="redcolorh5">*</p>
+                                    <p>地址</p>
+                                </div>
+                                <!-- boostarp input -->
+                                <input type="text" class="form-control col-8 backgroundimg_1 radius0"
+                                    placeholder="需要匯入原資料" aria-label="需要匯入原資料" aria-describedby="addon-wrapping">
+                            </div>
+
+                            <!--  修改內容_input_1 密碼-->
+                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                <!-- *密碼修改地址 -->
+                                <div class=" col d-flex">
+                                    <p class="redcolorh5">*</p>
+                                    <p>密碼</p>
+                                </div>
+
+                                <div class="member_centre_theinformation_password textstlyepass col-8 p-0">
+                                    *******123</div>
+
+                            </div>
+
+                            <!--  修改內容_input_1 修改密碼 忘記密碼-->
+                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                <!-- *修改密碼 忘記密碼 -->
+                                <div class=" col ">
+                                </div>
+
+                                <div class="member_centre_theinformation_password textstlyepass col-8 d-flex p-0 jcsb">
+                                    <p class="revisepassword" id="revisepassword">修改密碼</p>
+
+                                </div>
+
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer border-0 marginauto col-9 jucse ">
+
+                        <button type="button" class="butgray aic" data-dismiss="modal">返回</button>
+                        <button type="button" class="   aic">儲存</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 彈跳專區    ~~~~~會員資料 彈跳修改密碼 jquery控制換 Modal -->
+        <div class="modal fade" id="exampleModalCenter_3" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered maxwidth40" role="document">
+                <div class="modal-content border-0 padding5 backgroundimg_2 radius20">
+                    <div class="modal-header border-0 d-block tac">
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">會員密碼修改</h5>
+                    </div>
+
+                    <!-- 會員資料 彈跳修改密碼 input -->
+                    <div class="modal-body">
+                        <!--  修改內容_input集合-->
+                        <div class="  ">
+                            <!--  修改內容_input_1 舊密碼-->
+                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                <!-- *舊密碼 -->
+                                <div class=" col d-flex">
+                                    <p class="redcolorh5">*</p>
+                                    <p>舊密碼</p>
+                                </div>
+                                <!-- boostarp input -->
+                                <input type="text" class="form-control col-8 backgroundimg_1 radius0"
+                                    placeholder="請輸入舊密碼" aria-label="請輸入舊密碼" aria-describedby="addon-wrapping">
+
+                            </div>
+
+
+                            <!--  修改內容_input_1 新密碼-->
+                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                <!-- *新密碼 -->
+                                <div class=" col d-flex">
+                                    <p class="redcolorh5">*</p>
+                                    <p>新密碼</p>
+                                </div>
+                                <!-- boostarp input -->
+                                <input type="text" class="form-control col-8 backgroundimg_1 radius0"
+                                    placeholder="請輸入新密碼" aria-label="請輸入新密碼" aria-describedby="addon-wrapping">
+                            </div>
+
+
+                            <!--  修改內容_input_1 輸入新密碼-->
+                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                <!-- *輸入新密碼 -->
+                                <div class=" col d-flex">
+                                    <p class="redcolorh5">*</p>
+                                    <p>輸入新密碼</p>
+                                </div>
+                                <!-- boostarp input -->
+                                <input type="text" class="form-control col-8 backgroundimg_1 radius0"
+                                    placeholder="請再次輸入新密碼" aria-label="請再次輸入新密碼" aria-describedby="addon-wrapping">
+                            </div>
+
+
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer border-0 marginauto col-9 jucse">
+                        <button type="button" class="butgray aic" data-dismiss="modal">返回</button>
+                        <button type="button" class="   aic">儲存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <!-- 手機用 底部照片+個人資料 -->
+        <div class="_set displayno">
+            <div class=" displayflex jucse aic maxwidth ">
+                <!-- 手機用 底部照片頭像 -->
+                <div class=" col-lg-5 col-10 marginauto">
+                    <div class="member_img">
+                        <img src="./img/member_my.png">
+                    </div>
+                    <div class="member_upimg">
+                        <img src="/img/uplaod.png">
+                    </div>
+
+                </div>
+                <!-- 手機用  會員資料 -->
+                <div class=" padtp10_md">
+                    <div class="_set col-11 p-0 marginauto ">
+                        <!-- 手機用  會員資料_標題 -->
+                        <div class=" displayflex_md pad00150">
+                            <h5 class="margin0">會員資料</h5>
+                            <!-- 手機用 修改icon -->
+                            <div type="button" class="revise_icon displayflex_md member_add" data-toggle="modal"
+                                data-target="#exampleModalCenter_1">
+                                <img src="./img/member_pen_solid.svg">
+
+
+                            </div>
+                        </div>
+                        <!-- 手機用  會員資料_內文集合 -->
+                        <div class="set col-11 marginauto p-0">
+                            <!-- 手機用  會員資料_內文組 -->
+                            <div class=" displayflex_md pad00150 ">
+                                <div class="text_p displayflex_md jcsb col-4 p-0">
+                                    <p class="">姓名</p>
+                                    <p class="">|</p>
+                                </div>
+                                <P class="col">峰峰峰峰峰</P>
+                            </div>
+
+
+                            <div class=" displayflex_md pad00150 ">
+                                <div class="text_p displayflex_md jcsb col-4 p-0">
+                                    <p class="">生日</p>
+                                    <p class="">|</p>
+                                </div>
+                                <P class="col">1990/01/01</P>
+                            </div>
+                            <div class=" displayflex_md pad00150 ">
+                                <div class="text_p displayflex_md jcsb col-4 p-0">
+                                    <p class="">生辰</p>
+                                    <p class="">|</p>
+                                </div>
+                                <P class="col">吉時</P>
+                            </div>
+                            <div class=" displayflex_md pad00150 ">
+                                <div class="text_p displayflex_md jcsb col-4 p-0">
+                                    <p class="">性別</p>
+                                    <p class="">|</p>
+                                </div>
+                                <P class="col">男</P>
+                            </div>
+                            <div class=" displayflex_md pad00150 ">
+                                <div class="text_p displayflex_md jcsb col-4 p-0">
+                                    <p class="">密碼</p>
+                                    <p class="">|</p>
+                                </div>
+                                <P class="col">********</P>
+                            </div>
+                            <div class=" displayflex_md pad00150 ">
+                                <div class="text_p displayflex_md jcsb col-4 p-0">
+                                    <p class="">連絡電話</p>
+                                    <p class="">|</p>
+                                </div>
+                                <P class="col">0987654321</P>
+                            </div>
+                            <div class=" displayflex_md pad00150 ">
+                                <div class="text_p displayflex_md jcsb col-4 p-0">
+                                    <p class="">電子信箱</p>
+                                    <p class="">|</p>
+                                </div>
+                                <P class="col">abc@gmail.com</P>
+                            </div>
+                            <div class=" displayflex_md pad00150 ">
+                                <div class="text_p displayflex_md jcsb col-4 p-0">
+                                    <p class="">地址</p>
+                                    <p class="">|</p>
+                                </div>
+                                <P class="col">100 台北市中正區中正路100號1樓1111</P>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--  親友資料 -->
+        <div class=" maxwidth1400 marginauto padtp100  displayno_md">
+            <!--  親友資料標題 -->
+
+            <div class=" displayflex_md pad00150 displayflex aic col-11 marginauto">
+                <h3>親友資料</h3>
+                <div class="padleft15">
+
+
+
+                    <!-- 親友資料 彈跳修改 Button trigger modal -->
+                    <button type="button" class="butstyle  d-flex aic" data-toggle="modal"
+                        data-target="#exampleModalCenter_2">
+                        <div class="revise_icon ">
+                            <img src="./img/member_pen_solid.svg">
+                        </div>
+                        <p class="padleft5">修改</p>
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 親友資料表 -->
+            <div class=" padbot100 displayno_md">
+
+                <div class="member_tablehead d-flex col-11 marginauto pad00200 borderbtline">
+                    <p class="col-1">姓名</p>
+                    <p class="col-1">性別</p>
+                    <p class="col-2">生日(國曆)</p>
+                    <p class="col-2">生日(農曆)</p>
+
+                    <p class="col">地址</p>
+
+                </div>
+                <div class="member_tablehead d-flex col-11 marginauto pad200">
+                    <p class="col-1">封封封封</p>
+                    <p class="col-1">男</p>
+                    <p class="col-2">1990/01/01</p>
+                    <p class="col-2">1990/01/01</p>
+
+                    <p class="col">100 台北市中正區中正路100號1樓</p>
+
+                </div>
+                <div class="member_tablehead d-flex col-11 marginauto pad00200">
+                    <p class="col-1">小李</p>
+                    <p class="col-1">男</p>
+                    <p class="col-2">1990/01/01</p>
+                    <p class="col-2">1990/01/01</p>
+
+                    <p class="col">100 台北市中正區中正路100號11111111111111111111樓</p>
+                </div>
+                <div class="member_tablehead d-flex col-11 marginauto pad00200">
+                    <p class="col-1">小李</p>
+                    <p class="col-1">男</p>
+                    <p class="col-2">1990/01/01</p>
+                    <p class="col-2">1990/01/01</p>
+
+                    <p class="col">100 台北市中正區中正路100號111111111111111111111111樓</p>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <!--彈跳專區 ~~~~~~~ 親友資料 彈跳修改 Modal -->
+        <div class="modal fade" id="exampleModalCenter_2" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered maxwidth40" role="document">
+                <div class="modal-content border-0 radius20 backgroundimg_2 padding5">
+                    <div class="modal-header d-block tac">
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">親友資料修改</h5>
+                    </div>
+
+                    <!-- 親友資料 修改內容 整體 -->
+                    <div class="modal-body pad0_md">
+
+                        <div class="modal-body_box">
+
+                            <!--  親友修改內容_ 單人input集合-->
+                            <div>
+                                <!--  親友修改內容_input_1 姓名-->
+                                <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                    <!-- *親友姓名不給改 -->
+                                    <div class=" col d-flex">
+                                        <p class="redcolorh5">*</p>
+                                        <p class="">姓名</p>
+                                    </div>
+                                    <!-- 親友姓名不改 -->
+                                    <div class=" col-8 padlock">
+                                        <p>封封封封</p>
+                                    </div>
+
+                                </div>
+
+                                <!--  親友修改內容_input_1 生日-->
+                                <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                    <!-- *親友生日不給改 -->
+                                    <div class=" col d-flex">
+                                        <p class="redcolorh5">*</p>
+                                        <p>生日(國歷)</p>
+                                    </div>
+                                    <!-- 親友生日不改 -->
+                                    <div class=" col-8 padlock">
+                                        <p class="">1999/09/09</p>
+                                    </div>
+
+                                </div>
+
+                                <!--  親友修改內容_input_1 連絡電話-->
+                                <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                    <!-- *親友修改連絡電話 -->
+                                    <div class=" col d-flex">
+                                        <p class="redcolorh5">*</p>
+                                        <p>連絡電話</p>
+                                    </div>
+                                    <!-- boostarp input -->
+                                    <input type="text" class="form-control col-8 backgroundimg_1 radius0"
+                                        placeholder="需要匯入資料" aria-label="需要匯入資料" aria-describedby="addon-wrapping">
+                                </div>
+
+
+                                <!--  親友修改內容_input_1 地址-->
+                                <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                    <!-- *親友修改地址 -->
+                                    <div class=" col d-flex">
+                                        <p class="redcolorh5">*</p>
+                                        <p>地址</p>
+                                    </div>
+                                    <!-- boostarp input -->
+                                    <input type="text" class="form-control col-8 backgroundimg_1 radius0"
+                                        placeholder="需要匯入資料" aria-label="需要匯入資料" aria-describedby="addon-wrapping">
+                                </div>
+                                <!-- 親友資料 單筆刪除按鈕 -->
+                                <div class=" paddingtop2 paddingbot2 d-flex jucc marginauto col-8 borderline">
+                                    <button type="button" class="butgray aic removebut" data-dismiss="">刪除</button>
+                                </div>
+
+
+                            </div>
+
+
+                            <!--  親友修改內容_ 單人1 input集合-->
+                            <div class="">
+                                <!--  親友1 修改內容_input_1 姓名-->
+                                <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                    <!-- *親友1 姓名不給改 -->
+                                    <div class=" col d-flex">
+                                        <p class="redcolorh5">*</p>
+                                        <p class="">姓名</p>
+                                    </div>
+                                    <!-- 親友1 姓名不改 -->
+                                    <div class=" col-8 padlock">
+                                        <p>風風風</p>
+                                    </div>
+
+                                </div>
+
+                                <!--  親友1 修改內容_input_1 生日-->
+                                <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                    <!-- *親友1 生日不給改 -->
+                                    <div class=" col d-flex">
+                                        <p class="redcolorh5">*</p>
+                                        <p>生日(國歷)</p>
+                                    </div>
+                                    <!-- 親友1 生日不改 -->
+                                    <div class=" col-8 padlock">
+                                        <p class="">1990/01/01</p>
+                                    </div>
+
+                                </div>
+
+                                <!--  親友1 修改內容_input_1 連絡電話-->
+                                <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                    <!-- *親友1 修改連絡電話 -->
+                                    <div class=" col d-flex">
+                                        <p class="redcolorh5">*</p>
+                                        <p>連絡電話</p>
+                                    </div>
+                                    <!-- boostarp input -->
+                                    <input type="text" class="form-control col-8 backgroundimg_1 radius0"
+                                        placeholder="需要匯入資料" aria-label="需要匯入資料" aria-describedby="addon-wrapping">
+                                </div>
+
+
+                                <!--  親友1 修改內容_input_1 地址-->
+                                <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                                    <!-- *親友1 修改地址 -->
+                                    <div class=" col d-flex">
+                                        <p class="redcolorh5">*</p>
+                                        <p>地址</p>
+                                    </div>
+                                    <!-- boostarp input -->
+                                    <input type="text" class="form-control col-8 backgroundimg_1 jusbt radius0"
+                                        placeholder="需要匯入資料" aria-label="需要匯入資料" aria-describedby="addon-wrapping">
+                                </div>
+                                <!-- 親友1 資料 單筆刪除按鈕 -->
+                                <div class="paddingtop2 paddingbot2 d-flex jucc marginauto col-8 borderline">
+                                    <button type="button" class="butgray aic removebut" data-dismiss="">刪除</button>
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!--  親友修改內容_ 單人空白新增用 input集合-->
+                            <div class="boxwhiteaddset d-none" id="boxwhiteaddset">
+                                <div id="boxwhiteadd$" class="boxwhiteadd ">
+
+                                    <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+
+                                        <div class=" col d-flex">
+                                            <p class="redcolorh5">*</p>
+                                            <p class="">姓名</p>
+                                        </div>
+
+                                        <input type="text" class="form-control col-8 backgroundimg_1  radius0"
+                                            placeholder="需要匯入資料" aria-label="需要匯入資料" aria-describedby="addon-wrapping">
+
+                                    </div>
+                                    <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+
+                                        <div class=" col d-flex">
+                                            <p class="redcolorh5">*</p>
+                                            <p>生日(國歷)</p>
+                                        </div>
+
+                                        <input type="text" class="form-control col-8 backgroundimg_1  radius0"
+                                            placeholder="需要匯入資料" aria-label="需要匯入資料" aria-describedby="addon-wrapping">
+
+                                    </div>
+                                    <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+
+                                        <div class=" col d-flex">
+                                            <p class="redcolorh5">*</p>
+                                            <p>連絡電話</p>
+                                        </div>
+
+                                        <input type="text" class="form-control col-8 backgroundimg_1 radius0"
+                                            placeholder="需要匯入資料" aria-label="需要匯入資料" aria-describedby="addon-wrapping">
+                                    </div>
+                                    <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+
+                                        <div class=" col d-flex">
+                                            <p class="redcolorh5">*</p>
+                                            <p>地址</p>
+                                        </div>
+
+                                        <input type="text" class="form-control col-8 backgroundimg_1  radius0"
+                                            placeholder="需要匯入資料" aria-label="需要匯入資料" aria-describedby="addon-wrapping">
+                                    </div>
+
+                                    <div class=" paddingtop2 paddingbot2 d-flex jucc marginauto col-8 borderline">
+                                        <button type="button" class="butgray aic removebut" data-dismiss="">刪除</button>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- 親友修改 返回 儲存按鈕 -->
+                    <div class="modal-footer border-0 marginauto col-9 jucse">
+                        <button type="button" class="aic member_add" data-dismiss="">新增</button>
+                        <button type="button" id="member_save" class="aic">儲存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 手機用  親友資料 -->
+        <div class=" maxwidth1400 marginauto padtp100 displayno col-11">
+            <!-- 手機用  親友資料標題 -->
+            <div class=" displayflex_md pad00150">
+                <h5 class="margin0">親友資料</h5>
+                <div type="button" class="revise_icon displayflex_md" data-toggle="modal"
+                    data-target="#exampleModalCenter_2">
+                    <img src="./img/member_pen_solid.svg">
+                </div>
+
+            </div>
+            <!-- 手機用 親友資料表 -->
+            <div class=" padbot100 marginauto">
+
+                <div class="member_tablehead d-flex col-11 marginauto pad00200 borderbtline">
+                    <p class="col-3">姓名</p>
+                    <p class="col-3">性別</p>
+                    <p class="col displayno_md">生日(國曆)</p>
+                    <p class="col">生日(農曆)</p>
+                    <p class="col displayno_md">生辰</p>
+                    <p class="col displayno_md">地址</p>
+
+                </div>
+                <div class="member_tablehead d-flex col-11 marginauto pad200">
+                    <p class="col-3">小李</p>
+                    <p class="col-3">男</p>
+                    <p class="col displayno_md">1990/01/01</p>
+                    <p class="col">1990/01/01</p>
+                    <p class="col displayno_md">子時</p>
+                    <p class="col displayno_md">100 台北市中正區中正路100號1樓</p>
+
+                </div>
+                <div class="member_tablehead d-flex col-11 marginauto pad00200">
+                    <p class="col-3">小李</p>
+                    <p class="col-3">男</p>
+                    <p class="col displayno_md">1990/01/01</p>
+                    <p class="col ">1990/01/01</p>
+                    <p class="col displayno_md">子時</p>
+                    <p class="col displayno_md">100 台北市中正區中正路100號11111111111111111111樓</p>
+                </div>
+                <div class="member_tablehead d-flex col-11 marginauto pad00200">
+                    <p class="col-3">小李</p>
+                    <p class="col-3">男</p>
+                    <p class="col displayno_md">1990/01/01</p>
+                    <p class="col">1990/01/01</p>
+                    <p class="col displayno_md">子時</p>
+                    <p class="col displayno_md">100 台北市中正區中正路100號111111111111111111111111樓</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
     <section class="fav container-fluid animate__animated animate__slideInLeft d-none">
         <div class="fav_product col-lg-8">
             <div class="d-flex justify-content-between">
@@ -1043,7 +2291,7 @@
         <div id="cover">
         </div>
     </section>
-    <section class="ordertable container-fluid animate__animated animate__slideInLeft">
+    <section class="ordertable container-fluid animate__animated animate__slideInLeft d-none">
         <table class="table table-borderless fixrow abstract col-lg-7">
             <thead>
                 <tr>
@@ -1386,7 +2634,10 @@
             $('#Ellipse_5').attr('fill', '#cc543a')
             $('#Path_18').attr('fill', 'silver')
             $('#gratipay-brands').attr('fill', 'silver')
-
+            $('.member_profile').removeClass('animate__slideOutRight')
+            $('.fav').addClass('animate__slideOutRight')
+            $('.ordertable').addClass('animate__slideOutRight')
+            $('.order_mobile').addClass('animate__slideOutRight')
         })
 
         $('.favorite').click(function () {
@@ -1395,6 +2646,7 @@
             $('#Path_18').attr('fill', 'silver')
             $('#Ellipse_5').attr('fill', 'silver')
             $('.fav').removeClass('animate__slideOutRight d-none')
+            $('.member_profile').addClass('animate__slideOutRight')
             $('.ordertable').addClass('animate__slideOutRight')
             $('.order_mobile').addClass('animate__slideOutRight')
             let absoluteBut = document.body.scrollHeight
@@ -1406,9 +2658,10 @@
             $('#gratipay-brands').attr('fill', 'silver')
             $('#Ellipse_5').attr('fill', 'silver')
             $('#Path_18').attr('fill', '#cc543a')
-            $('.fav').addClass('animate__slideOutRight')
-            $('.ordertable').removeClass('animate__slideOutRight')
+            $('.ordertable').removeClass('animate__slideOutRight d-none')
             $('.order_mobile').removeClass('animate__slideOutRight')
+            $('.fav').addClass('animate__slideOutRight')
+            $('.member_profile').addClass('animate__slideOutRight')
             let absoluteBut = document.body.scrollHeight
             dynamicFooter(absoluteBut)
             console.log(absoluteBut)
@@ -1504,7 +2757,60 @@
 
         $(window).resize(function () {
         });
+        // 親友修改 新增Buttom
+        let addFamily = document.querySelector("#boxwhiteaddset").innerHTML;
+        $('.member_add').click(function () {
+            console.log('click', addFamily)
+            $('.modal-body_box').append(addFamily);
+        })
 
+        // 親友修改 刪除Buttom
+        $(document).on('click', '.removebut', (function () {
+            console.log('click')
+            $(this).parentsUntil('.modal-body_box').remove();
+        }))
+
+
+        // 會員資料 密碼修改
+        $('#revisepassword').click(function () {
+            console.log('click')
+            $('.pop_edit').addClass('displaynone');
+            $('.pop_edit_pw').removeClass('displaynone');
+        })
+        $('.editbtn').click(function () {
+            $('.pop_edit').removeClass('displaynone');
+            $('.pop_edit_pw').addClass('displaynone');
+        })
+        // overlayNav進場
+        $('.nav_burgurBar_img').click(function () {
+
+            let navPosition = {
+                transform: 'translateY(0)'
+            }
+
+            $(".nav_overlayNav").css(navPosition);
+        })
+
+        // overlayNav退場
+        $('.nav_closeBtn').click(function () {
+
+            let navPosition = {
+                transform: 'translateY(-2500px)',
+                transition: '.7s'
+            }
+
+            $(".nav_overlayNav").css(navPosition);
+        })
+
+
+        //Login hide
+        $('#registerbtn').click(function () {
+            $('#loginCenter').modal('hide');
+        })
+
+        $('#passwordbtn').click(function () {
+            $('#loginCenter').modal('hide');
+        })
     </script>
 </body>
 

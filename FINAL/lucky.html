@@ -229,21 +229,18 @@
     <!-- ------------我是麵包屑------------->
     <div class="breadcrumb_style   backgroundimg_1">
         <div class="d-flex flex-wrap breadcrumb_style_1 ">
-            <a href="" class="astlyep">自己編輯路徑</a>
+            <a href="" class="astlyep">首頁</a>
             <!-- 共用雲端找箭頭icon-->
             <img src="/img/arrow/arrow-right.svg">
-            <a href="" class="astlyep">自己編輯路徑2</a>
+            <a href="" class="astlyep">線上服務</a>
             <img src="/img/arrow/arrow-right.svg">
-            <a href="" class="astlyep">自己編輯路徑3</a>
+            <a href="" class="astlyep">求籤</a>
         </div>
     </div>
     <!-- ------------------------------------------- -->
     <div class="lucky_contianer lucky_text">
         <div class="lucky_content01">
             <div class="item-group01">
-                <!-- <div class="lucky_txtAdd">
-                    <h6 class="lucky_Sign_order">線上求籤</h6>
-                </div> -->
                 <div class="lucky_Swipe_page">
                     <ul>
                         <li class="node1 stageColor"></li>
@@ -503,14 +500,16 @@
                     </div>
                 </section>
                 <section class="lucky_p5 nextstep">
-                    <div class="lucky_Sign_animation05_0">
-                        <div id="YanCup"></div>
-                        <div id="YanCup_1" class="hidden"></div>
-                        <div id="YanCup_2" class="hidden"></div>
-                    </div>
-                    <div id="lucky_Sign_animation05_1" class="lucky_Sign_animation05_1">
-                    </div>
-                    <div id="lucky_result05_1" class="lucky_result05_1">
+                    <div class="extra">
+                        <div class="lucky_Sign_animation05_0 d-none">
+                            <div id="YanCup"></div>
+                            <div id="YanCup_1" class="hidden"></div>
+                            <div id="YanCup_2" class="hidden"></div>
+                        </div>
+                        <div id="lucky_Sign_animation05_1" class="lucky_Sign_animation05_1">
+                        </div>
+                        <div id="lucky_result05_1" class="lucky_result05_1">
+                        </div>
                     </div>
                 </section>
                 <section class="lucky_p6 nextstep">
@@ -572,26 +571,6 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
     <script src="/js/lucky.js"></script>
-    <script>
-        $('.lucky_button01 .lucky_p4').click(function () {
-            $('#YanCup').style.animation = "YanCup"
-
-            document.getElementById('YanCup').addEventListener('animationend', function () {
-                $('#YanCup_1').style.animation = "YanCup01"
-                $('#YanCup_2').style.animation = "YanCup02"
-                // $('#YanCup_1').css('visibility', 'visible');
-                // $('#YanCup_2').css('visibility', 'visible');
-                $('#YanCup').style.display;
-                // $('#YanCup').css('visibility', 'hidden');
-            });
-            document.getElementById('YanCup_1').addEventListener('animationend', function () {
-                $('.lucky_Sign_animation05_0').addClass('d-none');
-                getRandomImage()
-                console.log(please[luckyNum].name)
-                // $('#YanCup').css('visibility', 'visible');
-            });
-        })
-    </script>
 </body>
 
 </html>
