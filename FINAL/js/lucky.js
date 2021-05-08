@@ -82,7 +82,7 @@ $('.lucky_button01 .lucky_p2').click(function () {
         setTimeout(function () {
             $(chosen).parent().css({
                 position: 'absolute',
-                left: (boxleft + boxwidth / 2) + -30 + 'px',
+                left: (boxleft + boxwidth / 2) + -50 + 'px',
                 top: (boxtop + boxheight / 2) + 'px',
                 transform: 'scale(' + 3 + ')',
                 transition: 3 + 's'
@@ -127,21 +127,22 @@ function getRandomImage() {
         document.getElementById("lucky_result05_1").innerHTML = '<p>' + please[luckyNum].hint + '</p>';
 }
 
-
-$('.lucky_button01 .lucky_p4').click(function () {
-    document.getElementById('YanCup').addEventListener('animationend', function () {
-        $('#YanCup_1').css('visibility', 'visible');
-        $('#YanCup_2').css('visibility', 'visible');
-        $('#YanCup').css('visibility', 'hidden');
-    });
-    document.getElementById('YanCup_1').addEventListener('animationend', function () {
-        $('.lucky_Sign_animation05_0').addClass('d-none');
-        getRandomImage()
-        console.log(please[luckyNum].name)
-        $('#YanCup').css('visibility', 'visible');
-    });
-})
-
+if ($(window).width() > 1000) {
+    $('.lucky_button01 .lucky_p4').click(function () {
+        document.getElementById('YanCup').addEventListener('animationend', function () {
+            $('#YanCup_1').css('visibility', 'visible');
+            $('#YanCup_2').css('visibility', 'visible');
+            $('#YanCup').css('visibility', 'hidden');
+        });
+        document.getElementById('YanCup_1').addEventListener('animationend', function () {
+            $('.lucky_Sign_animation05_0').addClass('d-none');
+            getRandomImage()
+            console.log(please[luckyNum].name)
+            $('#YanCup').css('visibility', 'visible');
+        });
+    })
+}
+getRandomImage()
 let failure = 1
 $('.lucky_button01 .lucky_p5').click(function () {
     if (please[luckyNum].name == '聖筊') {
@@ -150,20 +151,28 @@ $('.lucky_button01 .lucky_p5').click(function () {
         $('.node6').addClass('stageColor').siblings().removeClass('stageColor')
         $('.lucky_Swipe_page p').text('06')
     } else {
-        $('.lucky_Sign_animation05_1').addClass('d-none');
-        $('.lucky_result05_1').addClass('d-none');
-        $('.lucky_Sign_animation05_0').removeClass('d-none');
+        if ($(window).width() > 1000) {
+            $('.lucky_Sign_animation05_1').addClass('d-none');
+            $('.lucky_result05_1').addClass('d-none');
+            $('.lucky_Sign_animation05_0').removeClass('d-none');
 
-        document.getElementById('YanCup_1').addEventListener('animationend', function () {
-            $('.lucky_Sign_animation05_0').addClass('d-none');
-            $('.lucky_Sign_animation05_1').removeClass('d-none')
-            $('.lucky_result05_1').removeClass('d-none');
-            ;
+            document.getElementById('YanCup_1').addEventListener('animationend', function () {
+                $('.lucky_Sign_animation05_0').addClass('d-none');
+                $('.lucky_Sign_animation05_1').removeClass('d-none')
+                $('.lucky_result05_1').removeClass('d-none');
+                ;
+                luckyNum = Math.floor(Math.random() * please.length);
+                getRandomImage(luckyNum);
+                console.log(please[luckyNum].name)
+                document.getElementById("lucky_result05_1").append("擲筊次數：" + failure);
+            });
+        } else {
             luckyNum = Math.floor(Math.random() * please.length);
             getRandomImage(luckyNum);
-            console.log(please[luckyNum].name)
+            console.log(failure);
             document.getElementById("lucky_result05_1").append("擲筊次數：" + failure);
-        });
+        }
+
         failure++;
     }
 
@@ -195,39 +204,3 @@ const godImg = document.querySelector('.lucky_GodImg');//抓藥更換的神明�
 $("#gods").change(function () {
     $(".lucky_GodImg img").attr('src', "/img/" + $(this).val() + ".png")
 })
-
-
-// --------求籤步驟敘述增加--------
-const btn01 = document.getElementsByClassName('lucky_p1');
-const btn02 = document.getElementsByClassName('lucky_p2');
-const btn03 = document.getElementsByClassName('lucky_p3');
-const btn04 = document.getElementsByClassName('lucky_p4');
-const btn05 = document.getElementsByClassName('lucky_p5');
-console.log('btn01', btn01);
-const txt01 = document.createTextNode("求問類別介紹");
-// const icon = <i class="fas fa-chevron-right"></i>;
-// <i class="fas fa-chevron-right"></i>箭頭
-btn01[1].addEventListener('click', () => {
-    console.log('hi');
-    // <h6 class="lucky_Sign_order">線上求籤 <i class="fas fa-chevron-right"></i> 求問類別介紹</h6>
-    $('.lucky_Sign_order').html($('.lucky_Sign_order').text() + `<i class="fas fa-chevron-right"></i> 求問類別介紹`)
-    // $('.lucky_Sign_order').append(icon).appendChild(txt01);
-    // .append(icon)
-});
-btn02[1].addEventListener('click', () => {
-    console.log('hi');//開始求籤
-    $('.lucky_Sign_order').html($('.lucky_Sign_order').html() + `<i class="fas fa-chevron-right"></i> 開始求籤`)
-});
-btn03[1].addEventListener('click', () => {
-    console.log('hi');//神明賜籤
-
-    $('.lucky_Sign_order').html($('.lucky_Sign_order').html() + `<i class="fas fa-chevron-right"></i> 神明賜籤`)
-});
-btn04[1].addEventListener('click', () => {
-    console.log('hi');//擲筊結果
-    $('.lucky_Sign_order').html($('.lucky_Sign_order').html() + `<i class="fas fa-chevron-right"></i> 擲筊結果`)
-});
-btn05[1].addEventListener('click', () => {
-    console.log('hi');//籤詩涵義
-    $('.lucky_Sign_order').html($('.lucky_Sign_order').html() + `<i class="fas fa-chevron-right"></i> 籤詩涵義`)
-});
