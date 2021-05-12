@@ -38,7 +38,7 @@
             position: sticky;
             top: 0;
             display: none;
-            z-index: 9;
+            z-index: 1;
             padding: 20px 0;
 
             border-bottom: 1px solid rgba(203, 203, 203, .5);
@@ -61,7 +61,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 99;
+            z-index: 1;
             /* display: none; */
             transition: .7s;
 
@@ -89,7 +89,7 @@
 
             position: sticky;
             top: 0;
-            z-index: 99;
+            z-index: 1;
         }
 
         .nav_navbar_com_container {
@@ -318,7 +318,7 @@
             top: 0;
             right: 5%;
             border-bottom: 1px solid rgb(165, 165, 165);
-            z-index: 5;
+            z-index: 1;
         }
 
         nav img {
@@ -454,6 +454,7 @@
             margin: 5px 15px;
             box-shadow: 3px 3px 3px 3px rgb(202, 202, 202);
             border-radius: 5px;
+            border: 1px solid gray;
         }
 
         .fav_product_card p {
@@ -486,7 +487,8 @@
             justify-content: start;
             align-items: center;
             margin: 40px 0;
-            overflow: hidden;
+            /* overflow: hidden; */
+            transition: 1s;
         }
 
         .fav_plan_card {
@@ -530,11 +532,14 @@
         }
 
         .fav_lucky_container {
+            width: 100%;
             display: flex;
             justify-content: start;
             align-items: center;
             margin: 40px 0;
-            overflow: hidden;
+            /* overflow: hidden; */
+            transition: 1s;
+
         }
 
         .fav_lucky_card div {
@@ -1036,6 +1041,18 @@
                 color: #cc543a;
             }
         }
+
+        .modal-backdrop {
+            z-index: -1;
+        }
+
+        .modal-content {
+            z-index: 500 !important;
+        }
+
+        svg {
+            z-index: -1;
+        }
     </style>
 </head>
 
@@ -1497,90 +1514,77 @@
                     </div>
                 </div>
 
-                <!-- 我是彈跳背景 -->
+                <!-- 彈跳背景 -->
                 <div class="pop_edit modal-content border-0 radius20 backgroundimg_2 padding5"
-                    style="position:absolute">
+                    style="position:absolute;">
                     <div class="modal-header border-0 d-block tac">
-
-                        <!-- 改bootstrap buttom套件 先button 後面排 h5  -->
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <h5 class="modal-title" id="exampleModalCenterTitle">會員資料修改</h5>
                     </div>
-
-                    <!-- 會員資料 修改內容 input -->
                     <div class="modal-body">
-                        <!--  修改內容_input集合-->
-                        <div class="  ">
-                            <!--  修改內容_input_1 姓名-->
-                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
-                                <!-- *修改姓名 -->
-                                <div class=" col d-flex">
-                                    <p class="redcolorh5">*</p>
-                                    <p>姓名</p>
-                                </div>
-                                <!-- boostarp input -->
-                                <input type="text" class="form-control backgroundimg_1 col-8 radius0"
-                                    placeholder="需要匯入原資料" aria-label="需要匯入原資料" aria-describedby="addon-wrapping">
+                        <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                            <!-- *修改姓名 -->
+                            <div class=" col d-flex">
+                                <p class="redcolorh5">*</p>
+                                <p>姓名</p>
+                            </div>
+                            <!-- boostarp input -->
+                            <input type="text" class="form-control backgroundimg_1 col-8 radius0" placeholder="需要匯入原資料"
+                                aria-describedby="addon-wrapping">
 
+                        </div>
+
+
+                        <!--  修改內容_input_1 連絡電話-->
+                        <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                            <!-- *修改連絡電話 -->
+                            <div class=" col d-flex">
+                                <p class="redcolorh5">*</p>
+                                <p>連絡電話</p>
+                            </div>
+                            <!-- boostarp input -->
+                            <input type="text" class="form-control backgroundimg_1 col-8 radius0" placeholder="需要匯入原資料"
+                                aria-describedby="addon-wrapping">
+                        </div>
+
+
+                        <!--  修改內容_input_1 地址-->
+                        <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                            <!-- *修改地址 -->
+                            <div class=" col d-flex">
+                                <p class="redcolorh5">*</p>
+                                <p>地址</p>
+                            </div>
+                            <!-- boostarp input -->
+                            <input type="text" class="form-control col-8 backgroundimg_1 radius0" placeholder="需要匯入原資料"
+                                aria-describedby="addon-wrapping">
+                        </div>
+
+                        <!--  修改內容_input_1 密碼-->
+                        <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                            <!-- *密碼修改地址 -->
+                            <div class=" col d-flex">
+                                <p class="redcolorh5">*</p>
+                                <p>密碼</p>
                             </div>
 
+                            <div class="member_centre_theinformation_password textstlyepass col-8 p-0">
+                                *******123</div>
 
-                            <!--  修改內容_input_1 連絡電話-->
-                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
-                                <!-- *修改連絡電話 -->
-                                <div class=" col d-flex">
-                                    <p class="redcolorh5">*</p>
-                                    <p>連絡電話</p>
-                                </div>
-                                <!-- boostarp input -->
-                                <input type="text" class="form-control backgroundimg_1 col-8 radius0"
-                                    placeholder="需要匯入原資料" aria-label="需要匯入原資料" aria-describedby="addon-wrapping">
+                        </div>
+
+                        <!--  修改內容_input_1 修改密碼 忘記密碼-->
+                        <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
+                            <!-- *修改密碼 忘記密碼 -->
+                            <div class=" col ">
                             </div>
 
-
-                            <!--  修改內容_input_1 地址-->
-                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
-                                <!-- *修改地址 -->
-                                <div class=" col d-flex">
-                                    <p class="redcolorh5">*</p>
-                                    <p>地址</p>
-                                </div>
-                                <!-- boostarp input -->
-                                <input type="text" class="form-control col-8 backgroundimg_1 radius0"
-                                    placeholder="需要匯入原資料" aria-label="需要匯入原資料" aria-describedby="addon-wrapping">
-                            </div>
-
-                            <!--  修改內容_input_1 密碼-->
-                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
-                                <!-- *密碼修改地址 -->
-                                <div class=" col d-flex">
-                                    <p class="redcolorh5">*</p>
-                                    <p>密碼</p>
-                                </div>
-
-                                <div class="member_centre_theinformation_password textstlyepass col-8 p-0">
-                                    *******123</div>
+                            <div class="member_centre_theinformation_password textstlyepass col-8 d-flex p-0 jcsb">
+                                <p class="revisepassword" id="revisepassword">修改密碼</p>
 
                             </div>
-
-                            <!--  修改內容_input_1 修改密碼 忘記密碼-->
-                            <div class=" d-flex aic col-lg-10 marginauto paddingtop2">
-                                <!-- *修改密碼 忘記密碼 -->
-                                <div class=" col ">
-                                </div>
-
-                                <div class="member_centre_theinformation_password textstlyepass col-8 d-flex p-0 jcsb">
-                                    <p class="revisepassword" id="revisepassword">修改密碼</p>
-
-                                </div>
-
-
-
-                            </div>
-
-
                         </div>
 
                     </div>
@@ -2283,6 +2287,25 @@
                         </div>
                         <p>求籤日期：2020/01/03</p>
                     </div>
+                    <div class="fav_lucky_box">
+                        <i class="fas fa-times-circle delete d-none"></i>
+                        <div class="fav_lucky_card">
+                            <div class="templename">南裩身代天府
+                            </div>
+                            <div class="number">丙子</div>
+                            <div class="lside"></div>
+                            <div class="content">
+                                <p>運逢得意身顯變</p>
+                                <p>運逢得意身顯變</p>
+                                <p>運逢得意身顯變</p>
+                                <p>運逢得意身顯變</p>
+                            </div>
+                            <div class="rside"></div>
+                            <div class="detail"><button data-toggle="modal" data-target="#lucky_Modal">點擊查看</button>
+                            </div>
+                        </div>
+                        <p>求籤日期：2020/01/03</p>
+                    </div>
                 </div>
                 <div class="control control_luck"><i class="fas fa-chevron-right"></i></div>
             </div>
@@ -2651,6 +2674,9 @@
             $('.order_mobile').addClass('animate__slideOutRight')
             let absoluteBut = document.body.scrollHeight
             dynamicFooter(absoluteBut)
+            control1()
+            control2()
+            control3()
         })
 
         $('.order').click(function () {
@@ -2681,26 +2707,31 @@
         let planCardW = document.querySelector('.fav_plan_card').offsetWidth
         let luckyCardW = document.querySelector('.fav_lucky_card').offsetWidth
 
-
         $('.control').click(function () {
+            let move = $('.fav_product_card').width();
+            let containerProduct = document.querySelector('#fav_product_container')
+            let containerPlan = document.querySelector('#fav_plan_container')
             let current = $(containerProduct).position().left
             if ($(this).children().hasClass("fa-chevron-left")) {
                 current -= move * 2
                 $(this).siblings('.fav_product_container').css('transform', 'translateX(' + current + 'px)')
-                // $(this).siblings('.fav_product_container').css('transform', 'translateX(' + -move + 'px)')
-                // move += $('.fav_product_card').width()
+                $(this).siblings('.fav_plan_container').css('transform', 'translateX(' + current + 'px)')
+                $(this).siblings('.fav_lucky_container').css('transform', 'translateX(' + current + 'px)')
             }
             else {
                 current += move * 2
                 current = (current > 0) ? 0 : current;
                 $(this).siblings('.fav_product_container').css('transform', 'translateX(' + current + 'px)')
-                // move += $('.fav_product_card').width()
+                $(this).siblings('.fav_plan_container').css('transform', 'translateX(' + current + 'px)')
+                $(this).siblings('.fav_lucky_container').css('transform', 'translateX(' + current + 'px)')
             }
 
         })
 
-        console.log('witch', document.body.clientWidth, 1000)
+        console.log('withd', document.body.clientWidth, 1000)
         function control1() {
+            let containerProduct = document.querySelector('#fav_product_container')
+            let productCardW = document.querySelector('.fav_product_card').offsetWidth
             if ((productCardW * $('.fav_product_card').length > containerProduct.offsetWidth) && (document.body.clientWidth > 1000)) {
                 $('.control_prod').css('display', 'block')
             }
@@ -2709,6 +2740,8 @@
             }
         }
         function control2() {
+            let planCardW = document.querySelector('.fav_plan_card').offsetWidth
+            let containerPlan = document.querySelector('#fav_plan_container')
             if ((planCardW * $('.fav_plan_card').length > containerPlan.offsetWidth) && (document.body.clientWidth > 1000)) {
                 $('.control_plan').css('display', 'block')
             }
@@ -2717,14 +2750,17 @@
             }
         }
         function control3() {
+            let containerLucky = document.querySelector('#fav_lucky_container')
+            let luckyCardW = document.querySelector('.fav_lucky_card').offsetWidth
             if ((luckyCardW * $('.fav_lucky_card').length > containerLucky.offsetWidth) && (document.body.clientWidth > 1000)) {
-                $('#fav_lucky_container .control').css('display', 'block')
+                $('.control_luck').css('display', 'block')
             }
             else {
-                $('#fav_lucky_container .control').css('display', 'none')
+                $('.control_luck').css('display', 'none')
             }
-        }
+            console.log('erfae', luckyCardW, $('.fav_lucky_card').length, containerLucky.offsetWidth)
 
+        }
         control1()
         control2()
         control3()
