@@ -2189,7 +2189,7 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             .then(r=>r.json())
             .then(obj=>{
                 if(obj.success) {
-                    document.querySelector('#myimg').src = 'imgs/' + obj.filename;
+                    document.querySelector('#myimg').src = 'img/' + obj.filename;
                 }
             })
 
