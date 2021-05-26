@@ -1592,8 +1592,8 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             </div>
             <div class='d-flex align-items-center col-lg-12'>
                 <i class="fas fa-chevron-left control control_prod"></i>
-                <div class="prow">
-                    <div id="fav_product_container" class="fav_product_container col-xs-12">
+                <div id="fav_product_container" class="prow">
+                    <div  class="fav_product_container col-xs-12">
                         <?php foreach ($pdc_rows as $p) : ?>
                         <div class="fav_product_card col-lg-3 p-0">
                         <a href="javascript:delete_fav_pdc(<?= $p['sid'] ?>)">
@@ -1614,8 +1614,8 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             </div>
             <div class='d-flex align-items-center col-lg-12'>
                 <i class="fas fa-chevron-left control control_plan"></i>
-                <div class="prow">
-                    <div id="fav_plan_container" class="fav_plan_container col-xs-12">
+                <div id="fav_plan_container" class="prow">
+                    <div  class="fav_plan_container col-xs-12">
                         <?php foreach ($trip_rows as $t) : ?>
                         <div class="fav_plan_card col-lg-5 col-10 p-0">
                         <a href="javascript:delete_fav_trip(<?= $t['sid'] ?>)">
@@ -1633,7 +1633,7 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
                         <?php endforeach; ?>
                     </div>
                 </div>
-                <i class="control control_prod fas fa-chevron-right"></i>
+                <i class="control control_plan fas fa-chevron-right"></i>
             </div>
         </div>
         <div class="fav_lucky col-lg-8">
@@ -1643,11 +1643,11 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             </div>
             <div class='d-flex align-items-center col-lg-12'>
                 <i class="fas fa-chevron-left control control_luck"></i>
-                <div class="prow">
-                    <div id="fav_lucky_container" class="fav_lucky_container col-xs-12">
+                <div id="fav_lucky_container" class="prow">
+                    <div class="fav_lucky_container col-xs-12">
                         <?php foreach ($lucky_rows as $l) : ?>
                         <div class="fav_lucky_card">
-                        <a href="javascript:delete_fav_lucky(<?= $l['sid'] ?>)">
+                            <a href="javascript:delete_fav_lucky(<?= $l['sid'] ?>)">
                             <i class="fas fa-times-circle delete d-none"></i></a>
                             <img src="<?= WEB_ROOT ?>/img/<?= $l['img'] ?>">
                             <div class="more"><button data-toggle="modal" data-target="#lucky_Modal">點擊查看</button>
@@ -2061,7 +2061,6 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
         let luckyCardW = document.querySelector('.fav_lucky_card').offsetWidth
 
         $('.control').click(function () {
-            console.log('qqqq')
             let move = $('.fav_product_card').width();
             let containerProduct = document.querySelector('#fav_product_container')
             let containerPlan = document.querySelector('#fav_plan_container')
@@ -2082,8 +2081,9 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
 
         })
 
-        console.log('withd', document.body.clientWidth, 1000)
+
         function control1() {
+
             let containerProduct = document.querySelector('#fav_product_container')
             let productCardW = document.querySelector('.fav_product_card').offsetWidth
             if ((productCardW * $('.fav_product_card').length > containerProduct.offsetWidth) && (document.body.clientWidth > 1000)) {
@@ -2092,6 +2092,7 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             else {
                 $('.control_prod').css('display', 'none')
             }
+            console.log('c1', productCardW, $('.fav_product_card').length, containerProduct.offsetWidth)
         }
         function control2() {
             let planCardW = document.querySelector('.fav_plan_card').offsetWidth
@@ -2123,26 +2124,25 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             $(this).parent().siblings().find('.delete').toggleClass('d-block');
             ($(this).html() == '完成') ? $(this).html('編輯') : $(this).html('完成');
         }))
-        // $(document).on('click', '.delete', (function () {
-        //     control1()
-        //     control2()
-        //     control3()
-        //     setTimeout(() => {
-        //         if ($(containerLucky).children().hasClass('fav_lucky_box') == false) {
-        //             $(containerLucky).html('無收藏資料')
-        //         }
-        //         if ($(containerPlan).children().hasClass('fav_plan_card') == false) {
-        //             $(containerPlan).html('無收藏資料')
-        //         }
-        //         if ($(containerProduct).children().hasClass('fav_product_card') == false) {
-        //             $(containerProduct).html('無收藏資料')
-        //         }
-        //     }, 100);
-        // }))
+        $(document).on('click', '.delete', (function () {
+            $(this).parents('.fav_lucky_card').toggleClass('selected')
+            control1()
+            control2()
+            control3()
+            setTimeout(() => {
+                if ($('.fav_lucky_card').hasClass('fav_lucky_card') == false) {
+                    $(containerLucky).html('無收藏資料')
+                }
+                if ($('.fav_plan_card').hasClass('fav_plan_card') == false) {
+                    $(containerPlan).html('無收藏資料')
+                }
+                if ($('.fav_product_card').hasClass('fav_product_card') == false) {
+                    $(containerProduct).html('無收藏資料')
+                }
+            }, 100);
+        }))
 
-        console.log($('#fav_lucky_container').children().hasClass('fav_lucky_box'))
-
-        console.log($('#leftt').children().hasClass("fa-chevron-left"))
+        console.log('has',$('.fav_lucky_card').hasClass('fav_lucky_card'))
 
         $(window).resize(function () {
         });
@@ -2189,7 +2189,7 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             .then(r=>r.json())
             .then(obj=>{
                 if(obj.success) {
-                    document.querySelector('#myimg').src = 'img/' + obj.filename;
+                    document.querySelector('#myimg').src = 'imgs/' + obj.filename;
                 }
             })
 
@@ -2259,8 +2259,13 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
         }
 
     }
+
+    document.getElementsByClass("delete").addEventListener("click", removecard())
+
+
     function delete_fav_pdc(sid){
     if(confirm(`確定要刪除 ${fav_pdc.name} 嗎?`)){
+        $(this).parent().remove()
         location.href = 'delete_fav_pdc.php?sid=' + sid;
     }}
     function delete_fav_trip(sid){
@@ -2269,7 +2274,31 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
     }}
     function delete_fav_lucky(sid){
     if(confirm(`確定要刪除 ${sid} 嗎?`)){
-        location.href = 'delete_fav_lucky.php?sid=' + sid;
+        $('.selected').remove()
+        // location.href = 'delete_fav_lucky.php?sid=' + sid;
+          $.ajax({
+          url: 'delete_fav_lucky.php?sid=' + sid,
+          method: "DELETE",
+          dataType: "json"
+        });
     }}
+
+    $(document).on('click', '.delete', (function () {
+            $(this).parents('.fav_lucky_card').remove()
+        }))
+    // var table = $('#example').DataTable();
+
+
+    //使用AJAX刪除資料庫的資料
+    // function DeleteSelectTable(){
+    //   for (var i = 0; i < table.rows('.selected').data().length; i++) {
+    //     var id = table.rows('.selected').data()[i][0]
+    //     $.ajax({
+    //       url: 'delete_fav_lucky.php?sid=' + sid,
+    //       method: "DELETE",
+    //       dataType: "json"
+    //     });
+    //   }
+    // }
     </script>
 <?php include __DIR__. '/parts/html-foot.php'; ?>
