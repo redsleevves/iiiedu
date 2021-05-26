@@ -1,3 +1,4 @@
+<?php include __DIR__ . '/parts/config.php'; ?>
 <?php
 $title = '新增資料';
 $pageName = 'login';
@@ -334,7 +335,7 @@ $(document).ready(function () {
                 function(data){
                     if(data.success){
                         alert('註冊成功');
-                        location.href = 'navbar.php';
+                        location.href = 'member_onepage.php';
                     }
                 },
                 'json'
@@ -362,7 +363,8 @@ $(document).ready(function () {
                 function(data){
                     if(data.success){
                         alert('登入成功');
-                        location.href = 'navbar.php';
+                        location.reload();
+                        //location.href = 'member_onepage.php';
                     } else {
                         alert(data.error);
                     }
