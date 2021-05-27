@@ -4,4 +4,7 @@ session_start();
 
 unset($_SESSION['user']);
 
-header("Location: navbar1.php");
+if (!empty($_SERVER['HTTP_REFERER']))
+    header("Location: ".$_SERVER['HTTP_REFERER']);
+else
+    header("Location: trip.php");

@@ -1,4 +1,4 @@
-<div class="nav_burgurBar">
+    <div class="nav_burgurBar">
         <div class="nav_burgurBar_img">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 25 20">
                 <g id="Group_135" data-name="Group 135" transform="translate(-341.5 -1313.5)">
@@ -52,9 +52,21 @@
                 <a href="">
                     <li>購物車</li>
                 </a>
-                <a href="" data-toggle="modal" data-target="#loginCenter">
+                <?php if(isset($_SESSION['user'])): ?>
+                    <div class="mobile_login d-flex">
+                    <div class="mobile_nav_profile d-flex">
+                        <img src="<?= WEB_ROOT ?>/img/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
+                        <a class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="logout.php">登出</a>
+                    </div>
+                    </div>
+                    <?php else: ?>
+                <a href="login.php" data-toggle="modal" data-target="#loginCenter"  <?= $pageName=='login' ? 'active' : '' ?>>
                     <li>登入 | 註冊</li>
                 </a>
+                <?php endif; ?>
             </ul>
         </div>
     </div>
@@ -100,13 +112,23 @@
                         </a>
                     </div>
                     <div class="nav_nav_right">
-                        <a href="" data-toggle="modal" data-target="#loginCenter" class="nav_navbar_item">
+                    <?php if(isset($_SESSION['user'])): ?>
+                    <li class="nav-item d-flex align-items-center">
+                        <img src="<?= WEB_ROOT ?>/img/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
+                        <a class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">登出</a>
+                    </li>
+                    <?php else: ?>
+                        <a href="login.php" data-toggle="modal" data-target="#loginCenter" class="nav_navbar_item <?= $pageName=='login' ? 'active' : '' ?>" >
                             <div>登入</div>
                         </a>
                         <span class="nav_navbar_item">|</span>
-                        <a href="" data-toggle="modal" data-target="#registerCenter" class="nav_navbar_item">
+                        <a href="register.php" data-toggle="modal" data-target="#registerCenter" class="nav_navbar_item <?= $pageName=='register' ? 'active' : '' ?>">
                             <div>註冊</div>
                         </a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -128,20 +150,24 @@
                     <h5 class="modal-title" id="exampleModalCenterTitle">登入 | LOGIN</h5>
                 </div>
                 <div class="modal-body">
-                    <form class="mt-3" name="formLog" method="post" novalidate onsubmit="checkLogin(); return false;">
+                    <form class="mt-3"  name="formLog" method="post" novalidate onsubmit="checkLogin(); return false;">
                         <div class="form-group mb-3">
                             <input type="text" class="form-control form-control-re" id="login_email" name="email" placeholder="Email">
                             <small class="form-text error"></small>
+
                         </div>
                         <div class="form-group">
-                            <input class="form-control form-control-re" type="password" id="login_password"  name="password" placeholder="Password">
+                            <input class="form-control form-control-re"  type="password" id="login_password"  name="password" placeholder="Password">
                             <small class="form-text error"></small>
+
                         </div>
-                        <div><input type="checkbox">記住帳號</div>
-                        <div class="modal-footer modal-footer-re"><button type="submit" class="btn btn-primary btn-primary-re">登入</button>
-                        </div>
+                        <input type="checkbox"> 記住帳號
+                        <div class="modal-footer modal-footer-re">
+                    <button type="submit" class="btn btn-primary btn-primary-re">登入</button>
+                </div>
                     </form>
                 </div>
+
                 <div class="modal-footer2-re mt-3">
                     <a class="mr-5" data-toggle="modal" data-target="#lostPassword" id="passwordbtn">忘記密碼</a>
                     <a data-toggle="modal" data-target="#registerCenter" id="registerbtn">註冊帳號</a>
@@ -165,14 +191,15 @@
                     <form class="mt-3">
                         <div class="form-group mb-3">
                             <p>請輸入您註冊的電子郵件，您將會在電子郵件信箱中收到重設密碼的連結。</p>
-                            <input type="text" class="form-control form-control-re" id="find_email"
+                            <input type="text" class="form-control form-control-re" id="account-name"
                                 placeholder="Email">
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer modal-footer-re">
+                        <div class="modal-footer modal-footer-re">
                     <button type="button" class="btn btn-primary btn-primary-re">送出</button>
                 </div>
+                    </form>
+                </div>
+
             </div>
         </div>
     </div>
@@ -189,18 +216,19 @@
                     <h5 class="modal-title" id="exampleModalCenterTitle">註冊 | REGISTER</h5>
                 </div>
                 <div class="modal-body">
-                    <form id="form1" name="form1" method="post" novalidate
+                    <form class="mt-3" id="formReg" name="formReg" method="post" novalidate
                           onsubmit="checkForm(); return false;">
                         <div class="form-group mb-3">
                             <input type="text" class="form-control form-control-re" id="name" name="name" placeholder="使用者名稱">
                             <small class="form-text error"></small>
                         </div>
                         <div class="form-group mb-3">
-                            <input type="email" class="form-control form-control-re" id="email" name="email" placeholder="Email">
-                            <small class="form-text error"></small>
+                            <input type="text" class="form-control form-control-re" id="email" name="email" placeholder="Email"
+                                placeholder="Email">
+                                <small class="form-text error"></small>
                         </div>
-                        <div class="form-group mb-3">
-                            <input type="text" class="form-control form-control-re" id="mobile" name="mobile" placeholder="手機號碼">
+                        <div class="form-group">
+                            <input class="form-control form-control-re" id="mobile" name="mobile" placeholder="手機號碼">
                             <small class="form-text error"></small>
                         </div>
                         <div class="form-group">
@@ -211,11 +239,12 @@
                             <input class="form-control form-control-re" name="repassword" id="repassword" type="password" placeholder="再次輸入密碼">
                             <small class="form-text error"></small>
                         </div>
-                        <button id='submit' type="submit" class="btn btn-primary btn-primary-re mt-3">註冊</button>
+                        <div class="modal-footer modal-footer-re">
+                    <button id='submit'  type="submit" class="btn btn-primary btn-primary-re">註冊</button>
+                    </div>
                     </form>
                 </div>
-               
+                
             </div>
         </div>
     </div>
-</div>

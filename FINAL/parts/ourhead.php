@@ -18,8 +18,11 @@
     <!-- navbar2 -->
     <link rel="stylesheet" href="<?= WEB_ROOT ?>/css/navbar2.css">
     <link rel="stylesheet" href="<?= WEB_ROOT ?>/css/navbar1.css">
-    <link rel="stylesheet" href="<?= WEB_ROOT ?>/css/member_data.css">
-    <title>nav2</title>
+    <link rel="stylesheet" href="<?= WEB_ROOT ?>/css/nav_footor.css">
+    <!--<link rel="stylesheet" href="<?= WEB_ROOT ?>/css/member_data.css">-->
+    
+    <?= $_gdata['styles'] ?>
+    <title><?= $_gdata['title'] ?></title>
 </head>
 
 <body>

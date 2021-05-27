@@ -1,5 +1,15 @@
 <?php include __DIR__ . '/parts/config.php'; ?>
+
 <?php
+$_gdata = [
+    // 網頁名稱
+    'title' => '聖地行旅', 
+    // 頁面私有 css
+    'styles' => '<link rel="stylesheet" href="'.WEB_ROOT.'/css/member_data.css">',
+    //頁面私有 scripts
+    'scripts' => '', 
+];
+
 $title = '會員中心';
 $pageName = 'member';
 $member_sid = $_SESSION['user']['sid'];
