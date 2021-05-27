@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- navbar2 -->
     <link rel="stylesheet" href="<?= WEB_ROOT ?>/css/navbar2.css">
+    <link rel="stylesheet" href="<?= WEB_ROOT ?>/css/navbar1.css">
     <link rel="stylesheet" href="<?= WEB_ROOT ?>/css/member_data.css">
     <title>nav2</title>
 </head>
