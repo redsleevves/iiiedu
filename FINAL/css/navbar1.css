@@ -18,12 +18,13 @@ body::-webkit-scrollbar {
 
 /* burgurBar */
 .nav_burgurBar {
-    background-image: url(/img/nav_bcc.png);
+    background-image: url(../img/nav_bcc.png);
     position: sticky;
     top: 0;
     display: none;
     z-index: 9;
     padding: 20px 0;
+
     border-bottom: 1px solid rgba(203, 203, 203, .5);
 }
 
@@ -89,12 +90,12 @@ body::-webkit-scrollbar {
 /* nav-bar */
 .nav_index_navbar_com {
     width: 100%;
-    background-image: url(/img/nav_barBcc.jpg);
+    background-image: url(../img/nav_barBcc.jpg);
     /* padding: 40px 0; */
     position: sticky;
     top: 0px;
     z-index: 99;
-    /* opacity: 0; */
+    opacity: 1;
 }
 @keyframes focus-in-expand {
 0% {
@@ -209,7 +210,7 @@ body::-webkit-scrollbar {
     position: absolute;
     top: 80%;
     left: 26%;
-    background-image: url(/img/nav_bcc2.png);
+    background-image: url(../img/nav_bcc2.png);
     border:1px solid #ddd;
     box-shadow: 0.5px 0.5px 5px 1px rgba(0, 0, 0, 0.1);
     display: none;
@@ -224,7 +225,7 @@ body::-webkit-scrollbar {
 
 /* login */
 .modal-content-re {
-    background-image: url(/img/nav_bcc2.png);
+    background-image: url(../img/nav_bcc2.png);
     border: 0;
     border-radius: 20px;
     padding: 30px;
@@ -252,7 +253,7 @@ body::-webkit-scrollbar {
 }
 
 .form-control-re {
-    background-image: url(/img/nav_bcc.png);
+    background-image: url(../img/nav_bcc.png);
     border-radius: 0%;
     border: 1px solid #cdcdcd;
 }
@@ -286,7 +287,29 @@ body::-webkit-scrollbar {
     background-color: #dd745e;
 }
 
+form .form-group small.error {
+    color: red;
+}
+.nav_index_navbar_right {
+    align-items: center;
+}
 
+.nav_index_navbar_right img{
+    width: 50px;
+}
+
+.mobile_login{
+    width: 240%;
+    justify-content:space-between;
+    transform:translate(-30%,200%)
+}
+.mobile_nav_profile{
+    width:50px;
+    height:50px;
+}
+.mobile_nav_profile img{
+    width:100%;
+}
 
 @media (max-width: 770px) {
 
