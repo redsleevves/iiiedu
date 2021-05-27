@@ -1,9 +1,37 @@
 <?php include __DIR__ . '/parts/config.php'; ?>
 <?php
 $title = '導覽列';
-$pageName = 'navbar2';
+$pageName = 'navbar1';
 ?>
 <?php include __DIR__ . '/parts/ourhead.php'; ?>
+
+<style>
+    form .form-group small.error {
+        color: red;
+    }
+    .nav_index_navbar_right {
+        align-items: center;
+    }
+
+    .nav_index_navbar_right img{
+        width: 50px;
+    }
+
+    .mobile_login{
+        width: 240%;
+        justify-content:space-between;
+        transform:translate(-30%,200%)
+    }
+    .mobile_nav_profile{
+        width:50px;
+        height:50px;
+    }
+    .mobile_nav_profile img{
+        width:100%;
+    }
+
+
+</style>
 
     <div class="nav_burgurBar">
         <div class="nav_burgurBar_img">
@@ -78,48 +106,42 @@ $pageName = 'navbar2';
         </div>
     </div>
 
-    <!-- 電腦螢幕大小的navbar -->
-    <nav class="nav_navbar_com">
-        <div class="nav_navbar_com_container">
-            <!-- 請依檔案位置修改logo路徑 -->
-            <img src='<?= WEB_ROOT ?>/img/nav_logo.svg'>
+    <div class="nav_index_navbar_com">
+        <div class="nav_index_navbarBox">
+            <div class="nav_index_navbar_left">
+                <a href="" class="nav_navbar_item">
+                    <div class="nav_hide_ch">最新消息</div>
+                    <div class="nav_hide_en">NEWS</div>
+                </a>
+                <a href="" class="nav_navbar_item">
+                    <div class="nav_hide_ch">探索灣廟</div>
+                    <div class="nav_hide_en">EXPLORE</div>
+                </a>
+                <a href="#" class="nav_navbar_item nav_ser">
+                    <div class="nav_hide_ch">線上服務</div>
+                    <div class="nav_hide_en">SERVICE</div>
 
-            <div class="nav_navbar">
-                <div class="nav_navbarBox">
-                    <div class="nav_nav_left">
-                        <a href="" class="nav_navbar_item">
-                            <div class="nav_hide_ch">最新消息</div>
-                            <div class="nav_hide_en">NEWS</div>
-                        </a>
-                        <a href="" class="nav_navbar_item">
-                            <div class="nav_hide_ch">探索灣廟</div>
-                            <div class="nav_hide_en">EXPLORE</div>
-                        </a>
-                        <a href="#" class="nav_navbar_item nav_ser">
-                            <div class="nav_hide_ch">線上服務</div>
-                            <div class="nav_hide_en">SERVICE</div>
-
-                            <ul class="nav_dropDownMenu">
-                                <a class="dropdown-item nav_ser_item" href="#">祈福點燈</a>
-                                <a class="dropdown-item nav_ser_item" href="#">求神問卜</a>
-                            </ul>
-                        </a>
-
-                        <a href="" class="nav_navbar_item">
-                            <div class="nav_hide_ch">聖地行旅</div>
-                            <div class="nav_hide_en">TRIP</div>
-                        </a>
-                        <a href="" class="nav_navbar_item">
-                            <div class="nav_hide_ch">祈福商店</div>
-                            <div class="nav_hide_en">SHOP</div>
-                        </a>
-                        <a href="" class="nav_navbar_item">
-                            <div class="nav_hide_ch">購物車</div>
-                            <div class="nav_hide_en">CART</div>
-                        </a>
-                    </div>
-                    <div class="nav_nav_right">
-                    <?php if(isset($_SESSION['user'])): ?>
+                    <ul class="nav_dropDownMenu">
+                        <a class="dropdown-item nav_ser_item" href="#">祈福點燈</a>
+                        <a class="dropdown-item nav_ser_item" href="#">求神問卜</a>
+                    </ul>
+                </a>
+                
+                <a href="" class="nav_navbar_item">
+                    <div class="nav_hide_ch">聖地行旅</div>
+                    <div class="nav_hide_en">TRIP</div>
+                </a>
+                <a href="" class="nav_navbar_item">
+                    <div class="nav_hide_ch">祈福商店</div>
+                    <div class="nav_hide_en">SHOP</div>
+                </a>
+                <a href="" class="nav_navbar_item">
+                    <div class="nav_hide_ch">購物車</div>
+                    <div class="nav_hide_en">CART</div>
+                </a>
+            </div>
+            <div class="nav_index_navbar_right">
+            <?php if(isset($_SESSION['user'])): ?>
                     <li class="nav-item d-flex align-items-center">
                         <img src="<?= WEB_ROOT ?>/img/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
                         <a class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
@@ -128,22 +150,17 @@ $pageName = 'navbar2';
                         <a class="nav-link" href="logout.php">登出</a>
                     </li>
                     <?php else: ?>
-                        <a href="login.php" data-toggle="modal" data-target="#loginCenter" class="nav_navbar_item <?= $pageName=='login' ? 'active' : '' ?>" >
-                            <div>登入</div>
-                        </a>
-                        <span class="nav_navbar_item">|</span>
-                        <a href="register.php" data-toggle="modal" data-target="#registerCenter" class="nav_navbar_item <?= $pageName=='register' ? 'active' : '' ?>">
-                            <div>註冊</div>
-                        </a>
-                        <?php endif; ?>
-                    </div>
-                </div>
+                <a href="login.php" data-toggle="modal" data-target="#loginCenter" class="nav_navbar_item <?= $pageName=='login' ? 'active' : '' ?>">
+                    <div>登入</div>
+                </a>
+                <span class="nav_navbar_item">|</span>
+                <a href="register.php" data-toggle="modal" data-target="#registerCenter" class="nav_navbar_item <?= $pageName=='register' ? 'active' : '' ?>">
+                    <div>註冊</div>
+                </a>
+                <?php endif; ?>
             </div>
-
         </div>
-
-        <hr class="nav_navline">
-    </nav>
+    </div>
 
     <!-- login -->
     <div class="modal fade" id="loginCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -157,16 +174,14 @@ $pageName = 'navbar2';
                     <h5 class="modal-title" id="exampleModalCenterTitle">登入 | LOGIN</h5>
                 </div>
                 <div class="modal-body">
-                    <form class="mt-3"  name="formLog" method="post" novalidate onsubmit="checkLogin(); return false;">
+                    <form class="mt-3" name="formLog" method="post" novalidate onsubmit="checkLogin(); return false;">
                         <div class="form-group mb-3">
                             <input type="text" class="form-control form-control-re" id="login_email" name="email" placeholder="Email">
                             <small class="form-text error"></small>
-
                         </div>
                         <div class="form-group">
-                            <input class="form-control form-control-re"  type="password" id="login_password"  name="password" placeholder="Password">
+                            <input class="form-control form-control-re" id="login_password"  name="password" placeholder="Password">
                             <small class="form-text error"></small>
-
                         </div>
                         <input type="checkbox"> 記住帳號
                         <div class="modal-footer modal-footer-re">
@@ -174,7 +189,6 @@ $pageName = 'navbar2';
                 </div>
                     </form>
                 </div>
-
                 <div class="modal-footer2-re mt-3">
                     <a class="mr-5" data-toggle="modal" data-target="#lostPassword" id="passwordbtn">忘記密碼</a>
                     <a data-toggle="modal" data-target="#registerCenter" id="registerbtn">註冊帳號</a>
@@ -201,12 +215,11 @@ $pageName = 'navbar2';
                             <input type="text" class="form-control form-control-re" id="account-name"
                                 placeholder="Email">
                         </div>
-                        <div class="modal-footer modal-footer-re">
-                    <button type="button" class="btn btn-primary btn-primary-re">送出</button>
-                </div>
                     </form>
                 </div>
-
+                <div class="modal-footer modal-footer-re">
+                    <button type="button" class="btn btn-primary btn-primary-re">送出</button>
+                </div>
             </div>
         </div>
     </div>
@@ -234,12 +247,12 @@ $pageName = 'navbar2';
                                 placeholder="Email">
                                 <small class="form-text error"></small>
                         </div>
-                        <div class="form-group">
-                            <input class="form-control form-control-re" id="mobile" name="mobile" placeholder="手機號碼">
-                            <small class="form-text error"></small>
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control form-control-re" id="mobile" name="mobile" placeholder="手機號碼">
+                                <small class="form-text error"></small>
                         </div>
                         <div class="form-group">
-                            <input class="form-control form-control-re" name="password" id="password" type="password"
+                            <input class="form-control form-control-re" id="password" type="password"
                              placeholder="密碼">
                         </div>
                         <div class="form-group">
@@ -248,13 +261,13 @@ $pageName = 'navbar2';
                         </div>
                         <div class="modal-footer modal-footer-re">
                     <button id='submit'  type="submit" class="btn btn-primary btn-primary-re">註冊</button>
-                    </div>
+                </div>
                     </form>
                 </div>
-                
             </div>
         </div>
     </div>
+    
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"
@@ -262,8 +275,16 @@ $pageName = 'navbar2';
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
-
     <script>
+
+        //Login hide
+        $('#registerbtn').click(function () {
+            $('#loginCenter').modal('hide');
+        })
+
+        $('#passwordbtn').click(function () {
+            $('#loginCenter').modal('hide');
+        })
 
         // overlayNav進場
         $('.nav_burgurBar_img').click(function () {
@@ -286,16 +307,6 @@ $pageName = 'navbar2';
             $(".nav_overlayNav").css(navPosition);
         })
 
-
-        //Login hide
-        $('#registerbtn').click(function () {
-            $('#loginCenter').modal('hide');
-        })
-
-        $('#passwordbtn').click(function () {
-            $('#loginCenter').modal('hide');
-        })
-
         //overlay sub-menu
         $(document).ready(function () {
             $('.nav_ser_mobile').click(function () {
@@ -305,6 +316,24 @@ $pageName = 'navbar2';
             })
         });
 
+
+        // navbar-scroll-show
+        $(window).scroll(function (event) {
+            let scrollTop = $(window).scrollTop();
+            console.log(scrollTop);
+
+            //navBar進入動畫
+            if (scrollTop >= 250 && $(window).width() > 1400 ) {
+
+                let navAnimation = {
+                    'animation': 'focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
+                    'opacity': '1'
+                }
+
+                $(".nav_index_navbar_com").css(navAnimation);
+            } 
+
+        });
         const email_re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     const mobile_re = /^09\d{2}-?\d{3}-?\d{3}$/;
     const $name = $('#name'),

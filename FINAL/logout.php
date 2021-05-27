@@ -4,4 +4,4 @@ session_start();
 
 unset($_SESSION['user']);
 
-header('Location: navbar2.php');
+header("Location: navbar1.php");
