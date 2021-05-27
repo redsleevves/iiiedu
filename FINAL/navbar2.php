@@ -1,4 +1,3 @@
-<?php include __DIR__ . '/parts/config.php'; ?>
 <?php
 $title = '導覽列';
 $pageName = 'navbar2';

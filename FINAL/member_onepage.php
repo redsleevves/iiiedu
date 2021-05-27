@@ -26,240 +26,6 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             overflow-x: hidden;
         }
 
-        /* burgurBar */
-        .nav_burgurBar {
-            background-image: url(<?= WEB_ROOT ?>/img/nav_bcc.png);
-            position: sticky;
-            top: 0;
-            display: none;
-            z-index: 1;
-            padding: 20px 0;
-
-            border-bottom: 1px solid rgba(203, 203, 203, .5);
-        }
-
-        .nav_burgurBar_img {
-            margin: 0 20px;
-        }
-
-        .nav_logo_mobile {
-            margin: 0 10px;
-        }
-
-
-        /* overlayNav */
-        .nav_overlayNav {
-            background-color: rgba(0, 0, 0, 0.9);
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            /* display: none; */
-            transition: .7s;
-
-            transform: translateY(-2500px);
-        }
-
-        .nav_overlayNavBox {
-            text-align: center;
-        }
-
-        .nav_overlayNavBox li {
-            font-family: 'Noto Serif TC', serif;
-            color: #fff;
-            letter-spacing: 0.2rem;
-            padding: 25px 0;
-        }
-
-        /* navbar */
-        .nav_navbar_com {
-            width: 100%;
-            background-image: url(<?= WEB_ROOT ?>/img/nav_barBcc.jpg);
-
-            position: sticky;
-            top: 0;
-            z-index: 1;
-        }
-
-        .nav_navbar_com_container {
-            width: 90%;
-            display: flex;
-            margin: 0px auto;
-            padding: 10px 0;
-        }
-
-        .nav_navbar {
-            width: 94%;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav_navbarBox {
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        .nav_nav_left {
-            width: 70%;
-            display: flex;
-            justify-content: space-between;
-            list-style-type: none;
-            margin: 0px;
-        }
-
-        .nav_nav_right {
-            display: flex;
-            justify-content: flex-end;
-            list-style-type: none;
-            margin: 0;
-        }
-
-        .nav_navbarBox li {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 16px;
-            color: #000;
-            letter-spacing: 0.2rem;
-            position: relative;
-            bottom: 0;
-            transition: .5s;
-        }
-
-        .nav_navbarBox li:hover {
-            color: #cc543a;
-            bottom: 10px;
-        }
-
-        .nav_nav_left li {
-            width: 77px;
-        }
-
-        .nav_navbarBox span {
-            padding: 0 10px;
-        }
-
-        .nav_navbarBox a,
-        .nav_overlayNavBox a {
-            text-decoration: none;
-        }
-
-        .nav_navline {
-            width: 80%;
-            height: 1px;
-            background-color: rgba(203, 203, 203, .7);
-            border: 0;
-            margin: 0 auto;
-        }
-
-        nav img {
-            width: 85px;
-        }
-
-        .nav_hide_en {
-            display: none;
-        }
-
-        .nav_navbar_item:hover .nav_hide_ch {
-            display: none;
-        }
-
-        .nav_navbar_item:hover .nav_hide_en {
-            display: block;
-        }
-
-
-
-
-        /* login */
-        .modal-content-re {
-            background-image: url(<?= WEB_ROOT ?>/img/nav_bcc2.png);
-            border: 0;
-            border-radius: 20px;
-            padding: 30px;
-        }
-
-        .modal-header-re {
-            border-bottom: 0px;
-            display: block;
-            text-align: center;
-        }
-
-        .modal-footer-re {
-            border-top: 0px;
-            margin: 0 auto;
-        }
-
-        .modal-footer2-re {
-            margin: 0 auto;
-            font-size: 14px;
-            color: #000;
-        }
-
-        .modal-footer2-re a {
-            color: #000;
-        }
-
-        .form-control-re {
-            background-image: url(<?= WEB_ROOT ?>/img/nav_bcc.png);
-            border-radius: 0%;
-            border: 1px solid #cdcdcd;
-        }
-
-        .form-control-re:focus {
-            border-color: #cdcdcd;
-            box-shadow: none;
-            background-color: #f5f4f1;
-        }
-
-        .close:focus {
-            outline: none;
-        }
-
-        .btn-primary-re {
-            background-color: #cc543a;
-            border: 0;
-            border-radius: 33px;
-            padding: 5px 35px;
-        }
-
-        .btn-primary-re:hover {
-            background-color: #dd745e;
-        }
-
-        .btn-primary-re:active {
-            background-color: #dd745e;
-        }
-
-        .btn-primary-re:focus {
-            background-color: #dd745e;
-        }
-
-        
-        @media (max-width: 770px) {
-
-            /* nav */
-            .nav_burgurBar {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-
-            .nav_navbar_com {
-                display: none;
-            }
-
-            .nav_overlayNav {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-
-        }
-
         h2 {
             font-size: 35px;
             font-weight: bold;
@@ -727,29 +493,6 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             .popwindow {
             width: 35%;
             }
-            nav {
-                height: 100px;
-                display: flex;
-                align-items: center;
-
-            }
-
-            nav ul {
-                width: 75%;
-                height: 100%;
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-end;
-                font-size: 20px;
-            }
-
-            nav li {
-                letter-spacing: 3px;
-            }
-
-            nav .ham {
-                display: none;
-            }
 
             .tab img,
             .tab svg {
@@ -1144,7 +887,7 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
 
     </style>
 
-<?php include __DIR__ . '/navbar.php'; ?>
+<?php include __DIR__ . '/navbar2.php'; ?>
     <div class="popwindow">
             <h3>會員資料修改</h3>
         <form name="editMyData" class="editMyData" method="post" novalidate onsubmit="checkEdit(); return false;">
@@ -1313,6 +1056,7 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
                 <div class="member_upimg">
                     <img src="<?= WEB_ROOT ?>/img/uplaod.png" onclick="avatar.click()">
                     <form name="form_upload" style="display: none">
+                        <input type="hidden" name="sid" value="<?= htmlentities($_SESSION['user']['sid']) ?>">
                         <input type="file" name="avatar" id="avatar">
                     </form>
                 </div>
@@ -2147,53 +1891,7 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
         $(window).resize(function () {
         });
 
-        // overlayNav進場
-        $('.nav_burgurBar_img').click(function () {
 
-            let navPosition = {
-                transform: 'translateY(0)'
-            }
-
-            $(".nav_overlayNav").css(navPosition);
-        })
-
-        // overlayNav退場
-        $('.nav_closeBtn').click(function () {
-
-            let navPosition = {
-                transform: 'translateY(-2500px)',
-                transition: '.7s'
-            }
-
-            $(".nav_overlayNav").css(navPosition);
-        })
-
-
-        //Login hide
-        $('#registerbtn').click(function () {
-            $('#loginCenter').modal('hide');
-        })
-
-        $('#passwordbtn').click(function () {
-            $('#loginCenter').modal('hide');
-        })
-        const avatar = document.querySelector('#avatar');
-
-        avatar.addEventListener('change', function(){
-            const fd = new FormData(document.form_upload);
-
-            fetch('a20210415-03-upload.php', {
-                method: 'POST',
-                body: fd
-            })
-            .then(r=>r.json())
-            .then(obj=>{
-                if(obj.success) {
-                    document.querySelector('#myimg').src = 'imgs/' + obj.filename;
-                }
-            })
-
-        });
         $('button').click(function(){
             $('#cover').removeClass('d-none')
         })
@@ -2260,8 +1958,6 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
 
     }
 
-    document.getElementsByClass("delete").addEventListener("click", removecard())
-
 
     function delete_fav_pdc(sid){
     if(confirm(`確定要刪除 ${fav_pdc.name} 嗎?`)){
@@ -2285,7 +1981,33 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
 
     $(document).on('click', '.delete', (function () {
             $(this).parents('.fav_lucky_card').remove()
-        }))
+    }))
+    
+    const avatar = document.querySelector('#avatar');
+
+    avatar.addEventListener('change', function(){
+        const fd = new FormData(document.form_upload);
+
+        fetch('upload-api.php', {
+            method: 'POST',
+            body: fd
+        })
+        .then(r=>r.json())
+        .then(obj=>{
+            if(obj.success) {
+                document.querySelector('#myimg').src = 'imgs/' + obj.filename;
+            }
+        })
+    });
+
+    avatar.addEventListener('change', function(){
+        $.post(
+                'profile_edit_api.php',
+                $(document.form_upload).serialize(),
+                )
+
+    });
+    
     // var table = $('#example').DataTable();
 
 

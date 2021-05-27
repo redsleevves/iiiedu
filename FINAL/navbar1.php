@@ -3,36 +3,6 @@
 $title = '導覽列';
 $pageName = 'navbar1';
 ?>
-<?php include __DIR__ . '/parts/ourhead.php'; ?>
-
-<style>
-    form .form-group small.error {
-        color: red;
-    }
-    .nav_index_navbar_right {
-        align-items: center;
-    }
-
-    .nav_index_navbar_right img{
-        width: 50px;
-    }
-
-    .mobile_login{
-        width: 240%;
-        justify-content:space-between;
-        transform:translate(-30%,200%)
-    }
-    .mobile_nav_profile{
-        width:50px;
-        height:50px;
-    }
-    .mobile_nav_profile img{
-        width:100%;
-    }
-
-
-</style>
-
     <div class="nav_burgurBar">
         <div class="nav_burgurBar_img">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 25 20">
